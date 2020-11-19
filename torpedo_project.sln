@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "torpedo_project", "torpedo_project\torpedo_project.csproj", "{13432CF6-CF0C-4AEC-9275-07B1DAF2A2C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13432CF6-CF0C-4AEC-9275-07B1DAF2A2C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13432CF6-CF0C-4AEC-9275-07B1DAF2A2C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13432CF6-CF0C-4AEC-9275-07B1DAF2A2C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13432CF6-CF0C-4AEC-9275-07B1DAF2A2C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D37185C9-3566-41F6-80A9-57B3FA53471A}
+	EndGlobalSection
+EndGlobal
