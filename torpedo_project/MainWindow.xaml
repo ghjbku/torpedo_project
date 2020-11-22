@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

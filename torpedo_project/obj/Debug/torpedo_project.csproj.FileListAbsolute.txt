@@ -1,0 +1,15 @@
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\bin\Debug\torpedo_project.exe.config
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\bin\Debug\torpedo_project.exe
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\bin\Debug\torpedo_project.pdb
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project.csprojAssemblyReference.cache
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\MainWindow.g.cs
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\App.g.cs
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project_MarkupCompile.cache
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project_MarkupCompile.lref
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\MainWindow.baml
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project.g.resources
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project.Properties.Resources.resources
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project.csproj.GenerateResource.cache
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project.csproj.CoreCompileInputs.cache
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project.exe
+I:\CsharpProjects\repos\ghjbku\torpedo_project\torpedo_project\obj\Debug\torpedo_project.pdb

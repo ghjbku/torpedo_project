@@ -23,6 +23,13 @@ namespace torpedo_project
         public MainWindow()
         {
             InitializeComponent();
+            TestPlayerClasses();
+        }
+
+        private void TestPlayerClasses()
+        {
+            GameObjects.Player player1 = new GameObjects.Player("test_player");
+            player_name_test_label.Content = player1.PlayerName;
         }
     }
 }
