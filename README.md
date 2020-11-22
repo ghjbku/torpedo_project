@@ -2,7 +2,7 @@
 
 **Progress so far:**
 
-![](https://cdn.discordapp.com/attachments/621734574195736597/780049744553705502/unknown.png)
+![](https://cdn.discordapp.com/attachments/621734574195736597/780078088176140288/unknown.png)
 
 ## Requirements::
 
