@@ -17,14 +17,14 @@ namespace torpedo_project.GameObjects
         enum ALPHABETS {
                 A = 'A',
                 B = 'B',
-                C='C',
-                D='D',
-                E='E',
-                F='F',
-                G='G',
-                H='H',
-                I='I',
-                J='J'
+                C = 'C',
+                D = 'D',
+                E = 'E',
+                F = 'F',
+                G = 'G',
+                H = 'H',
+                I = 'I',
+                J = 'J'
         }
 
         public Ship(string x_start, int y_start, string x_end, int y_end,string shipType) {
@@ -42,7 +42,8 @@ namespace torpedo_project.GameObjects
             string[,] coords5x;
             switch (shipType) {
                 case "Patrol Boat":
-                coords2x = new string[,] { { x_start, y_start.ToString() }, { x_end, y_end.ToString() } };
+                coords2x = new string[,] { { x_start, y_start.ToString() },
+                                           { x_end, y_end.ToString() } };
                 return coords2x;
                 case "Submarine":
                     if (x_start.Equals(x_end))
@@ -84,7 +85,7 @@ namespace torpedo_project.GameObjects
 
 
         private string GetMiddlecoord(string x_start) {
-            if (x_start.Equals((ALPHABETS.A))) return ALPHABETS.B.ToString();
+            if (x_start.Equals(ALPHABETS.A)) return ALPHABETS.B.ToString();
             else if (x_start.Equals(ALPHABETS.B.ToString())) return ALPHABETS.C.ToString();
             else if (x_start.Equals(ALPHABETS.C.ToString())) return ALPHABETS.D.ToString();
             else if (x_start.Equals(ALPHABETS.D.ToString())) return ALPHABETS.E.ToString();
