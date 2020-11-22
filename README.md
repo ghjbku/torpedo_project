@@ -1,5 +1,7 @@
 # Torpedo project for C# dev class
 
+**Progress so far:**
+![](https://cdn.discordapp.com/attachments/621734574195736597/780049744553705502/unknown.png)
 
 ## Requirements::
 
