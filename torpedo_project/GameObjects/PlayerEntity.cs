@@ -10,10 +10,11 @@ namespace torpedo_project
     {
         string PlayerName { set; get; }
         int RoundsNo { set; get; }
-        int[][] PlayerHits { set; get; }
-        int[][] EnemyHits { set; get; }
-        int[][] RemainingShips { set; get; }
-        int[][] DestroyedShips { set; get; }
+        char[,] PlayerHits { set; get; }
+        char[,] EnemyHits { set; get; }
+        List<GameObjects.Ship> RemainingShips { set; get; }
+        List<GameObjects.Ship> DestroyedShips { set; get; }
 
+        void fillUpRemainingShips(GameObjects.Ship ship);
     }
 }

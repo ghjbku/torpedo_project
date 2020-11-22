@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="GameObjects\AiPlayer.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Ship.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

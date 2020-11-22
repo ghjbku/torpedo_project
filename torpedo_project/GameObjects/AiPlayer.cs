@@ -10,14 +10,20 @@ namespace torpedo_project.GameObjects
     {
         public string PlayerName { get; set; }
         public int RoundsNo { get; set; }
-        public int[][] PlayerHits { get; set; }
-        public int[][] EnemyHits { get; set; }
-        public int[][] RemainingShips { get; set; }
-        public int[][] DestroyedShips { get; set; }
+        public char[,] PlayerHits { get; set; }
+        public char[,] EnemyHits { get; set; }
+        public List<Ship> RemainingShips { set; get; }
+        public List<Ship> DestroyedShips { set; get; }
+
 
         public AiPlayer()
         {
             PlayerName = "Ai";
+        }
+
+        public void fillUpRemainingShips(Ship ship)
+        {
+            RemainingShips.Add(ship);
         }
     }
     
