@@ -13,9 +13,9 @@
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
-        <Image x:Key="ShipFront" Source="Resources/why.png"/>
-        <Image x:Key="ShipMid" Source="Resources/lurk.png"/>
-        <Image x:Key="ShipBack" Source="Resources/yay.png"/>
+        <Image x:Key="ShipFront" Source="Resources/why.png" x:Shared="false"/>
+        <Image x:Key="ShipMid" Source="Resources/lurk.png" x:Shared="false"/>
+        <Image x:Key="ShipBack" Source="Resources/yay.png" x:Shared="false"/>
     </Window.Resources>
     <Grid>
         <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
