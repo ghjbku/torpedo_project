@@ -45,6 +45,7 @@ namespace torpedo_project.GameObjects
                 coords2x = new string[,] { { x_start, y_start.ToString() },
                                            { x_end, y_end.ToString() } };
                 return coords2x;
+
                 case "Submarine":
                     if (x_start.Equals(x_end))
                     {
@@ -69,15 +70,89 @@ namespace torpedo_project.GameObjects
                         else return null;
                     }
                     else return null;
+
                 case "Destroyer":
-                    coords3x = new string[,] { { x_start, y_start.ToString() }, { x_end, y_end.ToString() } };
-                    return coords3x;
+                    if (x_start.Equals(x_end))
+                    {
+                        if (y_end - y_start == 2)
+                        {
+                            coords3x = new string[,] { { x_start, y_start.ToString() },
+                                                       { x_end, (y_end - 1).ToString() },
+                                                       { x_end, y_end.ToString() } };
+                            return coords3x;
+                        }
+                        else return null;
+                    }
+                    else if (y_start.Equals(y_end))
+                    {
+                        if (check_for_alphabetic_order(x_start, x_end, shipType))
+                        {
+                            coords3x = new string[,] { { x_start, y_start.ToString() },
+                                                       { GetMiddlecoord(x_start).ToString(), y_end.ToString() },
+                                                       { x_end, y_end.ToString() } };
+                            return coords3x;
+                        }
+                        else return null;
+                    }
+                    else return null;
+
                 case "Battleship":
-                    coords4x = new string[,] { { x_start, y_start.ToString() }, { x_end, y_end.ToString() } };
-                    return coords4x;
+                    if (x_start.Equals(x_end))
+                    {
+                        if (y_end - y_start == 3)
+                        {
+                            coords4x = new string[,] { { x_start, y_start.ToString() },
+                                                       { x_end, (y_end - 2).ToString() },
+                                                       { x_end, (y_end - 1).ToString() },
+                                                       { x_end, y_end.ToString() } };
+                            return coords4x;
+                        }
+                        else return null;
+                    }
+                    else if (y_start.Equals(y_end))
+                    {
+                        if (check_for_alphabetic_order(x_start, x_end, shipType))
+                        {
+                            coords4x = new string[,] { { x_start, y_start.ToString() },
+                                                       { GetMiddlecoord(x_start).ToString(), y_end.ToString() },
+                                                       { GetMiddlecoord(GetMiddlecoord(x_start).ToString()), y_end.ToString() },
+                                                       { x_end, y_end.ToString() } };
+                            return coords4x;
+                        }
+                        else return null;
+                    }
+                    else return null;
+                    
+
                 case "Carrier":
-                    coords5x = new string[,] { { x_start, y_start.ToString() }, { x_end, y_end.ToString() } };
-                    return coords5x;
+                    if (x_start.Equals(x_end))
+                    {
+                        if (y_end - y_start == 4)
+                        {
+                            coords5x = new string[,] { { x_start, y_start.ToString() },
+                                                       { x_end, (y_end - 3).ToString() },
+                                                       { x_end, (y_end - 2).ToString() },
+                                                       { x_end, (y_end - 1).ToString() },
+                                                       { x_end, y_end.ToString() } };
+                            return coords5x;
+                        }
+                        else return null;
+                    }
+                    else if (y_start.Equals(y_end))
+                    {
+                        if (check_for_alphabetic_order(x_start, x_end, shipType))
+                        {
+                            coords5x = new string[,] { { x_start, y_start.ToString() },
+                                                       { GetMiddlecoord(x_start).ToString(), y_end.ToString() },
+                                                       { GetMiddlecoord(GetMiddlecoord(x_start).ToString()), y_end.ToString() },
+                                                       { GetMiddlecoord(GetMiddlecoord(GetMiddlecoord(x_start).ToString())), y_end.ToString() },
+                                                       { x_end, y_end.ToString() } };
+                            return coords5x;
+                        }
+                        else return null;
+                    }
+                    else return null;
+
                 default:
                     return null;
             }
@@ -85,7 +160,7 @@ namespace torpedo_project.GameObjects
 
 
         private string GetMiddlecoord(string x_start) {
-            if (x_start.Equals(ALPHABETS.A)) return ALPHABETS.B.ToString();
+            if (x_start.Equals(ALPHABETS.A.ToString())) return ALPHABETS.B.ToString();
             else if (x_start.Equals(ALPHABETS.B.ToString())) return ALPHABETS.C.ToString();
             else if (x_start.Equals(ALPHABETS.C.ToString())) return ALPHABETS.D.ToString();
             else if (x_start.Equals(ALPHABETS.D.ToString())) return ALPHABETS.E.ToString();
@@ -126,26 +201,23 @@ namespace torpedo_project.GameObjects
             }
             else if (shiptype.Equals("Battleship"))
             {
-                if (start.Equals("A") && end.Equals("C")) return true;
-                else if (start.Equals("B") && end.Equals("D")) return true;
-                else if (start.Equals("C") && end.Equals("E")) return true;
-                else if (start.Equals("D") && end.Equals("F")) return true;
-                else if (start.Equals("E") && end.Equals("G")) return true;
-                else if (start.Equals("F") && end.Equals("H")) return true;
-                else if (start.Equals("G") && end.Equals("I")) return true;
-                else if (start.Equals("H") && end.Equals("J")) return true;
+                if (start.Equals("A") && end.Equals("D")) return true;
+                else if (start.Equals("B") && end.Equals("E")) return true;
+                else if (start.Equals("C") && end.Equals("F")) return true;
+                else if (start.Equals("D") && end.Equals("G")) return true;
+                else if (start.Equals("E") && end.Equals("H")) return true;
+                else if (start.Equals("F") && end.Equals("I")) return true;
+                else if (start.Equals("G") && end.Equals("J")) return true;
                 else return false;
             }
             else if (shiptype.Equals("Carrier"))
             {
-                if (start.Equals("A") && end.Equals("C")) return true;
-                else if (start.Equals("B") && end.Equals("D")) return true;
-                else if (start.Equals("C") && end.Equals("E")) return true;
-                else if (start.Equals("D") && end.Equals("F")) return true;
-                else if (start.Equals("E") && end.Equals("G")) return true;
-                else if (start.Equals("F") && end.Equals("H")) return true;
-                else if (start.Equals("G") && end.Equals("I")) return true;
-                else if (start.Equals("H") && end.Equals("J")) return true;
+                if (start.Equals("A") && end.Equals("E")) return true;
+                else if (start.Equals("B") && end.Equals("F")) return true;
+                else if (start.Equals("C") && end.Equals("G")) return true;
+                else if (start.Equals("D") && end.Equals("H")) return true;
+                else if (start.Equals("E") && end.Equals("I")) return true;
+                else if (start.Equals("F") && end.Equals("J")) return true;
                 else return false;
             }
             else return false;
