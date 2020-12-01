@@ -1,22 +1,27 @@
-﻿<Window x:Class="torpedo_project.MainWindow"
+﻿
+<Window x:Class="torpedo_project.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:torpedo_project"
         mc:Ignorable="d"
         Title="Torpedo" Height="450" Width="800">
-	<Window.Background>
-		<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-			<GradientStop Color="Aquamarine" Offset="1"/>
-			<GradientStop Color="Lightseagreen"/>
-		</LinearGradientBrush>
-	</Window.Background>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="Aquamarine" Offset="1"/>
+            <GradientStop Color="Lightseagreen"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Image x:Key="ShipFront" Source="Resources/why.png"/>
+        <Image x:Key="ShipMid" Source="Resources/lurk.png"/>
+        <Image x:Key="ShipBack" Source="Resources/yay.png"/>
+    </Window.Resources>
     <Grid>
         <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Top"/>
         <Grid x:Name="PlayerShipTable" Margin="10,54,495,79">
-            <Rectangle x:Name="no"  HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25"/>
+            <Rectangle x:Name="no" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25"/>
             <Button x:Name="A" Content="A" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,0,0,0"/>
             <Button x:Name="B" Content="B" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,0,0,0"/>
             <Button x:Name="C" Content="C" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,0,0,0"/>
@@ -29,7 +34,7 @@
             <Button x:Name="J" Content="J" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,0,0,0"/>
 
             <Button x:Name="no1" Content="1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0"/>
-            <Button x:Name="A1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0"/>
+            <Button x:Name="A1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0" Content="{DynamicResource ShipFront}"/>
             <Button x:Name="B1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,25,0,0"/>
             <Button x:Name="C1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,25,0,0"/>
             <Button x:Name="D1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,25,0,0"/>
