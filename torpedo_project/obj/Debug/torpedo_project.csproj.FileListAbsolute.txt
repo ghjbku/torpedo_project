@@ -19,7 +19,6 @@ C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\torpedo
 C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\MainWindow.g.cs
 C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\App.g.cs
 C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\torpedo_project_MarkupCompile.cache
-C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\torpedo_project_MarkupCompile.lref
 C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\MainWindow.baml
 C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\torpedo_project.g.resources
 C:\Users\user\Documents\GitHub\torpedo_project\torpedo_project\obj\Debug\torpedo_project.Properties.Resources.resources
