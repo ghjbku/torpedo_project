@@ -141,5 +141,23 @@
   <ItemGroup>
     <None Include="Resources\Image1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\frontship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\backship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\midship.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\leftshipfront.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\leftshipback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\leftmidship.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
