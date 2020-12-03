@@ -165,6 +165,17 @@ namespace torpedo_project
             }
         }
 
-
+        private void OnButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (player_name_test_label.Content.Equals(" "))
+            {
+                player_name_test_label.Content = "Clicked+";
+            }
+            else
+            {
+                player_name_test_label.Content = " ";
+            }
+            
+        }
     }
 }
