@@ -2,7 +2,7 @@
 
 **Progress so far:**
 
-![](https://i.gyazo.com/5c37fcc512484de8d4783bf66d406540.png)
+![](https://i.gyazo.com/945609c2aad3a33ac8cfdbc5e6944e6a.png)
 
 ## Requirements::
 
