@@ -61,16 +61,6 @@ namespace torpedo_project.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap lurk {
-            get {
-                object obj = ResourceManager.GetObject("lurk", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string String1 {
@@ -78,56 +68,5 @@ namespace torpedo_project.Properties {
                 return ResourceManager.GetString("String1", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap why {
-            get {
-                object obj = ResourceManager.GetObject("why", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap yay {
-            get {
-                object obj = ResourceManager.GetObject("yay", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap frontship {
-            get {
-                object obj = ResourceManager.GetObject("frontship", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap backship {
-            get {
-                object obj = ResourceManager.GetObject("backship", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap midship {
-            get {
-                object obj = ResourceManager.GetObject("midship", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
     }
 }

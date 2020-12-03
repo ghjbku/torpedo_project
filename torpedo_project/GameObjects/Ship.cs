@@ -14,6 +14,8 @@ namespace torpedo_project.GameObjects
         private int y_end { get; set; }
         public string shipType { get; set; }
 
+        public bool rotated { get; set; }
+
         enum ALPHABETS {
                 A = 'A',
                 B = 'B',
@@ -33,6 +35,10 @@ namespace torpedo_project.GameObjects
             this.x_end = x_end;
             this.y_end = y_end;
             this.shipType = shipType;
+
+            if (!this.x_start.Equals(this.x_end)) {
+                this.rotated = true;
+            }
         }
 
         public string[,] getCoords() {

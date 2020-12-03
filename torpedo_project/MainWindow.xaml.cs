@@ -47,10 +47,19 @@ namespace torpedo_project
         private void place_boats(GameObjects.Player player) {
             foreach (GameObjects.Ship ship in player.RemainingShips)
             {
+                Image front,mid,mid2,mid3,back;
+
                 if (ship.shipType.Equals("Patrol Boat"))
                 {
-                    Image front = (Image)FindResource("ShipFront");
-                    Image back = (Image)FindResource("ShipBack");
+                    if (ship.rotated == true) {
+                         front = (Image)FindResource("LeftShipFront");
+                         back = (Image)FindResource("LeftShipBack");
+                    }
+                    else
+                    {
+                         front = (Image)FindResource("ShipFront");
+                         back = (Image)FindResource("ShipBack");
+                    }
 
                     Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0]+ ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
@@ -59,9 +68,18 @@ namespace torpedo_project
                 }
                 else if (ship.shipType.Equals("Submarine"))
                 {
-                    Image front = (Image)FindResource("ShipFront");
-                    Image mid = (Image)FindResource("ShipMid");
-                    Image back = (Image)FindResource("ShipBack");
+                    if (ship.rotated == true)
+                    {
+                        front = (Image)FindResource("LeftShipFront");
+                        mid = (Image)FindResource("LeftShipMid");
+                        back = (Image)FindResource("LeftShipBack");
+                    }
+                    else
+                    {
+                        front = (Image)FindResource("ShipFront");
+                        mid = (Image)FindResource("ShipMid");
+                        back = (Image)FindResource("ShipBack");
+                    }
                     Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
                     Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
@@ -71,9 +89,18 @@ namespace torpedo_project
                 }
                 else if (ship.shipType.Equals("Destroyer"))
                 {
-                    Image front = (Image)FindResource("ShipFront");
-                    Image mid = (Image)FindResource("ShipMid");
-                    Image back = (Image)FindResource("ShipBack");
+                    if (ship.rotated == true)
+                    {
+                        front = (Image)FindResource("LeftShipFront");
+                        mid = (Image)FindResource("LeftShipMid");
+                        back = (Image)FindResource("LeftShipBack");
+                    }
+                    else
+                    {
+                        front = (Image)FindResource("ShipFront");
+                        mid = (Image)FindResource("ShipMid");
+                        back = (Image)FindResource("ShipBack");
+                    }
                     Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
                     Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
@@ -83,10 +110,20 @@ namespace torpedo_project
                 }
                 else if (ship.shipType.Equals("Battleship"))
                 {
-                    Image front = (Image)FindResource("ShipFront");
-                    Image mid = (Image)FindResource("ShipMid");
-                    Image mid2 = (Image)FindResource("ShipMid");
-                    Image back = (Image)FindResource("ShipBack");
+                    if (ship.rotated == true)
+                    {
+                        front = (Image)FindResource("LeftShipFront");
+                        mid = (Image)FindResource("LeftShipMid");
+                        mid2 = (Image)FindResource("LeftShipMid");
+                        back = (Image)FindResource("LeftShipBack");
+                    }
+                    else
+                    {
+                        front = (Image)FindResource("ShipFront");
+                        mid = (Image)FindResource("ShipMid");
+                        mid2 = (Image)FindResource("ShipMid");
+                        back = (Image)FindResource("ShipBack");
+                    }
                     Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
                     Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
@@ -98,11 +135,22 @@ namespace torpedo_project
                 }
                 else if (ship.shipType.Equals("Carrier"))
                 {
-                    Image front = (Image)FindResource("ShipFront");
-                    Image mid = (Image)FindResource("ShipMid");
-                    Image mid2 = (Image)FindResource("ShipMid");
-                    Image mid3 = (Image)FindResource("ShipMid");
-                    Image back = (Image)FindResource("ShipBack");
+                    if (ship.rotated == true)
+                    {
+                        front = (Image)FindResource("LeftShipFront");
+                        mid = (Image)FindResource("LeftShipMid");
+                        mid2 = (Image)FindResource("LeftShipMid");
+                        mid3 = (Image)FindResource("LeftShipMid");
+                        back = (Image)FindResource("LeftShipBack");
+                    }
+                    else
+                    {
+                        front = (Image)FindResource("ShipFront");
+                        mid = (Image)FindResource("ShipMid");
+                        mid2 = (Image)FindResource("ShipMid");
+                        mid3 = (Image)FindResource("ShipMid");
+                        back = (Image)FindResource("ShipBack");
+                    }
                     Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
                     Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);

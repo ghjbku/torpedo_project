@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Torpedo" Height="450" Width="800">
+        Title="Torpedo" Height="450" Width="800" VerticalAlignment="Center" HorizontalAlignment="Center">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="Aquamarine" Offset="1"/>
@@ -13,9 +13,12 @@
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
-        <Image x:Key="ShipFront" Source="Resources/frontship.png" x:Shared="false"/>
-        <Image x:Key="ShipMid" Source="Resources/midship.png" x:Shared="false"/>
-        <Image x:Key="ShipBack" Source="Resources/backship.png" x:Shared="false"/>
+        <Image x:Key="ShipFront" Source="Resources/frontship.png" x:Shared="false" Margin="-1,-2" Stretch="UniformToFill" VerticalAlignment="Center"/>
+        <Image x:Key="ShipMid" Source="Resources/midship.png" x:Shared="false" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2"/>
+        <Image x:Key="ShipBack" Source="Resources/backship.png" x:Shared="false" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2"/>
+        <Image x:Key="LeftShipFront" Source="Resources/leftshipfront.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2,-5,-2" Stretch="UniformToFill"/>
+        <Image x:Key="LeftShipMid" Source="Resources/leftmidship.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2" Stretch="UniformToFill"/>
+        <Image x:Key="LeftShipBack" Source="Resources/leftshipback.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2,0,-2" Stretch="UniformToFill"/>
     </Window.Resources>
     <Grid>
         <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -46,7 +49,7 @@
             <Button x:Name="J1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,25,0,0"/>
 
             <Button x:Name="no2" Content="2" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0"/>
-            <Button x:Name="A2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0"/>
+            <Button x:Name="A2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0" Content="{DynamicResource ShipBack}"/>
             <Button x:Name="B2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,50,0,0"/>
             <Button x:Name="C2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,50,0,0"/>
             <Button x:Name="D2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,50,0,0"/>
