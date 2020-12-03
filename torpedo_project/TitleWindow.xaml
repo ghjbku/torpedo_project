@@ -1,0 +1,16 @@
+﻿<Window x:Class="torpedo_project.TitleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:torpedo_project"
+        mc:Ignorable="d"
+        Title="Torpedo Game Title Menu" Height="200" Width="800">
+    <Grid Height="171" VerticalAlignment="Top" Margin="0,0,0,-1">
+        <Grid HorizontalAlignment="Center" Height="100" Margin="0,17,0,0" VerticalAlignment="Top" Width="503">
+            <Label Content="Please write your name here:" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Height="32"/>
+            <TextBox x:Name="player_name_box" Height="32" Margin="328,10,55,58" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" KeyDown="player_name_box_KeyDown"/>
+            <Button Content="Start VS AI" HorizontalAlignment="Center" Margin="0,0,-4,10" VerticalAlignment="Bottom" Width="75" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>

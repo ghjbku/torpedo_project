@@ -14,10 +14,18 @@ namespace torpedo_project
             TestPlayerClasses();
         }
 
+        public MainWindow(string name)
+        {
+            InitializeComponent();
+            TestPlayerClasses();
+            player_name_test_label.Content = name;
+        }
+
         private void TestPlayerClasses()
         {
 
             GameObjects.Player player1 = new GameObjects.Player("test_player");
+            player1.PlayerName = player_name_test_label.Content.ToString();
             player_name_test_label.Content = player1.PlayerName;
             player1.fillUpRemainingShips(new GameObjects.Ship("A", 1,"A",2, "Patrol Boat"));
             player1.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
