@@ -48,12 +48,14 @@ namespace torpedo_project
             int i = 0;
             while (i < player.RemainingShips.Count)
             {
+                char[] arrayForTrim = { 't','_' };
+                var name = clickedArea.Name.TrimEnd(arrayForTrim);
                 var ship = player.RemainingShips[i];
                 switch (ship.getCoords().Length) {
 
                     case 4:
-                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                                coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
+                        if (coordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                                coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                         {
                             return true;
                         }
@@ -61,9 +63,9 @@ namespace torpedo_project
                         break;
 
                     case 6:
-                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
+                        if (coordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            coordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
                             )
                         {
                             return true;
@@ -72,10 +74,10 @@ namespace torpedo_project
                         break;
 
                     case 8:
-                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
+                        if (coordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            coordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                            coordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
                             )
                         {
                             return true;
@@ -83,11 +85,11 @@ namespace torpedo_project
                         else i++;
                         break;
                     case 10:
-                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]) ||
-                            coordsEqual(clickedArea.Name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
+                        if (coordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            coordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                            coordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]) ||
+                            coordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
                             )
                         {
                             return true;
