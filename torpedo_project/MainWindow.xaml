@@ -1,5 +1,4 @@
-﻿
-<Window x:Class="torpedo_project.MainWindow"
+﻿<Window x:Class="torpedo_project.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -21,142 +20,290 @@
         <Image x:Key="LeftShipBack" Source="Resources/leftshipback.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2,0,-2" Stretch="UniformToFill"/>
     </Window.Resources>
     <Grid>
-        <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="84,0,0,0" VerticalAlignment="Top"/>
+        <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,0,0,0"/>
+        <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="392,0,0,0" VerticalAlignment="Top"/>
         <Grid x:Name="PlayerShipTable" Margin="10,54,495,79">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="34*"/>
+                <ColumnDefinition Width="253*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="172*"/>
+                <RowDefinition Height="115*"/>
+            </Grid.RowDefinitions>
             <Rectangle x:Name="no" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25"/>
-            <Button x:Name="A" Content="A" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,0,0,0"/>
-            <Button x:Name="B" Content="B" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,0,0,0"/>
-            <Button x:Name="C" Content="C" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,0,0,0"/>
-            <Button x:Name="D" Content="D" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,0,0,0"/>
-            <Button x:Name="E" Content="E" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,0,0,0"/>
-            <Button x:Name="F" Content="F" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,0,0,0"/>
-            <Button x:Name="G" Content="G" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,0,0,0"/>
-            <Button x:Name="H" Content="H" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,0,0,0"/>
-            <Button x:Name="I" Content="I" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,0,0,0"/>
-            <Button x:Name="J" Content="J" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,0,0,0"/>
+            <Button x:Name="A" Content="A" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,0,0,0" Grid.ColumnSpan="2"/>
+            <Button x:Name="B" Content="B" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="C" Content="C" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="D" Content="D" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="E" Content="E" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="F" Content="F" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="G" Content="G" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="H" Content="H" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="I" Content="I" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,0,0,0" Grid.Column="1"/>
+            <Button x:Name="J" Content="J" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,0,0,0" Grid.Column="1"/>
 
             <Button x:Name="no1" Content="1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0"/>
-            <Button x:Name="A1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0" Content="{DynamicResource ShipFront}" Click="OnButtonClick"/>
-            <Button x:Name="B1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,25,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="A1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0" Content="{DynamicResource ShipFront}" Click="OnButtonClick" Grid.ColumnSpan="2"/>
+            <Button x:Name="B1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="C1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="D1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="E1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="F1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="G1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="H1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="I1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="J1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,25,0,0" Click="OnButtonClick" Grid.Column="1"/>
 
             <Button x:Name="no2" Content="2" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0"/>
-            <Button x:Name="A2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0" Content="{DynamicResource ShipBack}" Click="OnButtonClick"/>
-            <Button x:Name="B2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,50,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="A2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0" Content="{DynamicResource ShipBack}" Click="OnButtonClick" Grid.ColumnSpan="2"/>
+            <Button x:Name="B2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="C2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="D2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="E2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="F2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="G2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="H2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="I2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="J2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
 
             <Button x:Name="no3" Content="3" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,75,0,0"/>
-            <Button x:Name="A3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,75,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="A3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,75,0,0" Click="OnButtonClick" Grid.ColumnSpan="2"/>
+            <Button x:Name="B3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="C3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="D3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="E3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="F3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="G3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="H3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="I3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="J3"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,75,0,0" Click="OnButtonClick" Grid.Column="1"/>
 
             <Button x:Name="no4" Content="4" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,100,0,0"/>
-            <Button x:Name="A4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,100,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="A4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,100,0,0" Click="OnButtonClick" Grid.ColumnSpan="2"/>
+            <Button x:Name="B4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="C4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="D4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="E4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="F4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="G4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="H4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="I4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="J4"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,100,0,0" Click="OnButtonClick" Grid.Column="1"/>
 
             <Button x:Name="no5" Content="5" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,125,0,0"/>
-            <Button x:Name="A5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,125,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="A5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,125,0,0" Click="OnButtonClick" Grid.ColumnSpan="2"/>
+            <Button x:Name="B5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="C5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="D5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="E5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="F5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="G5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="H5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="I5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="J5"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,125,0,0" Click="OnButtonClick" Grid.Column="1"/>
 
-            <Button x:Name="no6" Content="6" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,150,0,0"/>
-            <Button x:Name="A6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,150,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="no6" Content="6" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,150,0,0" Grid.RowSpan="2"/>
+            <Button x:Name="A6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Button x:Name="B6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="C6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="D6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="E6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="F6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="G6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="H6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="I6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
+            <Button x:Name="J6"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,150,0,0" Click="OnButtonClick" Grid.RowSpan="2" Grid.Column="1"/>
 
-            <Button x:Name="n7" Content="7" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,175,0,0"/>
-            <Button x:Name="A7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,175,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="n7" Content="7" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,3,0,0" Grid.Row="1"/>
+            <Button x:Name="A7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="B7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="C7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="D7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="E7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="F7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="G7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="H7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="I7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="J7"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,3,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
 
-            <Button x:Name="no8" Content="8" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,200,0,0"/>
-            <Button x:Name="A8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,200,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="no8" Content="8" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,28,0,0" Grid.Row="1"/>
+            <Button x:Name="A8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="B8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="C8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="D8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="E8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="F8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="G8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="H8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="I8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="J8"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,28,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
 
-            <Button x:Name="no9" Content="9" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,225,0,0"/>
-            <Button x:Name="A9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,225,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="no9" Content="9" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,53,0,0" Grid.Row="1"/>
+            <Button x:Name="A9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="B9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="C9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="D9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="E9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="F9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="G9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="H9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="I9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="J9"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,53,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
 
-            <Button x:Name="no10" Content="10" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,250,0,0"/>
-            <Button x:Name="A10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="B10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="C10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="D10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="E10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="F10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="G10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="H10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="I10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,250,0,0" Click="OnButtonClick"/>
-            <Button x:Name="J10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="no10" Content="10" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,78,0,0" Grid.Row="1"/>
+            <Button x:Name="A10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Button x:Name="B10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="15.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="C10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="40.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="D10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="65.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="E10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="90.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="F10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="115.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="G10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="140.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="H10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="165.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="I10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="190.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="J10"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="215.562,78,0,0" Click="OnButtonClick" Grid.Row="1" Grid.Column="1"/>
 
         </Grid>
+
+
+
+        <Grid x:Name="PlayerTargetTable" Margin="497,54,10,79">
+            <Rectangle x:Name="no_t" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="25"/>
+            <Button x:Name="A_t" Content="A" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,0,0,0"/>
+            <Button x:Name="B_t" Content="B" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,0,0,0"/>
+            <Button x:Name="C_t" Content="C" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,0,0,0"/>
+            <Button x:Name="D_t" Content="D" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,0,0,0"/>
+            <Button x:Name="E_t" Content="E" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,0,0,0"/>
+            <Button x:Name="F_t" Content="F" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,0,0,0"/>
+            <Button x:Name="G_t" Content="G" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,0,0,0"/>
+            <Button x:Name="H_t" Content="H" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,0,0,0"/>
+            <Button x:Name="I_t" Content="I" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,0,0,0"/>
+            <Button x:Name="J_t" Content="J" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,0,0,0"/>
+
+            <Button x:Name="no1_t" Content="1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0"/>
+            <Button x:Name="A1_t" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0" Content="{DynamicResource ShipFront}" Click="OnButtonClick"/>
+            <Button x:Name="B1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,25,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,25,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no2_t" Content="2" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0"/>
+            <Button x:Name="A2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0" Content="{DynamicResource ShipBack}" Click="OnButtonClick"/>
+            <Button x:Name="B2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,50,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,50,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no3_t" Content="3" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,75,0,0"/>
+            <Button x:Name="A3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,75,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J3_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,75,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no4_t" Content="4" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,100,0,0"/>
+            <Button x:Name="A4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,100,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J4_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,100,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no5_t" Content="5" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,125,0,0"/>
+            <Button x:Name="A5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,125,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J5_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,125,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no6_t" Content="6" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,150,0,0"/>
+            <Button x:Name="A6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,150,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J6_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,150,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="n7_t" Content="7" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,175,0,0"/>
+            <Button x:Name="A7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,175,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J7_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,175,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no8_t" Content="8" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,200,0,0"/>
+            <Button x:Name="A8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,200,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J8_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,200,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no9_t" Content="9" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,225,0,0"/>
+            <Button x:Name="A9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,225,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J9_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,225,0,0" Click="OnButtonClick"/>
+
+            <Button x:Name="no10_t" Content="10" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,250,0,0"/>
+            <Button x:Name="A10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="B10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="C10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="D10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="E10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="125,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="F10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="150,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="G10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="175,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="H10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="I10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="225,250,0,0" Click="OnButtonClick"/>
+            <Button x:Name="J10_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,250,0,0" Click="OnButtonClick"/>
+
+        </Grid>
+        <Label Content="Your Ships" HorizontalAlignment="Left" Margin="109,26,0,0" VerticalAlignment="Top"/>
+        <Label Content="Your Targets" HorizontalAlignment="Left" Margin="614,23,0,0" VerticalAlignment="Top"/>
+
 
     </Grid>
 </Window>

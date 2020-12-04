@@ -8,6 +8,7 @@ namespace torpedo_project
     /// </summary>
     public partial class MainWindow : Window
     {
+        private GameObjects.Player player1;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace torpedo_project
         private void TestPlayerClasses()
         {
 
-            GameObjects.Player player1 = new GameObjects.Player("test_player");
+            player1 = new GameObjects.Player("test_player");
             player1.PlayerName = player_name_test_label.Content.ToString();
             player_name_test_label.Content = player1.PlayerName;
             player1.fillUpRemainingShips(new GameObjects.Ship("A", 1,"A",2, "Patrol Boat"));
@@ -43,14 +44,69 @@ namespace torpedo_project
         }
 
         //the function can still be useful for checking if a player "hits" a ship
-        private bool AreCoordsSame(string coordsStart,string coordsEnd) {
-            if (coordsStart.Equals(coordsEnd))
+        private bool PlayerHits_a_Ship(Button clickedArea, GameObjects.Player player) {
+            int i = 0;
+            while (i < player.RemainingShips.Count)
             {
+                var ship = player.RemainingShips[i];
+                switch (ship.getCoords().Length) {
+
+                    case 4:
+                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                                coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
+                        {
+                            return true;
+                        }
+                        else i++;
+                        break;
+
+                    case 6:
+                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
+                            )
+                        {
+                            return true;
+                        }
+                        else i++;
+                        break;
+
+                    case 8:
+                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
+                            )
+                        {
+                            return true;
+                        }
+                        else i++;
+                        break;
+                    case 10:
+                        if (coordsEqual(clickedArea.Name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]) ||
+                            coordsEqual(clickedArea.Name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
+                            )
+                        {
+                            return true;
+                        }
+                        else i++;
+                        break;
+                }
+            }
+            return false;
+        }
+
+
+        private bool coordsEqual(string coord, string shipCoords) {
+            if (coord.Equals(shipCoords)) {
                 return true;
             }
             else return false;
-            
         }
+
 
         private void place_boats(GameObjects.Player player) {
             foreach (GameObjects.Ship ship in player.RemainingShips)
@@ -175,13 +231,11 @@ namespace torpedo_project
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-            if (player_name_test_label.Content.Equals(" "))
-            {
-                player_name_test_label.Content = "Clicked+";
-            }
-            else
-            {
-                player_name_test_label.Content = " ";
+            Button clickedArea = (Button)sender;
+
+            player_name_test_label.Content = clickedArea.Name;
+            if (PlayerHits_a_Ship(clickedArea, player1)) {
+                player_name_test_label.Content = "you have hit "+clickedArea.Name;
             }
             
         }
