@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 
 namespace torpedo_project
 {
@@ -9,6 +10,7 @@ namespace torpedo_project
     public partial class MainWindow : Window
     {
         private GameObjects.Player player1;
+        private bool IsPlacementEventStarted = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace torpedo_project
 
         private void TestPlayerClasses()
         {
+
 
             player1 = new GameObjects.Player("test_player");
             player1.PlayerName = player_name_test_label.Content.ToString();
@@ -44,7 +47,7 @@ namespace torpedo_project
         }
 
         //the function can still be useful for checking if a player "hits" a ship
-        private bool PlayerHits_a_Ship(Button clickedArea, GameObjects.Player player) {
+        private bool PlayerHits_a_Ship(System.Windows.Controls.Button clickedArea, GameObjects.Player player) {
             int i = 0;
             while (i < player.RemainingShips.Count)
             {
@@ -127,9 +130,9 @@ namespace torpedo_project
                          back = (Image)FindResource("ShipBack");
                     }
 
-                    Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0]+ ship.getCoords()[0, 1]);
+                    System.Windows.Controls.Button toDrawStart = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[0, 0]+ ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
-                    Button toDrawEnd = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + ship.getCoords()[1, 1]);
+                    System.Windows.Controls.Button toDrawEnd = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + ship.getCoords()[1, 1]);
                     toDrawEnd.Content = back;
                 }
                 else if (ship.shipType.Equals("Submarine"))
@@ -146,11 +149,11 @@ namespace torpedo_project
                         mid = (Image)FindResource("ShipMid");
                         back = (Image)FindResource("ShipBack");
                     }
-                    Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
+                    System.Windows.Controls.Button toDrawStart = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
-                    Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
+                    System.Windows.Controls.Button toDrawMid = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
                     toDrawMid.Content = mid;
-                    Button toDrawEnd = (Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
+                    System.Windows.Controls.Button toDrawEnd = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
                     toDrawEnd.Content = back;
                 }
                 else if (ship.shipType.Equals("Destroyer"))
@@ -167,11 +170,11 @@ namespace torpedo_project
                         mid = (Image)FindResource("ShipMid");
                         back = (Image)FindResource("ShipBack");
                     }
-                    Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
+                    System.Windows.Controls.Button toDrawStart = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
-                    Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
+                    System.Windows.Controls.Button toDrawMid = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
                     toDrawMid.Content = mid;
-                    Button toDrawEnd = (Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
+                    System.Windows.Controls.Button toDrawEnd = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
                     toDrawEnd.Content = back;
                 }
                 else if (ship.shipType.Equals("Battleship"))
@@ -190,13 +193,13 @@ namespace torpedo_project
                         mid2 = (Image)FindResource("ShipMid");
                         back = (Image)FindResource("ShipBack");
                     }
-                    Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
+                    System.Windows.Controls.Button toDrawStart = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
-                    Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
+                    System.Windows.Controls.Button toDrawMid = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
                     toDrawMid.Content = mid;
-                    Button toDrawMid2 = (Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
+                    System.Windows.Controls.Button toDrawMid2 = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
                     toDrawMid2.Content = mid2;
-                    Button toDrawEnd = (Button)PlayerShipTable.FindName(ship.getCoords()[3, 0] + "" + ship.getCoords()[3, 1]);
+                    System.Windows.Controls.Button toDrawEnd = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[3, 0] + "" + ship.getCoords()[3, 1]);
                     toDrawEnd.Content = back;
                 }
                 else if (ship.shipType.Equals("Carrier"))
@@ -217,15 +220,15 @@ namespace torpedo_project
                         mid3 = (Image)FindResource("ShipMid");
                         back = (Image)FindResource("ShipBack");
                     }
-                    Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
+                    System.Windows.Controls.Button toDrawStart = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + "" + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
-                    Button toDrawMid = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
+                    System.Windows.Controls.Button toDrawMid = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + "" + ship.getCoords()[1, 1]);
                     toDrawMid.Content = mid;
-                    Button toDrawMid2 = (Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
+                    System.Windows.Controls.Button toDrawMid2 = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[2, 0] + "" + ship.getCoords()[2, 1]);
                     toDrawMid2.Content = mid2;
-                    Button toDrawMid3 = (Button)PlayerShipTable.FindName(ship.getCoords()[3, 0] + "" + ship.getCoords()[3, 1]);
+                    System.Windows.Controls.Button toDrawMid3 = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[3, 0] + "" + ship.getCoords()[3, 1]);
                     toDrawMid3.Content = mid3;
-                    Button toDrawEnd = (Button)PlayerShipTable.FindName(ship.getCoords()[4, 0] + "" + ship.getCoords()[4, 1]);
+                    System.Windows.Controls.Button toDrawEnd = (System.Windows.Controls.Button)PlayerShipTable.FindName(ship.getCoords()[4, 0] + "" + ship.getCoords()[4, 1]);
                     toDrawEnd.Content = back;
                 }
             }
@@ -233,7 +236,7 @@ namespace torpedo_project
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-            Button clickedArea = (Button)sender;
+            System.Windows.Controls.Button clickedArea = (System.Windows.Controls.Button)sender;
 
             player_name_test_label.Content = clickedArea.Name;
             if (PlayerHits_a_Ship(clickedArea, player1)) {
@@ -244,19 +247,34 @@ namespace torpedo_project
 
         private void boat_iconRotatePressed(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            Image boat_image = (Image)sender;
-
+            //should only work if a ship is in placement mode
+            if (IsPlacementEventStarted)
+            {
+                player_name_test_label.Content = e.Key;
+                if (e.Key == System.Windows.Input.Key.R)
+                {
+                    player_name_test_label.Content = "R pressed";
+                }
+            }
         }
 
         private void boat_ChangeIconPosition(object sender, DependencyPropertyChangedEventArgs e)
         {
-            Image boat_image = (Image)sender;
+            //should only work if a ship is in placement mode
+            if (IsPlacementEventStarted)
+            {
+                Image boat_image = (Image)sender;
+                player_name_test_label.Content = System.Windows.Forms.Control.MousePosition;
+            }
+           
         }
 
         private void boat_StartPlacementEventWhenLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Image boat_image = (Image)sender;
-
+            if (IsPlacementEventStarted)
+            {
+                IsPlacementEventStarted = false;
+            }else IsPlacementEventStarted = true;
         }
     }
 }

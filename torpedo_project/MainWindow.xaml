@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Torpedo" Height="450" Width="800" VerticalAlignment="Center" HorizontalAlignment="Center">
+        Title="Torpedo" Height="450" Width="800" VerticalAlignment="Center" HorizontalAlignment="Center"
+         KeyDown="boat_iconRotatePressed">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="Aquamarine" Offset="1"/>
