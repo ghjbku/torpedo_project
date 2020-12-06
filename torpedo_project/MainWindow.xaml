@@ -303,6 +303,47 @@
         </Grid>
         <Label Content="Your Ships" HorizontalAlignment="Left" Margin="109,26,0,0" VerticalAlignment="Top"/>
         <Label Content="Your Targets" HorizontalAlignment="Left" Margin="614,23,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="patrol_boat_icon" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" Width="50" Source="small_Ship_full.png" KeyDown="boat_iconRotatePressed" IsMouseDirectlyOverChanged="boat_ChangeIconPosition" MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown"/>
+        <Image x:Name="submarine_icon" HorizontalAlignment="Left" Margin="76,341,0,0" VerticalAlignment="Top" Width="46" Source="small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed" IsMouseDirectlyOverChanged="boat_ChangeIconPosition"  MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.5"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="destroyer_icon" HorizontalAlignment="Left" Margin="153,341,0,0" VerticalAlignment="Top" Width="46" Source="small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed" IsMouseDirectlyOverChanged="boat_ChangeIconPosition"  MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.5"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="battleship_icon" HorizontalAlignment="Left" Margin="27,380,0,0" VerticalAlignment="Top" Width="46" Source="small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed" IsMouseDirectlyOverChanged="boat_ChangeIconPosition"  MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="2"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="carrier_icon" HorizontalAlignment="Left" Margin="141,380,0,0" VerticalAlignment="Top" Width="46" Source="small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed" IsMouseDirectlyOverChanged="boat_ChangeIconPosition"  MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="2.5"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
 
 
     </Grid>

@@ -241,5 +241,22 @@ namespace torpedo_project
             }
             
         }
+
+        private void boat_iconRotatePressed(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            Image boat_image = (Image)sender;
+
+        }
+
+        private void boat_ChangeIconPosition(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Image boat_image = (Image)sender;
+        }
+
+        private void boat_StartPlacementEventWhenLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Image boat_image = (Image)sender;
+
+        }
     }
 }
