@@ -346,7 +346,7 @@ namespace torpedo_project
         {
             //should only work if a ship is in placement mode
             if (IsPlacementEventStarted)
-            {
+            {   //minus the margin, which would make the cursor "touch" the very end of the image, hence why i add 20 for the x and 5 for the y
                 Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 20));
                 Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
             }
