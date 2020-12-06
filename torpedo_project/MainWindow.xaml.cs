@@ -9,9 +9,10 @@ namespace torpedo_project
     public partial class MainWindow : Window
     {
         private GameObjects.Player player1;
-        private bool IsPlacementEventStarted = false,rotated =false;
+        private bool IsPlacementEventStarted = false, rotated = false;
         private Image boat_image;
         private System.Windows.Media.RotateTransform rotateTransform;
+        private System.Windows.Media.ScaleTransform scaleTransform;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace torpedo_project
             player1 = new GameObjects.Player("test_player");
             player1.PlayerName = player_name_test_label.Content.ToString();
             player_name_test_label.Content = player1.PlayerName;
-            player1.fillUpRemainingShips(new GameObjects.Ship("A", 1,"A",2, "Patrol Boat"));
+            player1.fillUpRemainingShips(new GameObjects.Ship("A", 1, "A", 2, "Patrol Boat"));
             player1.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
             player1.fillUpRemainingShips(new GameObjects.Ship("C", 1, "D", 1, "Patrol Boat"));
             player1.fillUpRemainingShips(new GameObjects.Ship("B", 5, "D", 5, "Submarine"));
@@ -48,14 +49,16 @@ namespace torpedo_project
         }
 
         //the function can still be useful for checking if a player "hits" a ship
-        private bool PlayerHits_a_Ship(Button clickedArea, GameObjects.Player player) {
+        private bool PlayerHits_a_Ship(Button clickedArea, GameObjects.Player player)
+        {
             int i = 0;
             while (i < player.RemainingShips.Count)
             {
-                char[] arrayForTrim = { 't','_' };
+                char[] arrayForTrim = { 't', '_' };
                 var name = clickedArea.Name.TrimEnd(arrayForTrim);
                 var ship = player.RemainingShips[i];
-                switch (ship.getCoords().Length) {
+                switch (ship.getCoords().Length)
+                {
 
                     case 4:
                         if (coordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
@@ -106,32 +109,36 @@ namespace torpedo_project
         }
 
 
-        private bool coordsEqual(string coord, string shipCoords) {
-            if (coord.Equals(shipCoords)) {
+        private bool coordsEqual(string coord, string shipCoords)
+        {
+            if (coord.Equals(shipCoords))
+            {
                 return true;
             }
             else return false;
         }
 
 
-        private void place_boats(GameObjects.Player player) {
+        private void place_boats(GameObjects.Player player)
+        {
             foreach (GameObjects.Ship ship in player.RemainingShips)
             {
-                Image front,mid,mid2,mid3,back;
+                Image front, mid, mid2, mid3, back;
 
                 if (ship.shipType.Equals("Patrol Boat"))
                 {
-                    if (ship.rotated == true) {
-                         front = (Image)FindResource("LeftShipFront");
-                         back = (Image)FindResource("LeftShipBack");
+                    if (ship.rotated == true)
+                    {
+                        front = (Image)FindResource("LeftShipFront");
+                        back = (Image)FindResource("LeftShipBack");
                     }
                     else
                     {
-                         front = (Image)FindResource("ShipFront");
-                         back = (Image)FindResource("ShipBack");
+                        front = (Image)FindResource("ShipFront");
+                        back = (Image)FindResource("ShipBack");
                     }
 
-                    Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0]+ ship.getCoords()[0, 1]);
+                    Button toDrawStart = (Button)PlayerShipTable.FindName(ship.getCoords()[0, 0] + ship.getCoords()[0, 1]);
                     toDrawStart.Content = front;
                     Button toDrawEnd = (Button)PlayerShipTable.FindName(ship.getCoords()[1, 0] + ship.getCoords()[1, 1]);
                     toDrawEnd.Content = back;
@@ -240,11 +247,50 @@ namespace torpedo_project
             Button clickedArea = (Button)sender;
 
             player_name_test_label.Content = clickedArea.Name;
-            if (PlayerHits_a_Ship(clickedArea, player1)) {
-                player_name_test_label.Content = "you have hit "+clickedArea.Name;
+            if (PlayerHits_a_Ship(clickedArea, player1))
+            {
+                player_name_test_label.Content = "you have hit " + clickedArea.Name;
             }
-            
+
         }
+
+        private System.Windows.Media.ScaleTransform GetBasicScaling(Image boat_image, bool rotated)
+        {
+            if (rotated)
+            {
+                if (boat_image.Name.Equals("submarine_icon") || boat_image.Name.Equals("destroyer_icon"))
+                {
+                    return new System.Windows.Media.ScaleTransform(1, 1.5);
+                }
+                else if (boat_image.Name.Equals("battleship_icon"))
+                {
+                    return new System.Windows.Media.ScaleTransform(1, 2);
+                }
+                else if (boat_image.Name.Equals("carrier_icon"))
+                {
+                    return new System.Windows.Media.ScaleTransform(1, 2.5);
+                }
+                else
+                return new System.Windows.Media.ScaleTransform(1, 1);
+            }
+            else
+            {
+                if (boat_image.Name.Equals("submarine_icon") || boat_image.Name.Equals("destroyer_icon"))
+                {
+                    return new System.Windows.Media.ScaleTransform(1.5, 1);
+                }
+                else if (boat_image.Name.Equals("battleship_icon"))
+                {
+                    return new System.Windows.Media.ScaleTransform(2, 1);
+                }
+                else if (boat_image.Name.Equals("carrier_icon"))
+                {
+                    return new System.Windows.Media.ScaleTransform(2.5, 1);
+                }
+                else
+                return new System.Windows.Media.ScaleTransform(1, 1);
+            }
+        }     
 
         private void boat_iconRotatePressed(object sender, System.Windows.Input.KeyEventArgs e)
         {
@@ -253,17 +299,20 @@ namespace torpedo_project
             {
                 if (e.Key == System.Windows.Input.Key.R)
                 {
+                    System.Windows.Media.TransformGroup transformationGroup = new System.Windows.Media.TransformGroup();
                     if (rotated)
                     {
                         rotated = false;
-                        rotateTransform = new System.Windows.Media.RotateTransform(0);
+                        transformationGroup.Children.Add(new System.Windows.Media.RotateTransform(0));
                     }
                     else
                     {
                         rotated = true;
-                        rotateTransform = new System.Windows.Media.RotateTransform(90);
-                    } 
-                    boat_image.RenderTransform = rotateTransform;
+                        transformationGroup.Children.Add(new System.Windows.Media.RotateTransform(90));
+                        
+                    }
+                    transformationGroup.Children.Add(GetBasicScaling(boat_image, rotated));
+                    boat_image.RenderTransform = transformationGroup;
                 }
             }
         }
@@ -286,7 +335,7 @@ namespace torpedo_project
             //should only work if a ship is in placement mode
             if (IsPlacementEventStarted)
             {
-                Canvas.SetLeft(boat_image, e.GetPosition(this).X-(boat_image.Margin.Left+20));
+                Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 20));
                 Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
             }
 

@@ -320,7 +320,7 @@
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform X="2"/>
+                    <TranslateTransform/>
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
@@ -347,7 +347,7 @@
         <Image x:Name="battleship_icon" HorizontalAlignment="Left" Margin="27,380,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
             <Image.RenderTransform>
                 <TransformGroup>
-                    <ScaleTransform ScaleY="1" ScaleX="2"/>
+                    <ScaleTransform ScaleX="2"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Image.RenderTransform>
