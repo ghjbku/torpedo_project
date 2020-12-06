@@ -263,7 +263,6 @@ namespace torpedo_project
                         rotated = true;
                         rotateTransform = new System.Windows.Media.RotateTransform(90);
                     } 
-                    player_name_test_label.Content = "R pressed";
                     boat_image.RenderTransform = rotateTransform;
                 }
             }
@@ -279,7 +278,7 @@ namespace torpedo_project
             else
             {
                 IsPlacementEventStarted = true;
-                game_window.TransformToAncestor(this).Transform(new Point(0, 0));
+               // game_window.TransformToAncestor(this).Transform(new Point(0, 0));
             }
         }
 
@@ -288,8 +287,6 @@ namespace torpedo_project
             //should only work if a ship is in placement mode
             if (IsPlacementEventStarted)
             {
-                 player_name_test_label.Content = e.GetPosition(this);
-                ;
                 Canvas.SetLeft(boat_image, e.GetPosition(this).X-(boat_image.Margin.Left+20));
                 Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
             }
