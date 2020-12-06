@@ -323,6 +323,15 @@ namespace torpedo_project
             if (IsPlacementEventStarted)
             {
                 IsPlacementEventStarted = false;
+                if (!rotated)
+                {
+                    Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 20));
+                    Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 15));
+                }
+                else {
+                    Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 35));
+                    Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
+                }
             }
             else
             {
