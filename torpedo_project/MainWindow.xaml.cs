@@ -278,7 +278,6 @@ namespace torpedo_project
             else
             {
                 IsPlacementEventStarted = true;
-               // game_window.TransformToAncestor(this).Transform(new Point(0, 0));
             }
         }
 
