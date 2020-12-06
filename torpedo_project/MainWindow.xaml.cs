@@ -10,9 +10,7 @@ namespace torpedo_project
     {
         private GameObjects.Player player1;
         private bool IsPlacementEventStarted = false, rotated = false;
-        private Image boat_image;
-        private System.Windows.Media.RotateTransform rotateTransform;
-        private System.Windows.Media.ScaleTransform scaleTransform;
+        private Image boat_image,old_image;
         public MainWindow()
         {
             InitializeComponent();
@@ -320,6 +318,7 @@ namespace torpedo_project
         private void boat_StartPlacementEventWhenLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             boat_image = (Image)sender;
+
             if (IsPlacementEventStarted)
             {
                 IsPlacementEventStarted = false;
@@ -336,6 +335,10 @@ namespace torpedo_project
             else
             {
                 IsPlacementEventStarted = true;
+                if (!boat_image.Equals(old_image)) { 
+                    old_image = boat_image;
+                    rotated = false;
+                }
             }
         }
 
