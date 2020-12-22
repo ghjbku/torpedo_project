@@ -53,7 +53,7 @@
             <Button x:Name="J" Content="J" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,0,0,0" Grid.Column="2"/>
 
             <Button x:Name="no1" Content="1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0"/>
-            <Button x:Name="A1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0" Content="{DynamicResource ShipFront}" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="A1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0"  Click="OnButtonClick" Grid.Column="1"/>
             <Button x:Name="B1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0" Click="OnButtonClick" Grid.Column="2"/>
             <Button x:Name="C1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0" Click="OnButtonClick" Grid.Column="2"/>
             <Button x:Name="D1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,25,0,0" Click="OnButtonClick" Grid.Column="2"/>
@@ -65,7 +65,7 @@
             <Button x:Name="J1"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="200,25,0,0" Click="OnButtonClick" Grid.Column="2"/>
 
             <Button x:Name="no2" Content="2" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0"/>
-            <Button x:Name="A2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0" Content="{DynamicResource ShipBack}" Click="OnButtonClick" Grid.Column="1"/>
+            <Button x:Name="A2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0" Click="OnButtonClick" Grid.Column="1"/>
             <Button x:Name="B2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0" Click="OnButtonClick" Grid.Column="2"/>
             <Button x:Name="C2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0" Click="OnButtonClick" Grid.Column="2"/>
             <Button x:Name="D2"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,50,0,0" Click="OnButtonClick" Grid.Column="2"/>
@@ -314,7 +314,7 @@
         <Label Content="Your Ships" HorizontalAlignment="Left" Margin="109,26,0,0" VerticalAlignment="Top"/>
         <Label Content="Your Targets" HorizontalAlignment="Left" Margin="614,23,0,0" VerticalAlignment="Top"/>
 
-        <Image x:Name="patrol_boat_icon" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" Width="50" Source="Resources/small_Ship_full.png" KeyDown="boat_iconRotatePressed"  MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="PatrolBoat" HorizontalAlignment="Left" Margin="10,341,0,0" VerticalAlignment="Top" Width="50" Source="Resources/small_Ship_full.png" KeyDown="boat_iconRotatePressed"  MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -324,7 +324,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="submarine_icon" HorizontalAlignment="Left" Margin="80,341,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+        <Image x:Name="Submarine" HorizontalAlignment="Left" Margin="80,341,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="1.5"/>
@@ -334,7 +334,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="destroyer_icon" HorizontalAlignment="Left" Margin="162,341,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+        <Image x:Name="Destroyer" HorizontalAlignment="Left" Margin="162,341,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="1.5"/>
@@ -344,7 +344,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="battleship_icon" HorizontalAlignment="Left" Margin="27,380,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+        <Image x:Name="Battleship" HorizontalAlignment="Left" Margin="27,380,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2"/>
@@ -352,7 +352,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="carrier_icon" HorizontalAlignment="Left" Margin="141,380,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
+        <Image x:Name="Carrier" HorizontalAlignment="Left" Margin="141,380,0,0" VerticalAlignment="Top" Width="46" Source="Resources/small_Ship_full.png" Height="12" RenderTransformOrigin="0.5,0.5" KeyDown="boat_iconRotatePressed"   MouseLeftButtonDown="boat_StartPlacementEventWhenLeftButtonDown">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="2.5"/>

@@ -47,7 +47,7 @@ namespace torpedo_project.GameObjects
             string[,] coords4x;
             string[,] coords5x;
             switch (shipType) {
-                case "Patrol Boat":
+                case "PatrolBoat":
                 coords2x = new string[,] { { x_start, y_start.ToString() },
                                            { x_end, y_end.ToString() } };
                 return coords2x;
