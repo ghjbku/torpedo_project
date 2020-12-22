@@ -287,6 +287,7 @@ namespace torpedo_project
                 {
                     return;
                 }
+                //TODO if a ship's coordinate equals the placement coordinate, return without creating it
                 createdShip = new GameObjects.Ship(startCoord[0], int.Parse(startCoord[1]), endCoord[0], int.Parse(endCoord[1]), ship_name);
                 player1.fillUpRemainingShips(createdShip);
                 drawBoat(createdShip);
@@ -382,7 +383,31 @@ namespace torpedo_project
             }
             else if (shipname.Equals("Carrier"))
             {
-
+                if (!rotated)
+                {
+                    switch (middlecoord_x)
+                    {
+                        case "C":
+                            return ("A" + "," + middlecoord_y).Split(',');
+                        case "D":
+                            return ("B" + "," + middlecoord_y).Split(',');
+                        case "E":
+                            return ("C" + "," + middlecoord_y).Split(',');
+                        case "F":
+                            return ("D" + "," + middlecoord_y).Split(',');
+                        case "G":
+                            return ("E" + "," + middlecoord_y).Split(',');
+                        case "H":
+                            return ("F" + "," + middlecoord_y).Split(',');
+                        case "I":
+                            return ("G" + "," + middlecoord_y).Split(',');
+                    }
+                }
+                else
+                {
+                    int starty = int.Parse(middlecoord_y) - 2;
+                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                }
             }
             return "asd,1".Split(',');
         }
@@ -479,7 +504,31 @@ namespace torpedo_project
             }
             else if (shipname.Equals("Carrier"))
             {
-
+                if (!rotated)
+                {
+                    switch (middlecoord_x)
+                    {
+                        case "B":
+                            return ("D" + "," + middlecoord_y).Split(',');
+                        case "C":
+                            return ("E" + "," + middlecoord_y).Split(',');
+                        case "D":
+                            return ("F" + "," + middlecoord_y).Split(',');
+                        case "E":
+                            return ("G" + "," + middlecoord_y).Split(',');
+                        case "F":
+                            return ("H" + "," + middlecoord_y).Split(',');
+                        case "G":
+                            return ("I" + "," + middlecoord_y).Split(',');
+                        case "H":
+                            return ("J" + "," + middlecoord_y).Split(',');
+                    }
+                }
+                else
+                {
+                    int starty = int.Parse(middlecoord_y) + 2;
+                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                }
             }
             return "asd,1".Split(',');
         }
