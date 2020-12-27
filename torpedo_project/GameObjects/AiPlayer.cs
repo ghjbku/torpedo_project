@@ -12,13 +12,17 @@ namespace torpedo_project.GameObjects
         public int RoundsNo { get; set; }
         public char[,] PlayerHits { get; set; }
         public char[,] EnemyHits { get; set; }
-        public List<Ship> RemainingShips { set; get; }
-        public List<Ship> DestroyedShips { set; get; }
+        public List<Ship> RemainingShips { get; set; }
+        public List<Ship> DestroyedShips { get; set; }
 
 
         public AiPlayer()
         {
             PlayerName = "Ai";
+            RemainingShips = new List<Ship>();
+            DestroyedShips = new List<Ship>();
+            EnemyHits = new char[,] { };
+            PlayerHits = new char[,] { };
         }
 
         public void fillUpRemainingShips(Ship ship)
