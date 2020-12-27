@@ -365,25 +365,25 @@ namespace torpedo_project
                 {
                     switch (middlecoord_x)
                     {
-                        case "C":
+                        case "B":
                             return ("A" + "," + middlecoord_y).Split(',');
-                        case "D":
+                        case "C":
                             return ("B" + "," + middlecoord_y).Split(',');
-                        case "E":
+                        case "D":
                             return ("C" + "," + middlecoord_y).Split(',');
-                        case "F":
+                        case "E":
                             return ("D" + "," + middlecoord_y).Split(',');
-                        case "G":
+                        case "F":
                             return ("E" + "," + middlecoord_y).Split(',');
-                        case "H":
+                        case "G":
                             return ("F" + "," + middlecoord_y).Split(',');
-                        case "I":
+                        case "H":
                             return ("G" + "," + middlecoord_y).Split(',');
                     }
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) - 2;
+                    int starty = int.Parse(middlecoord_y) - 1;
                     return (middlecoord_x + "," + starty.ToString()).Split(',');
                 }
             }
@@ -405,8 +405,6 @@ namespace torpedo_project
                             return ("E" + "," + middlecoord_y).Split(',');
                         case "H":
                             return ("F" + "," + middlecoord_y).Split(',');
-                        case "I":
-                            return ("G" + "," + middlecoord_y).Split(',');
                     }
                 }
                 else
@@ -485,26 +483,24 @@ namespace torpedo_project
                     switch (middlecoord_x)
                     {
                         case "B":
-                            return ("C" + "," + middlecoord_y).Split(',');
-                        case "C":
                             return ("D" + "," + middlecoord_y).Split(',');
-                        case "D":
+                        case "C":
                             return ("E" + "," + middlecoord_y).Split(',');
-                        case "E":
+                        case "D":
                             return ("F" + "," + middlecoord_y).Split(',');
-                        case "F":
+                        case "E":
                             return ("G" + "," + middlecoord_y).Split(',');
-                        case "G":
+                        case "F":
                             return ("H" + "," + middlecoord_y).Split(',');
-                        case "H":
+                        case "G":
                             return ("I" + "," + middlecoord_y).Split(',');
-                        case "I":
+                        case "H":
                             return ("J" + "," + middlecoord_y).Split(',');
                     }
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) + 1;
+                    int starty = int.Parse(middlecoord_y) + 2;
                     return (middlecoord_x + "," + starty.ToString()).Split(',');
                 }
             }
@@ -514,8 +510,6 @@ namespace torpedo_project
                 {
                     switch (middlecoord_x)
                     {
-                        case "B":
-                            return ("D" + "," + middlecoord_y).Split(',');
                         case "C":
                             return ("E" + "," + middlecoord_y).Split(',');
                         case "D":
@@ -539,6 +533,7 @@ namespace torpedo_project
             return "asd,1".Split(',');
         }
 
+        //returns the scaling of the ship 
         private System.Windows.Media.ScaleTransform GetBasicScaling(Image boat_image, bool rotated)
         {
             if (rotated)
@@ -606,6 +601,7 @@ namespace torpedo_project
         {
             boat_image = (Image)sender;
 
+            //if the boat is already being in "movement" mode
             if (IsPlacementEventStarted)
             {
                 IsPlacementEventStarted = false;
@@ -623,6 +619,7 @@ namespace torpedo_project
             else
             {
                 IsPlacementEventStarted = true;
+                //if you click on another ship to "pick it up"
                 if (!boat_image.Equals(old_image)) { 
                     old_image = boat_image;
                     rotated = false;
