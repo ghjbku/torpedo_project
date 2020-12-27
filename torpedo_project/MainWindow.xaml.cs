@@ -45,14 +45,14 @@ namespace torpedo_project
             place_boats(player1);*/
         }
 
-        //the function can still be useful for checking if a player "hits" a ship
-        private bool PlayerHits_a_Ship(Button clickedArea, GameObjects.Player player)
+        //checking if a player "hits" a ship
+        private bool PlayerHits_a_Ship(string clickedArea, GameObjects.Player player)
         {
             int i = 0;
             while (i < player.RemainingShips.Count)
             {
                 char[] arrayForTrim = { 't', '_' };
-                var name = clickedArea.Name.TrimEnd(arrayForTrim);
+                var name = clickedArea.TrimEnd(arrayForTrim);
                 var ship = player.RemainingShips[i];
                 switch (ship.getCoords().Length)
                 {
@@ -252,26 +252,26 @@ namespace torpedo_project
         {
             Button clickedArea = (Button)sender;
 
-
-
+            //if its not placement mode
             if (old_image == null)
             {
                 player_name_test_label.Content = clickedArea.Name;
 
-                if (PlayerHits_a_Ship(clickedArea, player1))
+                if (PlayerHits_a_Ship(clickedArea.Name, player1))
                 {
                     player_name_test_label.Content = "you have hit " + clickedArea.Name;
                 }
             }
             else {
-                create_shipOnPosition(old_image.Name,clickedArea.Name);
+                create_shipOnPosition(old_image.Name,clickedArea);
             }
 
         }
 
-        private void create_shipOnPosition(string ship_name,string middle_pos) {
-            string[] resultAlphabet = System.Text.RegularExpressions.Regex.Split(middle_pos, @"\d+");
-            string[] resultNumber = System.Text.RegularExpressions.Regex.Split(middle_pos, @"\D+");
+        private void create_shipOnPosition(string ship_name,Button middle_position_button) {
+            string m_position = middle_position_button.Name;
+            string[] resultAlphabet = System.Text.RegularExpressions.Regex.Split(m_position, @"\d+");
+            string[] resultNumber = System.Text.RegularExpressions.Regex.Split(m_position, @"\D+");
             string[] startCoord,endCoord;
             GameObjects.Ship createdShip;
 
@@ -287,7 +287,13 @@ namespace torpedo_project
                 {
                     return;
                 }
-                //TODO if a ship's coordinate equals the placement coordinate, return without creating it
+
+            if (PlayerHits_a_Ship(m_position, player1)||
+                PlayerHits_a_Ship(startCoord[0]+startCoord[1], player1)||
+                PlayerHits_a_Ship(endCoord[0] + endCoord[1], player1)
+               )
+            { old_image = null; return; }
+
                 createdShip = new GameObjects.Ship(startCoord[0], int.Parse(startCoord[1]), endCoord[0], int.Parse(endCoord[1]), ship_name);
                 player1.fillUpRemainingShips(createdShip);
                 drawBoat(createdShip);
