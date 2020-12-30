@@ -46,7 +46,7 @@ namespace torpedo_project
             player2.fillUpRemainingShips(new GameObjects.Ship("A", 9, "D", 9, "Battleship"));
             player2.fillUpRemainingShips(new GameObjects.Ship("F", 9, "J", 9, "Carrier"));
             player2.fillUpRemainingShips(new GameObjects.Ship("G", 3, "G", 7, "Carrier"));
-            place_boats(null,player2);
+            //place_boats(null,player2);
         }
 
         //checking if a player "hits" a ship
