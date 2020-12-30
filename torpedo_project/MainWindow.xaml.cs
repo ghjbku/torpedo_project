@@ -12,6 +12,7 @@ namespace torpedo_project
         private GameObjects.AiPlayer player2;
         private bool IsPlacementEventStarted = false, rotated = false;
         private Image boat_image,old_image;
+        private string partHit;
         public MainWindow()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace torpedo_project
             TestPlayerClasses();
             player_name_test_label.Content = name;
             old_image = null;
+            partHit = "";
         }
 
         private void TestPlayerClasses()
@@ -63,6 +65,7 @@ namespace torpedo_project
                         if (coordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
                                 coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                         {
+                            WhichPartIsHit(clickedArea,ship,i,4);
                             return true;
                         }
                         else i++;
@@ -74,6 +77,7 @@ namespace torpedo_project
                             coordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
                             )
                         {
+                            WhichPartIsHit(clickedArea, ship, i,6);
                             return true;
                         }
                         else i++;
@@ -86,6 +90,7 @@ namespace torpedo_project
                             coordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
                             )
                         {
+                            WhichPartIsHit(clickedArea, ship, i,8);
                             return true;
                         }
                         else i++;
@@ -98,6 +103,7 @@ namespace torpedo_project
                             coordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
                             )
                         {
+                            WhichPartIsHit(clickedArea, ship, i,10);
                             return true;
                         }
                         else i++;
@@ -116,6 +122,90 @@ namespace torpedo_project
             else return false;
         }
 
+        private void WhichPartIsHit(string clickedButtonCoord,GameObjects.Ship ship,int i,int HowLong) {
+            char[] arrayForTrim = { 't', '_' };
+            var name = clickedButtonCoord.TrimEnd(arrayForTrim);
+            if (coordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]))
+            {
+                if (ship.rotated)
+                {
+                    partHit = "ShipHitLeftFront";
+                }
+                else partHit = "ShipHitFront";
+            }
+            if (HowLong == 4)
+            {
+                if (coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
+                {
+                    if (ship.rotated)
+                    {
+                        partHit = "ShipHitLeftBack";
+                    }
+                    else partHit = "ShipHitBack";
+                }
+            }
+            else if (HowLong == 6) {
+                if (coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
+                {
+                    if (ship.rotated)
+                    {
+                        partHit = "ShipHitLeftMid";
+                    }
+                    else partHit = "ShipHitMid";
+                }
+                else if (coordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]))
+                {
+                    if (ship.rotated)
+                    {
+                        partHit = "ShipHitLeftBack";
+                    }
+                    else partHit = "ShipHitBack";
+                }
+            }
+            else if (HowLong == 8)
+            {
+                if (coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1])||
+                    coordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
+                   )
+                {
+                    if (ship.rotated)
+                    {
+                        partHit = "ShipHitLeftMid";
+                    }
+                    else partHit = "ShipHitMid";
+                }
+                else if (coordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]))
+                {
+                    if (ship.rotated)
+                    {
+                        partHit = "ShipHitLeftBack";
+                    }
+                    else partHit = "ShipHitBack";
+                }
+            }
+            else if (HowLong == 10)
+            {
+                if (coordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                   coordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                   coordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
+                  )
+                {
+                    if (ship.rotated)
+                    {
+                        partHit = "ShipHitLeftMid";
+                    }
+                    else partHit = "ShipHitMid";
+                }
+                else if (coordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1]))
+                {
+                    if (ship.rotated)
+                    {
+                        partHit = "ShipHitLeftBack";
+                    }
+                    else partHit = "ShipHitBack";
+                }
+            }
+        }
 
         private void place_boats(GameObjects.Player player,GameObjects.AiPlayer aiplayer)
         {
@@ -394,16 +484,22 @@ namespace torpedo_project
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
+
             Button clickedArea = (Button)sender;
 
             //if its not placement mode
             if (old_image == null)
             {
-                player_name_test_label.Content = clickedArea.Name;
-
                 if (PlayerHits_a_Ship(clickedArea.Name, player2))
                 {
-                    player_name_test_label.Content = "you have hit " + clickedArea.Name;
+                    player_name_test_label.Content = "you have hit " + clickedArea.Name + ","+partHit;
+                    //TODO change the placeholder images to the created "hit" images.
+                    clickedArea.Content = (Image)FindResource(partHit);
+                }
+                else {
+                    player_name_test_label.Content = clickedArea.Name;
+                    //TODO change the placeholder NotHit image to a real created image.
+                    clickedArea.Content = (Image)FindResource("NotHit");
                 }
             }
             else {
