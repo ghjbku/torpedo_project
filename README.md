@@ -13,22 +13,22 @@
 [Magyar](https://hu.wikipedia.org/wiki/Torped%C3%B3_(j%C3%A1t%C3%A9k))
 
 ## Követelmények
-- #### Egymás ellen lehessen játszani ugyanazon a gépen, ugyanabban az alkalmazásban
+- #### Egymás ellen lehessen játszani ugyanazon a gépen, ugyanabban az alkalmazásban :x:
 - #### AI ellen lehessen játszani
-    - Kezdő játékos véletlenszerűen választva
-    - AI elemezési sorrend
+    - Kezdő játékos véletlenszerűen választva :x:
+    - AI elemezési sorrend :x:
         1. Random találgat
         2. Ha van találat akkor már a mellette lévő mezőket lövi
             - UNIT tesztet írni a logikához (randomhoz nem muszáj)
 - #### Játékmenet
-    - Belépéskor kérjen nevet, majd ahhoz mentse az eredményeket
+    - Belépéskor kérjen nevet, majd ahhoz mentse az eredményeket :heavy_check_mark: 
     - Eredményjelző
-        - Körök száma
-        - Saját találatok
-        - Ellenfél találatai
-        - Milyen hajók vannak még és melyek lettek elsüllyesztve
-        - Billentyűkombinációra mutassa meg az AI hajóit (Csak AI ellen működjön)
-- #### Játék vége
+        - Körök száma 
+        - Saját találatok :heavy_check_mark: 
+        - Ellenfél találatai :heavy_check_mark: 
+        - Milyen hajók vannak még és melyek lettek elsüllyesztve :heavy_check_mark: 
+        - Billentyűkombinációra mutassa meg az AI hajóit (Csak AI ellen működjön) :heavy_check_mark: 
+- #### Játék vége :x:
     - Tárolja le az eredményeket
         - Adatok tárolása: JSON, XML vagy adatbázis
     - Mindenkori eredménylista beolvasva tárolt adatokból (nyert - vesztett)
