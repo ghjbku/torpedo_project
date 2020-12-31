@@ -16,7 +16,7 @@ namespace torpedo_project
         public MainWindow()
         {
             InitializeComponent();
-            InitGame();
+            InitGame("player");
         }
 
         public MainWindow(string name,bool isai)
@@ -26,15 +26,18 @@ namespace torpedo_project
             old_image = null;
             partHit = "";
             isVsAi = isai;
-            InitGame();
+            InitGame(name);
         }
 
-        private void InitGame()
+        private void InitGame(string playername)
         {
-            player1 = new GameObjects.Player("test_player");
+            player1 = new GameObjects.Player(playername);
             aiplayer = new GameObjects.AiPlayer();
-            player1.PlayerName = player_name_test_label.Content.ToString();
-            player_name_test_label.Content = player1.PlayerName;
+            AiShipPlacement(aiplayer);
+        }
+
+        //TODO create a randomizer for the ship placement, that follows the rules
+        private void AiShipPlacement(GameObjects.AiPlayer aiplayer) {
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 1, "A", 2, "PatrolBoat"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 1, "D", 1, "PatrolBoat"));
