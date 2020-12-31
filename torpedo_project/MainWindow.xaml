@@ -20,7 +20,7 @@
         <Image x:Key="LeftShipFront" Source="Resources/leftshipfront.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2,-5,-2" Stretch="UniformToFill"/>
         <Image x:Key="LeftShipMid" Source="Resources/leftmidship.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2" Stretch="UniformToFill"/>
         <Image x:Key="LeftShipBack" Source="Resources/leftshipback.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2,0,-2" Stretch="UniformToFill"/>
-        <Image x:Key="NotHit" Source="Resources/NotHit.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2,0,-2" Stretch="UniformToFill"/>
+        <Image x:Key="NotHit" Source="Resources/NotHit.png" x:Shared="false" Margin="-4,-2,0,-2" Stretch="UniformToFill" VerticalAlignment="Center"/>
         <Image x:Key="ShipHitFront" Source="Resources/frontship.png" x:Shared="false" Margin="-1,-2" Stretch="UniformToFill" VerticalAlignment="Center"/>
         <Image x:Key="ShipHitMid" Source="Resources/midship.png" x:Shared="false" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2"/>
         <Image x:Key="ShipHitBack" Source="Resources/backship.png" x:Shared="false" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2"/>
@@ -198,7 +198,7 @@
             <Button x:Name="J_t" Content="J" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,0,0,0"/>
 
             <Button x:Name="no1_t" Content="1" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,25,0,0"/>
-            <Button x:Name="A1_t" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0" Content="{DynamicResource ShipFront}" Click="OnButtonClick"/>
+            <Button x:Name="A1_t" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,25,0,0" Click="OnButtonClick"/>
             <Button x:Name="B1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,25,0,0" Click="OnButtonClick"/>
             <Button x:Name="C1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,25,0,0" Click="OnButtonClick"/>
             <Button x:Name="D1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,25,0,0" Click="OnButtonClick"/>
@@ -210,7 +210,7 @@
             <Button x:Name="J1_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="250,25,0,0" Click="OnButtonClick"/>
 
             <Button x:Name="no2_t" Content="2" HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="0,50,0,0"/>
-            <Button x:Name="A2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0" Content="{DynamicResource ShipBack}" Click="OnButtonClick"/>
+            <Button x:Name="A2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="25,50,0,0" Click="OnButtonClick"/>
             <Button x:Name="B2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="50,50,0,0" Click="OnButtonClick"/>
             <Button x:Name="C2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="75,50,0,0" Click="OnButtonClick"/>
             <Button x:Name="D2_t"  HorizontalAlignment="Left" Height="25"  VerticalAlignment="Top" Width="25" Margin="100,50,0,0" Click="OnButtonClick"/>
