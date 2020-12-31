@@ -10,7 +10,7 @@ namespace torpedo_project
     {
         private GameObjects.Player player1;
         private GameObjects.AiPlayer aiplayer;
-        private bool IsPlacementEventStarted = false, rotated = false;
+        private bool IsPlacementEventStarted = false, rotated = false,isVsAi = true;
         private Image boat_image,old_image;
         private string partHit;
         public MainWindow()
@@ -19,13 +19,14 @@ namespace torpedo_project
             TestPlayerClasses();
         }
 
-        public MainWindow(string name)
+        public MainWindow(string name,bool isai)
         {
             InitializeComponent();
             TestPlayerClasses();
             player_name_test_label.Content = name;
             old_image = null;
             partHit = "";
+            isVsAi = isai;
         }
 
         private void TestPlayerClasses()
@@ -815,8 +816,12 @@ namespace torpedo_project
         private void boat_iconRotatePressed(object sender, System.Windows.Input.KeyEventArgs e)
         {
             //if player presses insert, the ai's ships will appear
+
             if (e.Key == System.Windows.Input.Key.Insert) {
-                place_boats(null, aiplayer);
+                if (isVsAi)
+                {
+                    place_boats(null, aiplayer);
+                }
             }
 
                 //should only work if a ship is in placement mode

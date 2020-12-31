@@ -21,7 +21,7 @@ namespace torpedo_project
                 player_name_box.Background = Brushes.Red;
             }
             else { 
-                MainWindow main = new MainWindow(player_name_box.Text);
+                MainWindow main = new MainWindow(player_name_box.Text,!vs_ai_RadioB.IsChecked.Value);
                 this.Visibility = Visibility.Hidden;
                 main.Show();
             }

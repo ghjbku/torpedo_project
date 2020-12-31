@@ -11,6 +11,7 @@
             <Label Content="Please write your name here:" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Height="32"/>
             <TextBox x:Name="player_name_box" Height="32" Margin="328,10,55,58" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" FontStretch="UltraExpanded" FontStyle="Italic" TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Animated" ToolTip="Write name here" CharacterCasing="Lower" FontWeight="Bold" Padding="1,5,1,0" MouseEnter="player_name_box_MouseEnter"/>
             <Button Content="Start VS AI" HorizontalAlignment="Center" Margin="0,0,-4,10" VerticalAlignment="Bottom" Width="75" Click="Button_Click"/>
+            <RadioButton x:Name="vs_ai_RadioB" Content="vs player?" HorizontalAlignment="Left" Margin="55,68,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>
