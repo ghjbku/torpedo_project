@@ -23,7 +23,7 @@
 - #### Játékmenet
     - Belépéskor kérjen nevet, majd ahhoz mentse az eredményeket :heavy_check_mark: 
     - Eredményjelző
-        - Körök száma 
+        - Körök száma :heavy_check_mark: 
         - Saját találatok :heavy_check_mark: 
         - Ellenfél találatai :heavy_check_mark: 
         - Milyen hajók vannak még és melyek lettek elsüllyesztve :heavy_check_mark: 
