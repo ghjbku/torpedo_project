@@ -2,7 +2,7 @@
 
 **Progress so far:**
 
-![](https://i.gyazo.com/a1aacd9b2b37637aea9f1631204d7280.gif)
+![](https://cdn.discordapp.com/attachments/780127130003701790/794167217867587584/vsai.gif)
 
 ## Requirements::
 
