@@ -31,8 +31,6 @@ namespace torpedo_project
 
         private void TestPlayerClasses()
         {
-
-
             player1 = new GameObjects.Player("test_player");
             aiplayer = new GameObjects.AiPlayer();
             player1.PlayerName = player_name_test_label.Content.ToString();
@@ -490,16 +488,18 @@ namespace torpedo_project
             //if its not placement mode
             if (old_image == null)
             {
-                if (PlayerHits_a_Ship(clickedArea.Name, aiplayer))
-                {
-                    player_name_test_label.Content = "you have hit " + clickedArea.Name + ","+partHit;
-                    //TODO change the placeholder images to the created "hit" images.
-                    clickedArea.Content = (Image)FindResource(partHit);
-                }
-                else {
-                    player_name_test_label.Content = clickedArea.Name;
-                    //TODO change the placeholder NotHit image to a real created image.
-                    clickedArea.Content = (Image)FindResource("NotHit");
+                if (clickedArea.Parent.Equals(PlayerTargetTable)) {
+                    if (PlayerHits_a_Ship(clickedArea.Name, aiplayer))
+                    {
+                        player_name_test_label.Content = "you have hit " + clickedArea.Name + "," + partHit;
+                        //TODO change the placeholder images to the created "hit" images.
+                        clickedArea.Content = (Image)FindResource(partHit);
+                    }
+                    else {
+                        player_name_test_label.Content = clickedArea.Name;
+                        //TODO change the placeholder NotHit image to a real created image.
+                        clickedArea.Content = (Image)FindResource("NotHit");
+                    }
                 }
             }
             else {
