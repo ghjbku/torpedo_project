@@ -9,7 +9,7 @@ namespace torpedo_project
     public partial class MainWindow : Window
     {
         private GameObjects.Player player1;
-        private GameObjects.AiPlayer player2;
+        private GameObjects.AiPlayer aiplayer;
         private bool IsPlacementEventStarted = false, rotated = false;
         private Image boat_image,old_image;
         private string partHit;
@@ -33,20 +33,19 @@ namespace torpedo_project
 
 
             player1 = new GameObjects.Player("test_player");
-            player2 = new GameObjects.AiPlayer();
+            aiplayer = new GameObjects.AiPlayer();
             player1.PlayerName = player_name_test_label.Content.ToString();
             player_name_test_label.Content = player1.PlayerName;
-            player2.fillUpRemainingShips(new GameObjects.Ship("A", 1, "A", 2, "PatrolBoat"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("C", 1, "D", 1, "PatrolBoat"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("B", 5, "D", 5, "Submarine"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("C", 3, "E", 3, "Submarine"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("J", 1, "J", 3, "Destroyer"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("I", 4, "I", 7, "Battleship"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("A", 9, "D", 9, "Battleship"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("F", 9, "J", 9, "Carrier"));
-            player2.fillUpRemainingShips(new GameObjects.Ship("G", 3, "G", 7, "Carrier"));
-            //place_boats(null,player2);
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 1, "A", 2, "PatrolBoat"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 1, "D", 1, "PatrolBoat"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("B", 5, "D", 5, "Submarine"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 3, "E", 3, "Submarine"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("J", 1, "J", 3, "Destroyer"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("I", 4, "I", 7, "Battleship"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 9, "D", 9, "Battleship"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("F", 9, "J", 9, "Carrier"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("G", 3, "G", 7, "Carrier"));
         }
 
         //checking if a player "hits" a ship
@@ -490,7 +489,7 @@ namespace torpedo_project
             //if its not placement mode
             if (old_image == null)
             {
-                if (PlayerHits_a_Ship(clickedArea.Name, player2))
+                if (PlayerHits_a_Ship(clickedArea.Name, aiplayer))
                 {
                     player_name_test_label.Content = "you have hit " + clickedArea.Name + ","+partHit;
                     //TODO change the placeholder images to the created "hit" images.
@@ -815,8 +814,13 @@ namespace torpedo_project
 
         private void boat_iconRotatePressed(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            //should only work if a ship is in placement mode
-            if (IsPlacementEventStarted)
+            //if player presses insert, the ai's ships will appear
+            if (e.Key == System.Windows.Input.Key.Insert) {
+                place_boats(null, aiplayer);
+            }
+
+                //should only work if a ship is in placement mode
+                if (IsPlacementEventStarted)
             {
                 if (e.Key == System.Windows.Input.Key.R)
                 {
