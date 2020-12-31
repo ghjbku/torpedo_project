@@ -1,3 +1,4 @@
 .git
 .vs
-torpedo_project/bin/Debug
+torpedo_project/bin/Debug/*
+torpedo_project/obj/Debug/*
