@@ -36,8 +36,6 @@ namespace torpedo_project
             aiplayer = new GameObjects.AiPlayer();
             AiShipPlacement(aiplayer);
         }
-
-        //TODO create a randomizer for the ship placement, that follows the rules
         private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
         {
             const string range = "ABCDEFGHIJ";
