@@ -513,11 +513,11 @@ namespace torpedo_project
             }
             else
             {
-                CreateShipOnPosition(old_image.Name, clickedArea.Name, false);
+                CreateShipOnPosition(old_image.Name, clickedArea.Name,player1, false);
             }
         }
 
-        private void CreateShipOnPosition(string ship_name, string m_position, bool aiship)
+        private void CreateShipOnPosition(string ship_name, string m_position,PlayerEntity player, bool aiship)
         {
             string[] resultAlphabet = System.Text.RegularExpressions.Regex.Split(m_position, @"\d+");
             string[] resultNumber = System.Text.RegularExpressions.Regex.Split(m_position, @"\D+");
@@ -542,9 +542,9 @@ namespace torpedo_project
             int len = createdShip.getCoords().Length;
 
             //if the ship's any coord hits another ship, it wont place the ship to the table
-            if (PlayerHitsaShip(m_position, player1) ||
-                PlayerHitsaShip(startCoord[0] + startCoord[1], player1) ||
-                PlayerHitsaShip(endCoord[0] + endCoord[1], player1)
+            if (PlayerHitsaShip(m_position, player) ||
+                PlayerHitsaShip(startCoord[0] + startCoord[1], player) ||
+                PlayerHitsaShip(endCoord[0] + endCoord[1], player)
                )
             {
                 old_image = null;
@@ -553,7 +553,7 @@ namespace torpedo_project
             if (len == 8)
             {
                 if (
-                    PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player1)
+                    PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player)
                    )
                 {
                     old_image = null;
@@ -562,9 +562,9 @@ namespace torpedo_project
             }
             else if (len == 10)
             {
-                if (PlayerHitsaShip(shipcoords[1, 0] + shipcoords[1, 1], player1) ||
-                    PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player1) ||
-                    PlayerHitsaShip(shipcoords[3, 0] + shipcoords[3, 1], player1)
+                if (PlayerHitsaShip(shipcoords[1, 0] + shipcoords[1, 1], player) ||
+                    PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player) ||
+                    PlayerHitsaShip(shipcoords[3, 0] + shipcoords[3, 1], player)
                    )
                 {
                     old_image = null;
@@ -572,8 +572,7 @@ namespace torpedo_project
                 }
             }
 
-
-            player1.fillUpRemainingShips(createdShip);
+            player.fillUpRemainingShips(createdShip);
 
             if (!aiship)
             {
