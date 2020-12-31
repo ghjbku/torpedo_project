@@ -10,8 +10,8 @@ namespace torpedo_project
     {
         private GameObjects.Player player1;
         private GameObjects.AiPlayer aiplayer;
-        private bool IsPlacementEventStarted = false, rotated = false,isVsAi = true;
-        private Image boat_image,old_image;
+        private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true;
+        private Image boat_image, old_image;
         private string partHit;
         public MainWindow()
         {
@@ -19,7 +19,7 @@ namespace torpedo_project
             InitGame("player");
         }
 
-        public MainWindow(string name,bool isai)
+        public MainWindow(string name, bool isai)
         {
             InitializeComponent();
             player_name_test_label.Content = name;
@@ -37,17 +37,18 @@ namespace torpedo_project
         }
 
         //TODO create a randomizer for the ship placement, that follows the rules
-        private void AiShipPlacement(GameObjects.AiPlayer aiplayer) {
+        private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
+        {
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 1, "A", 2, "PatrolBoat"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 1, "D", 1, "PatrolBoat"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("B", 5, "D", 5, "Submarine"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 3, "E", 3, "Submarine"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("J", 1, "J", 3, "Destroyer"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 3, "E", 3, "Destroyer"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("I", 4, "I", 7, "Battleship"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 9, "D", 9, "Battleship"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("F", 9, "J", 9, "Carrier"));
             aiplayer.fillUpRemainingShips(new GameObjects.Ship("G", 3, "G", 7, "Carrier"));
+            aiplayer.fillUpRemainingShips(new GameObjects.Ship("F", 9, "J", 9, "Carrier"));
         }
 
         //checking if a player "hits" a ship
@@ -61,12 +62,11 @@ namespace torpedo_project
                 var ship = player.RemainingShips[i];
                 switch (ship.getCoords().Length)
                 {
-
                     case 4:
                         if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
                                 CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                         {
-                            WhichPartIsHit(clickedArea,ship,i,4);
+                            WhichPartIsHit(clickedArea, ship, i, 4);
                             return true;
                         }
                         else i++;
@@ -78,7 +78,7 @@ namespace torpedo_project
                             CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
                             )
                         {
-                            WhichPartIsHit(clickedArea, ship, i,6);
+                            WhichPartIsHit(clickedArea, ship, i, 6);
                             return true;
                         }
                         else i++;
@@ -91,7 +91,7 @@ namespace torpedo_project
                             CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
                             )
                         {
-                            WhichPartIsHit(clickedArea, ship, i,8);
+                            WhichPartIsHit(clickedArea, ship, i, 8);
                             return true;
                         }
                         else i++;
@@ -104,7 +104,7 @@ namespace torpedo_project
                             CoordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
                             )
                         {
-                            WhichPartIsHit(clickedArea, ship, i,10);
+                            WhichPartIsHit(clickedArea, ship, i, 10);
                             return true;
                         }
                         else i++;
@@ -123,7 +123,8 @@ namespace torpedo_project
             else return false;
         }
 
-        private void WhichPartIsHit(string clickedButtonCoord,GameObjects.Ship ship,int i,int HowLong) {
+        private void WhichPartIsHit(string clickedButtonCoord, GameObjects.Ship ship, int i, int HowLong)
+        {
             char[] arrayForTrim = { 't', '_' };
             var name = clickedButtonCoord.TrimEnd(arrayForTrim);
             if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]))
@@ -145,7 +146,8 @@ namespace torpedo_project
                     else partHit = "ShipHitBack";
                 }
             }
-            else if (HowLong == 6) {
+            else if (HowLong == 6)
+            {
                 if (CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                 {
                     if (ship.rotated)
@@ -165,7 +167,7 @@ namespace torpedo_project
             }
             else if (HowLong == 8)
             {
-                if (CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1])||
+                if (CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
                     CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
                    )
                 {
@@ -208,29 +210,30 @@ namespace torpedo_project
             }
         }
 
-        private void PlaceBoats(GameObjects.Player player,GameObjects.AiPlayer aiplayer)
+        private void PlaceBoats(GameObjects.Player player, GameObjects.AiPlayer aiplayer)
         {
             if (aiplayer == null)
             {
                 foreach (GameObjects.Ship ship in player.RemainingShips)
                 {
-                    DrawBoat(ship,false);
+                    DrawBoat(ship, false);
                 }
             }
-            else {
+            else
+            {
                 foreach (GameObjects.Ship ship in aiplayer.RemainingShips)
                 {
-                    DrawBoat(ship,true);
+                    DrawBoat(ship, true);
                 }
             }
         }
 
-        private void DrawBoat(GameObjects.Ship ship,bool isAi) {
+        private void DrawBoat(GameObjects.Ship ship, bool isAi)
+        {
             Image front, mid, mid2, mid3, back;
             //PlayerTargetTable
             if (!isAi)
             {
-
                 if (ship.rotated == true)
                 {
                     if (ship.shipType.Equals("PatrolBoat"))
@@ -355,7 +358,9 @@ namespace torpedo_project
 
                 }
             }
-            else {
+            //if its ai
+            else
+            {
 
                 if (ship.rotated == true)
                 {
@@ -364,7 +369,7 @@ namespace torpedo_project
                         front = (Image)FindResource("LeftShipFront");
                         back = (Image)FindResource("LeftShipBack");
 
-                        Button toDrawStart = (Button)PlayerTargetTable.FindName(ship.getCoords()[0, 0] + ship.getCoords()[0, 1]+"_t");
+                        Button toDrawStart = (Button)PlayerTargetTable.FindName(ship.getCoords()[0, 0] + ship.getCoords()[0, 1] + "_t");
                         toDrawStart.Content = front;
                         Button toDrawEnd = (Button)PlayerTargetTable.FindName(ship.getCoords()[1, 0] + ship.getCoords()[1, 1] + "_t");
                         toDrawEnd.Content = back;
@@ -478,7 +483,6 @@ namespace torpedo_project
                         Button toDrawEnd = (Button)PlayerTargetTable.FindName(ship.getCoords()[4, 0] + "" + ship.getCoords()[4, 1] + "_t");
                         toDrawEnd.Content = back;
                     }
-
                 }
             }
         }
@@ -492,60 +496,97 @@ namespace torpedo_project
             if (old_image == null)
             {
                 //only proceed if the button is from the PlayerTargetTable
-                if (clickedArea.Parent.Equals(PlayerTargetTable)) {
+                if (clickedArea.Parent.Equals(PlayerTargetTable))
+                {
                     if (PlayerHitsaShip(clickedArea.Name, aiplayer))
                     {
                         player_name_test_label.Content = "you have hit " + clickedArea.Name + "," + partHit;
                         //TODO change the placeholder images to the created "hit" images.
                         clickedArea.Content = (Image)FindResource(partHit);
                     }
-                    else {
+                    else
+                    {
                         player_name_test_label.Content = clickedArea.Name;
                         clickedArea.Content = (Image)FindResource("NotHit");
                     }
                 }
             }
-            else {
-                CreateShipOnPosition(old_image.Name,clickedArea);
+            else
+            {
+                CreateShipOnPosition(old_image.Name, clickedArea.Name, false);
             }
         }
 
-        private void CreateShipOnPosition(string ship_name,Button middle_position_button) {
-            string m_position = middle_position_button.Name;
+        private void CreateShipOnPosition(string ship_name, string m_position, bool aiship)
+        {
             string[] resultAlphabet = System.Text.RegularExpressions.Regex.Split(m_position, @"\d+");
             string[] resultNumber = System.Text.RegularExpressions.Regex.Split(m_position, @"\D+");
-            string[] startCoord,endCoord;
+            string[] startCoord, endCoord;
             GameObjects.Ship createdShip;
 
-                startCoord = getStartCoord(resultAlphabet[0], resultNumber[1], ship_name);
-                endCoord = getEndCoord(resultAlphabet[0], resultNumber[1], ship_name);
-                player_name_test_label.Content = startCoord[0] + startCoord[1] + "," + endCoord[0] + endCoord[1];
+            startCoord = getStartCoord(resultAlphabet[0], resultNumber[1], ship_name);
+            endCoord = getEndCoord(resultAlphabet[0], resultNumber[1], ship_name);
+            player_name_test_label.Content = startCoord[0] + startCoord[1] + "," + endCoord[0] + endCoord[1];
 
-                Canvas.SetLeft(boat_image, 0);
-                Canvas.SetTop(boat_image, 0);
-            boat_image.RenderTransform = GetBasicScaling(boat_image,false);
+            Canvas.SetLeft(boat_image, 0);
+            Canvas.SetTop(boat_image, 0);
+            boat_image.RenderTransform = GetBasicScaling(boat_image, false);
 
-                if (startCoord[0].Equals("asd"))
-                {
-                    return;
-                }
+            if (startCoord[0].Equals("asd"))
+            {
+                return;
+            }
 
-                //if the ship's any coord hits another ship, it wont place the ship to the table
-            if (PlayerHitsaShip(m_position, player1)||
-                PlayerHitsaShip(startCoord[0]+startCoord[1], player1)||
+            createdShip = new GameObjects.Ship(startCoord[0], int.Parse(startCoord[1]), endCoord[0], int.Parse(endCoord[1]), ship_name);
+            string[,] shipcoords = createdShip.getCoords();
+            int len = createdShip.getCoords().Length;
+
+            //if the ship's any coord hits another ship, it wont place the ship to the table
+            if (PlayerHitsaShip(m_position, player1) ||
+                PlayerHitsaShip(startCoord[0] + startCoord[1], player1) ||
                 PlayerHitsaShip(endCoord[0] + endCoord[1], player1)
                )
-            { old_image = null; return; }
+            {
+                old_image = null;
+                return;
+            }
+            if (len == 8)
+            {
+                if (
+                    PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player1)
+                   )
+                {
+                    old_image = null;
+                    return;
+                }
+            }
+            else if (len == 10)
+            {
+                if (PlayerHitsaShip(shipcoords[1, 0] + shipcoords[1, 1], player1) ||
+                    PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player1) ||
+                    PlayerHitsaShip(shipcoords[3, 0] + shipcoords[3, 1], player1)
+                   )
+                {
+                    old_image = null;
+                    return;
+                }
+            }
 
-                createdShip = new GameObjects.Ship(startCoord[0], int.Parse(startCoord[1]), endCoord[0], int.Parse(endCoord[1]), ship_name);
-                player1.fillUpRemainingShips(createdShip);
-                DrawBoat(createdShip,false);
+
+            player1.fillUpRemainingShips(createdShip);
+
+            if (!aiship)
+            {
+                DrawBoat(createdShip, false);
+            }
 
             old_image = null;
         }
 
-        private string[] getStartCoord(string middlecoord_x,string middlecoord_y, string shipname) {
-            if (shipname.Equals("PatrolBoat")) {
+        private string[] getStartCoord(string middlecoord_x, string middlecoord_y, string shipname)
+        {
+            if (shipname.Equals("PatrolBoat"))
+            {
                 if (!rotated)
                 {
                     switch (middlecoord_x)
@@ -568,7 +609,8 @@ namespace torpedo_project
                             return ("I" + "," + middlecoord_y).Split(',');
                     }
                 }
-                else {
+                else
+                {
                     return (middlecoord_x + "," + middlecoord_y).Split(',');
                 }
             }
@@ -658,7 +700,7 @@ namespace torpedo_project
             }
             return "asd,1".Split(',');
         }
-        private string[] getEndCoord(string middlecoord_x, string middlecoord_y,string shipname)
+        private string[] getEndCoord(string middlecoord_x, string middlecoord_y, string shipname)
         {
             if (shipname.Equals("PatrolBoat"))
             {
@@ -690,7 +732,8 @@ namespace torpedo_project
                     return (middlecoord_x + "," + starty.ToString()).Split(',');
                 }
             }
-            else if(shipname.Equals("Submarine")|| shipname.Equals("Destroyer")){
+            else if (shipname.Equals("Submarine") || shipname.Equals("Destroyer"))
+            {
                 if (!rotated)
                 {
                     switch (middlecoord_x)
@@ -794,7 +837,7 @@ namespace torpedo_project
                     return new System.Windows.Media.ScaleTransform(1, 2.5);
                 }
                 else
-                return new System.Windows.Media.ScaleTransform(1, 1);
+                    return new System.Windows.Media.ScaleTransform(1, 1);
             }
             else
             {
@@ -811,23 +854,24 @@ namespace torpedo_project
                     return new System.Windows.Media.ScaleTransform(2.5, 1);
                 }
                 else
-                return new System.Windows.Media.ScaleTransform(1, 1);
+                    return new System.Windows.Media.ScaleTransform(1, 1);
             }
-        }     
+        }
 
         private void boat_iconRotatePressed(object sender, System.Windows.Input.KeyEventArgs e)
         {
             //if player presses insert, the ai's ships will appear
 
-            if (e.Key == System.Windows.Input.Key.Insert) {
+            if (e.Key == System.Windows.Input.Key.Insert)
+            {
                 if (isVsAi)
                 {
                     PlaceBoats(null, aiplayer);
                 }
             }
 
-                //should only work if a ship is in placement mode
-                if (IsPlacementEventStarted)
+            //should only work if a ship is in placement mode
+            if (IsPlacementEventStarted)
             {
                 if (e.Key == System.Windows.Input.Key.R)
                 {
@@ -841,7 +885,7 @@ namespace torpedo_project
                     {
                         rotated = true;
                         transformationGroup.Children.Add(new System.Windows.Media.RotateTransform(90));
-                        
+
                     }
                     transformationGroup.Children.Add(GetBasicScaling(boat_image, rotated));
                     boat_image.RenderTransform = transformationGroup;
@@ -862,7 +906,8 @@ namespace torpedo_project
                     Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 20));
                     Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 15));
                 }
-                else {
+                else
+                {
                     Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 35));
                     Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
                 }
@@ -872,7 +917,8 @@ namespace torpedo_project
             {
                 IsPlacementEventStarted = true;
                 //if you click on another ship to "pick it up"
-                if (!boat_image.Equals(old_image)) { 
+                if (!boat_image.Equals(old_image))
+                {
                     old_image = boat_image;
                     rotated = false;
                 }
