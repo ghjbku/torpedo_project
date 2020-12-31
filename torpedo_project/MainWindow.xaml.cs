@@ -46,7 +46,6 @@ namespace torpedo_project
             do
             {
                 int dice = rnd.Next(1, 11);
-                int rnd_help = rnd.Next(0, 2);
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("PatrolBoat", Coord1 + dice.ToString(), aiplayer, true);
@@ -54,7 +53,6 @@ namespace torpedo_project
             do
             {
                 int dice = rnd.Next(1, 11);
-                int rnd_help = rnd.Next(0, 2);
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Submarine", Coord1 + dice.ToString(), aiplayer, true);
@@ -63,7 +61,6 @@ namespace torpedo_project
             do
             {
                 int dice = rnd.Next(1, 11);
-                int rnd_help = rnd.Next(0, 2);
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Destroyer", Coord1 + dice.ToString(), aiplayer, true);
@@ -72,7 +69,6 @@ namespace torpedo_project
             do
             {
                 int dice = rnd.Next(1, 11);
-                int rnd_help = rnd.Next(0, 2);
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Battleship", Coord1 + dice.ToString(), aiplayer, true);
@@ -81,13 +77,10 @@ namespace torpedo_project
             do
             {
                 int dice = rnd.Next(1, 11);
-                int rnd_help = rnd.Next(0, 2);
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Carrier", Coord1 + dice.ToString(), aiplayer, true);
             } while (aiplayer.RemainingShips.Count < 10);
-
-            PlaceBoats(null, aiplayer);
         }
 
         //checking if a player "hits" a ship
@@ -565,6 +558,12 @@ namespace torpedo_project
 
             startCoord = getStartCoord(resultAlphabet[0], resultNumber[1], ship_name);
             endCoord = getEndCoord(resultAlphabet[0], resultNumber[1], ship_name);
+
+            if (startCoord[0].Equals("asd")|| endCoord[0].Equals("asd"))
+            {
+                return;
+            }
+
             player_name_test_label.Content = startCoord[0] + startCoord[1] + "," + endCoord[0] + endCoord[1];
 
             if (!aiship)
@@ -572,11 +571,6 @@ namespace torpedo_project
                 Canvas.SetLeft(boat_image, 0);
                 Canvas.SetTop(boat_image, 0);
                 boat_image.RenderTransform = GetBasicScaling(boat_image, false);
-            }
-
-            if (startCoord[0].Equals("asd"))
-            {
-                return;
             }
 
             createdShip = new GameObjects.Ship(startCoord[0], int.Parse(startCoord[1]), endCoord[0], int.Parse(endCoord[1]), ship_name);
@@ -606,17 +600,15 @@ namespace torpedo_project
             {
                 if (PlayerHitsaShip(shipcoords[1, 0] + shipcoords[1, 1], player) ||
                     PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player) ||
-                    PlayerHitsaShip(shipcoords[3, 0] + shipcoords[3, 1], player)
+                    PlayerHitsaShip(shipcoords[3, 0] + shipcoords[3, 1], player) 
                    )
                 {
                     old_image = null;
                     return;
                 }
             }
+             player.fillUpRemainingShips(createdShip);
 
-            if (int.Parse(shipcoords[0,1])>1|| int.Parse(shipcoords[1, 1]) > 1) {
-                player.fillUpRemainingShips(createdShip);
-            } else return;
 
             if (!aiship)
             {
@@ -683,8 +675,12 @@ namespace torpedo_project
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) - 1;
-                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    if (int.Parse(middlecoord_y) > 1)
+                    {
+                        int starty = int.Parse(middlecoord_y) - 1;
+                        return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    }
+                    else return "asd,1".Split(',');
                 }
             }
             else if (shipname.Equals("Battleship"))
@@ -711,8 +707,12 @@ namespace torpedo_project
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) - 1;
-                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    if (int.Parse(middlecoord_y) > 1)
+                    {
+                        int starty = int.Parse(middlecoord_y) - 1;
+                        return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    }
+                    else return "asd,1".Split(',');
                 }
             }
             else if (shipname.Equals("Carrier"))
@@ -737,8 +737,12 @@ namespace torpedo_project
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) - 2;
-                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    if (int.Parse(middlecoord_y) > 2)
+                    {
+                        int starty = int.Parse(middlecoord_y) - 2;
+                        return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    }
+                    else return "asd,1".Split(',');
                 }
             }
             return "asd,1".Split(',');
@@ -771,8 +775,12 @@ namespace torpedo_project
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) + 1;
-                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    if (int.Parse(middlecoord_y) < 10)
+                    {
+                        int starty = int.Parse(middlecoord_y) + 1;
+                        return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    }
+                    else return "asd,1".Split(',');
                 }
             }
             else if (shipname.Equals("Submarine") || shipname.Equals("Destroyer"))
@@ -801,8 +809,12 @@ namespace torpedo_project
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) + 1;
-                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    if (int.Parse(middlecoord_y) < 10)
+                    {
+                        int starty = int.Parse(middlecoord_y) + 1;
+                        return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    }
+                    else return "asd,1".Split(',');
                 }
             }
             else if (shipname.Equals("Battleship"))
@@ -829,8 +841,12 @@ namespace torpedo_project
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) + 2;
-                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    if (int.Parse(middlecoord_y) < 9)
+                    {
+                        int starty = int.Parse(middlecoord_y) + 2;
+                        return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    }
+                    else return "asd,1".Split(',');
                 }
             }
             else if (shipname.Equals("Carrier"))
@@ -855,8 +871,12 @@ namespace torpedo_project
                 }
                 else
                 {
-                    int starty = int.Parse(middlecoord_y) + 2;
-                    return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    if (int.Parse(middlecoord_y) < 9)
+                    {
+                        int starty = int.Parse(middlecoord_y) + 2;
+                        return (middlecoord_x + "," + starty.ToString()).Split(',');
+                    }
+                    else return "asd,1".Split(',');
                 }
             }
             return "asd,1".Split(',');
