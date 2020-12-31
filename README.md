@@ -2,7 +2,7 @@
 
 **Progress so far:**
 
-![](https://cdn.discordapp.com/attachments/780127130003701790/794167217867587584/vsai.gif)
+![](https://cdn.discordapp.com/attachments/780127130003701790/794229792111198238/aiplacement.gif)
 
 ## Requirements::
 
