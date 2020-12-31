@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace torpedo_project
@@ -39,16 +40,54 @@ namespace torpedo_project
         //TODO create a randomizer for the ship placement, that follows the rules
         private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
         {
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 1, "A", 2, "PatrolBoat"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 1, "D", 1, "PatrolBoat"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 5, "A", 7, "Submarine"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("B", 5, "D", 5, "Submarine"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("J", 1, "J", 3, "Destroyer"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("C", 3, "E", 3, "Destroyer"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("I", 4, "I", 7, "Battleship"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("A", 9, "D", 9, "Battleship"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("G", 3, "G", 7, "Carrier"));
-            aiplayer.fillUpRemainingShips(new GameObjects.Ship("F", 9, "J", 9, "Carrier"));
+            const string range = "ABCDEFGHIJ";
+            System.Random rnd = new System.Random();
+            
+            do
+            {
+                int dice = rnd.Next(1, 11);
+                int rnd_help = rnd.Next(0, 2);
+                rotated = rnd.Next(0, 2) == 0;
+                string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                CreateShipOnPosition("PatrolBoat", Coord1 + dice.ToString(), aiplayer, true);
+            } while (aiplayer.RemainingShips.Count < 2);
+            do
+            {
+                int dice = rnd.Next(1, 11);
+                int rnd_help = rnd.Next(0, 2);
+                rotated = rnd.Next(0, 2) == 0;
+                string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                CreateShipOnPosition("Submarine", Coord1 + dice.ToString(), aiplayer, true);
+            } while (aiplayer.RemainingShips.Count < 4);
+
+            do
+            {
+                int dice = rnd.Next(1, 11);
+                int rnd_help = rnd.Next(0, 2);
+                rotated = rnd.Next(0, 2) == 0;
+                string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                CreateShipOnPosition("Destroyer", Coord1 + dice.ToString(), aiplayer, true);
+            } while (aiplayer.RemainingShips.Count < 6);
+
+            do
+            {
+                int dice = rnd.Next(1, 11);
+                int rnd_help = rnd.Next(0, 2);
+                rotated = rnd.Next(0, 2) == 0;
+                string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                CreateShipOnPosition("Battleship", Coord1 + dice.ToString(), aiplayer, true);
+            } while (aiplayer.RemainingShips.Count < 8);
+
+            do
+            {
+                int dice = rnd.Next(1, 11);
+                int rnd_help = rnd.Next(0, 2);
+                rotated = rnd.Next(0, 2) == 0;
+                string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                CreateShipOnPosition("Carrier", Coord1 + dice.ToString(), aiplayer, true);
+            } while (aiplayer.RemainingShips.Count < 10);
+
+            PlaceBoats(null, aiplayer);
         }
 
         //checking if a player "hits" a ship
@@ -513,11 +552,11 @@ namespace torpedo_project
             }
             else
             {
-                CreateShipOnPosition(old_image.Name, clickedArea.Name,player1, false);
+                CreateShipOnPosition(old_image.Name, clickedArea.Name, player1, false);
             }
         }
 
-        private void CreateShipOnPosition(string ship_name, string m_position,PlayerEntity player, bool aiship)
+        private void CreateShipOnPosition(string ship_name, string m_position, PlayerEntity player, bool aiship)
         {
             string[] resultAlphabet = System.Text.RegularExpressions.Regex.Split(m_position, @"\d+");
             string[] resultNumber = System.Text.RegularExpressions.Regex.Split(m_position, @"\D+");
@@ -528,9 +567,12 @@ namespace torpedo_project
             endCoord = getEndCoord(resultAlphabet[0], resultNumber[1], ship_name);
             player_name_test_label.Content = startCoord[0] + startCoord[1] + "," + endCoord[0] + endCoord[1];
 
-            Canvas.SetLeft(boat_image, 0);
-            Canvas.SetTop(boat_image, 0);
-            boat_image.RenderTransform = GetBasicScaling(boat_image, false);
+            if (!aiship)
+            {
+                Canvas.SetLeft(boat_image, 0);
+                Canvas.SetTop(boat_image, 0);
+                boat_image.RenderTransform = GetBasicScaling(boat_image, false);
+            }
 
             if (startCoord[0].Equals("asd"))
             {
@@ -572,7 +614,9 @@ namespace torpedo_project
                 }
             }
 
-            player.fillUpRemainingShips(createdShip);
+            if (int.Parse(shipcoords[0,1])>1|| int.Parse(shipcoords[1, 1]) > 1) {
+                player.fillUpRemainingShips(createdShip);
+            } else return;
 
             if (!aiship)
             {
