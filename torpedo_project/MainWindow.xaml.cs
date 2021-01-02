@@ -545,6 +545,7 @@ namespace torpedo_project
                         if (!player1.PlayerHits.Contains(clickedArea.Name))
                         {
                             player1.updatePlayerHits(clickedArea.Name);
+                            aiplayer.updateEnemyHits(clickedArea.Name);
                         }
                         CheckIfAllShipCoordsHit();
 
