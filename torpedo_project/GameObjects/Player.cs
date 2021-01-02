@@ -10,8 +10,8 @@ namespace torpedo_project.GameObjects
     {
         public string PlayerName { get; set; }
         public int RoundsNo { get; set; }
-        public char[,] PlayerHits { get; set; }
-        public char[,] EnemyHits { get; set; }
+        public List<string> PlayerHits { get; set; }
+        public List<string> EnemyHits { get; set; }
         public List<Ship> RemainingShips { set; get; }
         public List<Ship> DestroyedShips { set; get; }
 
@@ -19,12 +19,26 @@ namespace torpedo_project.GameObjects
             PlayerName = playerName;
             RemainingShips = new List<Ship>();
             DestroyedShips = new List<Ship>();
-            EnemyHits = new char[,] {};
-            PlayerHits = new char[,] {};
+            EnemyHits = new List<string> ();
+            PlayerHits = new List<string> ();
         }
 
         public void fillUpRemainingShips(Ship ship) {
             RemainingShips.Add(ship);
+        }
+        public void fillUpDestroyedShips(Ship ship)
+        {
+            DestroyedShips.Add(ship);
+        }
+
+        public void updatePlayerHits(string coord)
+        {
+            PlayerHits.Add(coord);
+        }
+
+        public void updateEnemyHits(string coord)
+        {
+            EnemyHits.Add(coord);
         }
     }
 }

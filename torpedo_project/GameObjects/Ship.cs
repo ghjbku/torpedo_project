@@ -13,6 +13,7 @@ namespace torpedo_project.GameObjects
         private string x_end { get; set; }
         private int y_end { get; set; }
         public string shipType { get; set; }
+        public int ShipPartsHit { get; set; }
 
         public bool rotated { get; set; }
 

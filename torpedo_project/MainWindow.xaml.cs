@@ -14,6 +14,7 @@ namespace torpedo_project
         private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true;
         private Image boat_image, old_image;
         private string partHit;
+        private GameObjects.Ship lastShipHit;
         public MainWindow()
         {
             InitializeComponent();
@@ -35,7 +36,7 @@ namespace torpedo_project
             player1 = new GameObjects.Player(playername);
             aiplayer = new GameObjects.AiPlayer();
             AiShipPlacement(aiplayer);
-            enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
+            UpdateRemainingShips("ai");
             //if (player.RemainingShips.Count == 0){
 
             //}
@@ -44,7 +45,7 @@ namespace torpedo_project
         {
             const string range = "ABCDEFGHIJ";
             System.Random rnd = new System.Random();
-            
+
             do
             {
                 int dice = rnd.Next(1, 11);
@@ -102,6 +103,7 @@ namespace torpedo_project
                                 CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                         {
                             WhichPartIsHit(clickedArea, ship, i, 4);
+                            lastShipHit = ship;
                             return true;
                         }
                         else i++;
@@ -114,6 +116,7 @@ namespace torpedo_project
                             )
                         {
                             WhichPartIsHit(clickedArea, ship, i, 6);
+                            lastShipHit = ship;
                             return true;
                         }
                         else i++;
@@ -127,6 +130,7 @@ namespace torpedo_project
                             )
                         {
                             WhichPartIsHit(clickedArea, ship, i, 8);
+                            lastShipHit = ship;
                             return true;
                         }
                         else i++;
@@ -140,6 +144,7 @@ namespace torpedo_project
                             )
                         {
                             WhichPartIsHit(clickedArea, ship, i, 10);
+                            lastShipHit = ship;
                             return true;
                         }
                         else i++;
@@ -162,6 +167,7 @@ namespace torpedo_project
         {
             char[] arrayForTrim = { 't', '_' };
             var name = clickedButtonCoord.TrimEnd(arrayForTrim);
+            ship.ShipPartsHit += 1;
             if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]))
             {
                 if (ship.rotated)
@@ -535,24 +541,38 @@ namespace torpedo_project
                 {
                     if (PlayerHitsaShip(clickedArea.Name, aiplayer))
                     {
+
+                        if (!player1.PlayerHits.Contains(clickedArea.Name))
+                        {
+                            player1.updatePlayerHits(clickedArea.Name);
+                        }
+                        CheckIfAllShipCoordsHit();
+
                         player_name_test_label.Content = "you have hit " + clickedArea.Name + "," + partHit;
-                        
-                        if (partHit.Equals("ShipHitFront")){
+
+
+                        if (partHit.Equals("ShipHitFront"))
+                        {
                             clickedArea.Content = (Image)FindResource("ShipHitFront");
                         }
-                        else if ( partHit == "ShipHitMid"){
+                        else if (partHit == "ShipHitMid")
+                        {
                             clickedArea.Content = (Image)FindResource("ShipHitMid");
                         }
-                        else if ( partHit == "ShipHitBack"){
+                        else if (partHit == "ShipHitBack")
+                        {
                             clickedArea.Content = (Image)FindResource("ShipHitBack");
                         }
-                        else if ( partHit == "ShipHitLeftFront"){
+                        else if (partHit == "ShipHitLeftFront")
+                        {
                             clickedArea.Content = (Image)FindResource("ShipHitLeftFront");
                         }
-                        else if ( partHit == "ShipHitLeftMid"){
+                        else if (partHit == "ShipHitLeftMid")
+                        {
                             clickedArea.Content = (Image)FindResource("ShipHitLeftMid");
                         }
-                        else if ( partHit == "ShipHitLeftBack"){
+                        else if (partHit == "ShipHitLeftBack")
+                        {
                             clickedArea.Content = (Image)FindResource("ShipHitLeftBack");
                         }
                     }
@@ -569,6 +589,46 @@ namespace torpedo_project
             }
         }
 
+        private void CheckIfAllShipCoordsHit()
+        {
+            if (lastShipHit.shipType.Equals("PatrolBoat"))
+            {
+                if (lastShipHit.ShipPartsHit == 2) {
+                    aiplayer.fillUpDestroyedShips(lastShipHit); 
+                }
+            }
+            else if (lastShipHit.shipType.Equals("Submarine") || lastShipHit.shipType.Equals("Destroyer"))
+            {
+                if (lastShipHit.ShipPartsHit == 3)
+                {
+                    aiplayer.fillUpDestroyedShips(lastShipHit);
+                }
+            }
+            else if (lastShipHit.shipType.Equals("Battleship"))
+            {
+                if (lastShipHit.ShipPartsHit == 4)
+                {
+                    aiplayer.fillUpDestroyedShips(lastShipHit);
+                }
+            }
+            else if (lastShipHit.shipType.Equals("Carrier"))
+            {
+                if (lastShipHit.ShipPartsHit == 5)
+                {
+                    aiplayer.fillUpDestroyedShips(lastShipHit);
+                }
+            }
+            UpdateRemainingShips("ai");
+        }
+
+        private void UpdateRemainingShips(string whichplayer) {
+            if (whichplayer.Equals(player1.PlayerName)) {
+                player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
+            }
+            else {
+                enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
+            }
+        }
         private void CreateShipOnPosition(string ship_name, string m_position, PlayerEntity player, bool aiship)
         {
             string[] resultAlphabet = System.Text.RegularExpressions.Regex.Split(m_position, @"\d+");
@@ -579,7 +639,7 @@ namespace torpedo_project
             startCoord = getStartCoord(resultAlphabet[0], resultNumber[1], ship_name);
             endCoord = getEndCoord(resultAlphabet[0], resultNumber[1], ship_name);
 
-            if (startCoord[0].Equals("asd")|| endCoord[0].Equals("asd"))
+            if (startCoord[0].Equals("asd") || endCoord[0].Equals("asd"))
             {
                 return;
             }
@@ -620,20 +680,20 @@ namespace torpedo_project
             {
                 if (PlayerHitsaShip(shipcoords[1, 0] + shipcoords[1, 1], player) ||
                     PlayerHitsaShip(shipcoords[2, 0] + shipcoords[2, 1], player) ||
-                    PlayerHitsaShip(shipcoords[3, 0] + shipcoords[3, 1], player) 
+                    PlayerHitsaShip(shipcoords[3, 0] + shipcoords[3, 1], player)
                    )
                 {
                     old_image = null;
                     return;
                 }
             }
-             player.fillUpRemainingShips(createdShip);
+            player.fillUpRemainingShips(createdShip);
 
 
             if (!aiship)
             {
                 DrawBoat(createdShip, false);
-                player_remaining_ships.Content = player.RemainingShips.Count.ToString();
+                UpdateRemainingShips(player.PlayerName);
             }
 
             old_image = null;

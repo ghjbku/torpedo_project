@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace torpedo_project
 {
@@ -10,11 +6,14 @@ namespace torpedo_project
     {
         string PlayerName { set; get; }
         int RoundsNo { set; get; }
-        char[,] PlayerHits { set; get; }
-        char[,] EnemyHits { set; get; }
+        List<string> PlayerHits { set; get; }
+        List<string> EnemyHits { set; get; }
         List<GameObjects.Ship> RemainingShips { set; get; }
         List<GameObjects.Ship> DestroyedShips { set; get; }
 
         void fillUpRemainingShips(GameObjects.Ship ship);
+        void fillUpDestroyedShips(GameObjects.Ship ship);
+        void updatePlayerHits(string coord);
+        void updateEnemyHits(string coord);
     }
 }
