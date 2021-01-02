@@ -2,7 +2,7 @@
 
 **Progress so far:**
 
-![](https://cdn.discordapp.com/attachments/780127130003701790/794229792111198238/aiplacement.gif)
+![](https://i.gyazo.com/55d813abc193c04c68bf1de6d3155606.gif)
 
 ## Requirements::
 
