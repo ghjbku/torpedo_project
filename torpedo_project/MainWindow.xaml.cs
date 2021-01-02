@@ -47,14 +47,15 @@ namespace torpedo_project
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("PatrolBoat", Coord1 + dice.ToString(), aiplayer, true);
-            } while (aiplayer.RemainingShips.Count < 2);
+            } while (aiplayer.RemainingShips.Count < 1);
+
             do
             {
                 int dice = rnd.Next(1, 11);
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Submarine", Coord1 + dice.ToString(), aiplayer, true);
-            } while (aiplayer.RemainingShips.Count < 4);
+            } while (aiplayer.RemainingShips.Count < 2);
 
             do
             {
@@ -62,7 +63,7 @@ namespace torpedo_project
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Destroyer", Coord1 + dice.ToString(), aiplayer, true);
-            } while (aiplayer.RemainingShips.Count < 6);
+            } while (aiplayer.RemainingShips.Count < 3);
 
             do
             {
@@ -70,7 +71,7 @@ namespace torpedo_project
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Battleship", Coord1 + dice.ToString(), aiplayer, true);
-            } while (aiplayer.RemainingShips.Count < 8);
+            } while (aiplayer.RemainingShips.Count < 4);
 
             do
             {
@@ -78,7 +79,7 @@ namespace torpedo_project
                 rotated = rnd.Next(0, 2) == 0;
                 string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
                 CreateShipOnPosition("Carrier", Coord1 + dice.ToString(), aiplayer, true);
-            } while (aiplayer.RemainingShips.Count < 10);
+            } while (aiplayer.RemainingShips.Count < 5);
         }
 
         //checking if a player "hits" a ship
