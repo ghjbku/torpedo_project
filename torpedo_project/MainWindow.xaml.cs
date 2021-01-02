@@ -35,6 +35,7 @@ namespace torpedo_project
             player1 = new GameObjects.Player(playername);
             aiplayer = new GameObjects.AiPlayer();
             AiShipPlacement(aiplayer);
+            enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
             //if (player.RemainingShips.Count == 0){
 
             //}
@@ -632,6 +633,7 @@ namespace torpedo_project
             if (!aiship)
             {
                 DrawBoat(createdShip, false);
+                player_remaining_ships.Content = player.RemainingShips.Count.ToString();
             }
 
             old_image = null;
