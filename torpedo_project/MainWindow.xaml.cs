@@ -535,8 +535,25 @@ namespace torpedo_project
                     if (PlayerHitsaShip(clickedArea.Name, aiplayer))
                     {
                         player_name_test_label.Content = "you have hit " + clickedArea.Name + "," + partHit;
-                        //TODO change the placeholder images to the created "hit" images.
-                        clickedArea.Content = (Image)FindResource("ShipHitMid");
+                        
+                        if (partHit.Equals("ShipHitFront")){
+                            clickedArea.Content = (Image)FindResource("ShipHitFront");
+                        }
+                        else if ( partHit == "ShipHitMid"){
+                            clickedArea.Content = (Image)FindResource("ShipHitMid");
+                        }
+                        else if ( partHit == "ShipHitBack"){
+                            clickedArea.Content = (Image)FindResource("ShipHitBack");
+                        }
+                        else if ( partHit == "ShipHitLeftFront"){
+                            clickedArea.Content = (Image)FindResource("ShipHitLeftFront");
+                        }
+                        else if ( partHit == "ShipHitLeftMid"){
+                            clickedArea.Content = (Image)FindResource("ShipHitLeftMid");
+                        }
+                        else if ( partHit == "ShipHitLeftBack"){
+                            clickedArea.Content = (Image)FindResource("ShipHitLeftBack");
+                        }
                     }
                     else
                     {
