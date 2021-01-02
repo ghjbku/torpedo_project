@@ -37,9 +37,6 @@ namespace torpedo_project
             aiplayer = new GameObjects.AiPlayer();
             AiShipPlacement(aiplayer);
             UpdateRemainingShips("ai");
-            //if (player.RemainingShips.Count == 0){
-
-            //}
         }
         private void TestingLabelOutput(string output) {
             player_name_test_label.Content = output;
@@ -275,6 +272,7 @@ namespace torpedo_project
         private void DrawBoat(GameObjects.Ship ship, bool isAi)
         {
             Image front, mid, mid2, mid3, back;
+            if (player1.RemainingShips.Count <= 5 && aiplayer.RemainingShips.Count <= 5){
             //PlayerTargetTable
             if (!isAi)
             {
@@ -402,6 +400,7 @@ namespace torpedo_project
 
                 }
             }
+            
             //if its ai
             else
             {
@@ -530,6 +529,7 @@ namespace torpedo_project
                 }
             }
         }
+        }
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
@@ -579,6 +579,7 @@ namespace torpedo_project
                         {
                             clickedArea.Content = (Image)FindResource("ShipHitLeftBack");
                         }
+                       
                     }
                     else
                     {
@@ -626,11 +627,13 @@ namespace torpedo_project
         }
 
         private void UpdateRemainingShips(string whichplayer) {
-            if (whichplayer.Equals(player1.PlayerName)) {
-                player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
-            }
-            else {
-                enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
+            if (player1.RemainingShips.Count <= 5){
+                if (whichplayer.Equals(player1.PlayerName)) {
+                    player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
+                }
+                else {
+                    enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
+                }
             }
         }
         private void CreateShipOnPosition(string ship_name, string m_position, PlayerEntity player, bool aiship)
