@@ -41,6 +41,9 @@ namespace torpedo_project
 
             //}
         }
+        private void TestingLabelOutput(string output) {
+            player_name_test_label.Content = output;
+        }
         private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
         {
             const string range = "ABCDEFGHIJ";
@@ -549,7 +552,7 @@ namespace torpedo_project
                         }
                         CheckIfAllShipCoordsHit();
 
-                        player_name_test_label.Content = "you have hit " + clickedArea.Name + "," + partHit;
+                        TestingLabelOutput("you have hit " + clickedArea.Name + "," + partHit);
 
 
                         if (partHit.Equals("ShipHitFront"))
@@ -579,7 +582,7 @@ namespace torpedo_project
                     }
                     else
                     {
-                        player_name_test_label.Content = clickedArea.Name;
+                        TestingLabelOutput(clickedArea.Name);
                         clickedArea.Content = (Image)FindResource("NotHit");
                     }
                 }
@@ -645,7 +648,7 @@ namespace torpedo_project
                 return;
             }
 
-            player_name_test_label.Content = startCoord[0] + startCoord[1] + "," + endCoord[0] + endCoord[1];
+            TestingLabelOutput(startCoord[0] + startCoord[1] + "," + endCoord[0] + endCoord[1]);
 
             if (!aiship)
             {
