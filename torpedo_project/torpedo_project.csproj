@@ -161,5 +161,23 @@
   <ItemGroup>
     <Resource Include="Resources\NotHit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ShipHitFront.png" />
+  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\ShipHitMid.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\ShipHitBack.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\ShipHitLeftFront.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\ShipHitLeftBack.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\ShipHitLeftMid.png" />
+	</ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

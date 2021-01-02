@@ -35,6 +35,9 @@ namespace torpedo_project
             player1 = new GameObjects.Player(playername);
             aiplayer = new GameObjects.AiPlayer();
             AiShipPlacement(aiplayer);
+            //if (player.RemainingShips.Count == 0){
+
+            //}
         }
         private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
         {
@@ -533,7 +536,7 @@ namespace torpedo_project
                     {
                         player_name_test_label.Content = "you have hit " + clickedArea.Name + "," + partHit;
                         //TODO change the placeholder images to the created "hit" images.
-                        clickedArea.Content = (Image)FindResource(partHit);
+                        clickedArea.Content = (Image)FindResource("ShipHitMid");
                     }
                     else
                     {

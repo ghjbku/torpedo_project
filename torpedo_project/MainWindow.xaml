@@ -21,12 +21,12 @@
         <Image x:Key="LeftShipMid" Source="Resources/leftmidship.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2" Stretch="UniformToFill"/>
         <Image x:Key="LeftShipBack" Source="Resources/leftshipback.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2,0,-2" Stretch="UniformToFill"/>
         <Image x:Key="NotHit" Source="Resources/NotHit.png" x:Shared="false" Margin="-4,-2,0,-2" Stretch="UniformToFill" VerticalAlignment="Center"/>
-        <Image x:Key="ShipHitFront" Source="Resources/frontship.png" x:Shared="false" Margin="-1,-2" Stretch="UniformToFill" VerticalAlignment="Center"/>
-        <Image x:Key="ShipHitMid" Source="Resources/midship.png" x:Shared="false" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2"/>
-        <Image x:Key="ShipHitBack" Source="Resources/backship.png" x:Shared="false" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2"/>
-        <Image x:Key="ShipHitLeftFront" Source="Resources/leftshipfront.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2,-5,-2" Stretch="UniformToFill"/>
-        <Image x:Key="ShipHitLeftMid" Source="Resources/leftmidship.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2" Stretch="UniformToFill"/>
-        <Image x:Key="ShipHitLeftBack" Source="Resources/leftshipback.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2,0,-2" Stretch="UniformToFill"/>
+        <Image x:Key="ShipHitFront" Source="Resources/ShipHitFront.png" x:Shared="false" Margin="-1,-2" Stretch="UniformToFill" VerticalAlignment="Center"/>
+        <Image x:Key="ShipHitMid" Source="Resources/ShipHitMid.png" x:Shared="false" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-2"/>
+        <Image x:Key="ShipHitBack" Source="Resources/ShipHitBack.png" x:Shared="false" Stretch="UniformToFill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2"/>
+        <Image x:Key="ShipHitLeftFront" Source="Resources/ShipHitLeftFront.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-2,-5,-2" Stretch="UniformToFill"/>
+        <Image x:Key="ShipHitLeftMid" Source="Resources/ShipHitLeftMid.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2" Stretch="UniformToFill"/>
+        <Image x:Key="ShipHitLeftBack" Source="Resources/ShipHitLeftBack.png" x:Shared="false" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-5,-2,0,-2" Stretch="UniformToFill"/>
 
     </Window.Resources>
     <Canvas x:Name="game_window">
