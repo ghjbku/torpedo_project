@@ -549,6 +549,7 @@ namespace torpedo_project
                         {
                             player1.updatePlayerHits(clickedArea.Name);
                             aiplayer.updateEnemyHits(clickedArea.Name);
+                            
                         }
                         CheckIfAllShipCoordsHit();
 
@@ -624,6 +625,8 @@ namespace torpedo_project
                 }
             }
             UpdateRemainingShips("ai");
+            CheckPlayerWins();
+            CheckAiWins();
         }
 
         private void UpdateRemainingShips(string whichplayer) {
@@ -1085,6 +1088,24 @@ namespace torpedo_project
                 Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
             }
 
+        }
+
+        private void CheckPlayerWins()
+        {
+            if (aiplayer.DestroyedShips.Count == 5)
+            {
+                string wintext = "You win";
+                enemy_remaining_ships.Content = wintext;
+            }
+        }
+
+        private void CheckAiWins()
+        {
+            if (player1.DestroyedShips.Count == 5)
+            {
+                string wintext = "Ai win!";
+                player_remaining_ships.Content = wintext;
+            }
         }
     }
 }

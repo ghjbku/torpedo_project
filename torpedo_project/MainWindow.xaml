@@ -371,9 +371,11 @@
             </Image.RenderTransform>
         </Image>
         <Label Content="Remaining Ships for the enemy:" Canvas.Left="497" Canvas.Top="341"/>
-        <Label x:Name="enemy_remaining_ships" Content="0" Height="26" Canvas.Left="675" Canvas.Top="341" Width="23"/>
+        <Label x:Name="enemy_remaining_ships" Content="0" Height="26" Canvas.Left="675" Canvas.Top="341" Width="50"/>
         <Label Content="Your Remaining Ships:" Canvas.Left="497" Canvas.Top="372"/>
         <Label x:Name="player_remaining_ships" Content="0" Height="26" Canvas.Left="630" Canvas.Top="372" Width="23"/>
+		<Label Content="Your hits:" Canvas.Left="497" Canvas.Top="403"/>
+		<Label x:Name="NumberofHits" Content="0" Height="26" Canvas.Left="610" Canvas.Top="403" Width="23"/>
 
     </Canvas>
 </Window>
