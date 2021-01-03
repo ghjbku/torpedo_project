@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Torpedo" Height="450" Width="800" VerticalAlignment="Center" HorizontalAlignment="Center"
+        Title="Torpedo" Height="500" Width="800" VerticalAlignment="Center" HorizontalAlignment="Center"
          KeyDown="boat_iconRotatePressed"
         MouseMove="boat_ChangeIconPosition">
     <Window.Background>
@@ -30,6 +30,8 @@
 
     </Window.Resources>
     <Canvas x:Name="game_window">
+		<Label Content="Round:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0"/>
+		<!--<Label x:Name="number_of_rounds" Content="0" HorizontalAlignment="Left" VerticalAlignmebt="Top" Margin="25,0,0,0"/>-->
         <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,0,0,0"/>
         <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="392,0,0,0" VerticalAlignment="Top"/>
 

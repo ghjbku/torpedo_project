@@ -34,7 +34,9 @@ namespace torpedo_project
         private void InitGame(string playername)
         {
             player1 = new GameObjects.Player(playername);
+            player1.RoundsNo = 0;
             aiplayer = new GameObjects.AiPlayer();
+            aiplayer.RoundsNo = 0;
             AiShipPlacement(aiplayer);
             UpdateRemainingShips("ai");
         }
@@ -593,6 +595,8 @@ namespace torpedo_project
             {
                 CreateShipOnPosition(old_image.Name, clickedArea.Name, player1, false);
             }
+            player1.RoundsNo++;
+            //number_of_rounds.Content = player1.RoundsNo.ToString();
         }
 
         private void CheckIfAllShipCoordsHit()
@@ -1090,6 +1094,7 @@ namespace torpedo_project
 
         }
 
+        //TO DO quit from the game if someone wins (or go to highscores)
         private void CheckPlayerWins()
         {
             if (aiplayer.DestroyedShips.Count == 5)
@@ -1099,6 +1104,7 @@ namespace torpedo_project
             }
         }
 
+        //TO DO quit from the game if someone wins (or go to highscores)
         private void CheckAiWins()
         {
             if (player1.DestroyedShips.Count == 5)
@@ -1106,6 +1112,12 @@ namespace torpedo_project
                 string wintext = "Ai win!";
                 player_remaining_ships.Content = wintext;
             }
+        }
+
+        //TO DO check ai turns
+        private void AiTurns()
+        {
+            aiplayer.RoundsNo++;
         }
     }
 }
