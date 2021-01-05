@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -1119,6 +1120,7 @@ namespace torpedo_project
             //aiplayer.RoundsNo++;
         }
 
+        //This is for testing
         private void TestingLabel(string output) {
             number_of_rounds.Content = output;
         }
@@ -1134,16 +1136,17 @@ namespace torpedo_project
             AiClickButton(Coord1 + dice.ToString());
         }
         
+        //in progress
         private void AiClickButton(string coord_tip)
         {
             Button clicked_button = (Button)PlayerShipTable.FindName(coord_tip);
-            //clicked_button.Click += new EventHandler(buttons_Click);
-            //this.Controls.Add(clicked_button);
+            //clicked_button.Click += new EventHandler(this.clicked_button);
         }
-        /*
+        
+        //in progress
         private void buttons_Click(object sender, EventArgs e)
         {
-            Button clicked_button = Button(sender);
-        }*/
+            //Button clicked_button = (Button)sender;
+        }
     }
 }
