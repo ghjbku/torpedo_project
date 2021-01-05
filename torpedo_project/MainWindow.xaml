@@ -31,7 +31,7 @@
     </Window.Resources>
     <Canvas x:Name="game_window">
 		<Label Content="Round:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0"/>
-		<!--<Label x:Name="number_of_rounds" Content="0" HorizontalAlignment="Left" VerticalAlignmebt="Top" Margin="25,0,0,0"/>-->
+		<Label x:Name="number_of_rounds" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,0,0,0"/>
         <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,0,0,0"/>
         <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="392,0,0,0" VerticalAlignment="Top"/>
 

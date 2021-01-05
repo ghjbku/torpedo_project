@@ -29,6 +29,7 @@ namespace torpedo_project.GameObjects
         public void fillUpDestroyedShips(Ship ship)
         {
             DestroyedShips.Add(ship);
+            RemainingShips.Remove(ship);
         }
 
         public void updatePlayerHits(string coord)

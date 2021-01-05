@@ -582,7 +582,7 @@ namespace torpedo_project
                         {
                             clickedArea.Content = (Image)FindResource("ShipHitLeftBack");
                         }
-                       
+                        
                     }
                     else
                     {
@@ -595,8 +595,7 @@ namespace torpedo_project
             {
                 CreateShipOnPosition(old_image.Name, clickedArea.Name, player1, false);
             }
-            player1.RoundsNo++;
-            //number_of_rounds.Content = player1.RoundsNo.ToString();
+            AiRandomCoord();
         }
 
         private void CheckIfAllShipCoordsHit()
@@ -1117,7 +1116,34 @@ namespace torpedo_project
         //TO DO check ai turns
         private void AiTurns()
         {
-            aiplayer.RoundsNo++;
+            //aiplayer.RoundsNo++;
         }
+
+        private void TestingLabel(string output) {
+            number_of_rounds.Content = output;
+        }
+
+        private void AiRandomCoord()
+        {
+            const string range = "ABCDEFGHIJ";
+            System.Random rnd = new System.Random();
+
+            int dice = rnd.Next(1, 11);
+            string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+            TestingLabel(Coord1 + dice.ToString()); 
+            AiClickButton(Coord1 + dice.ToString());
+        }
+        
+        private void AiClickButton(string coord_tip)
+        {
+            Button clicked_button = (Button)PlayerShipTable.FindName(coord_tip);
+            //clicked_button.Click += new EventHandler(buttons_Click);
+            //this.Controls.Add(clicked_button);
+        }
+        /*
+        private void buttons_Click(object sender, EventArgs e)
+        {
+            Button clicked_button = Button(sender);
+        }*/
     }
 }
