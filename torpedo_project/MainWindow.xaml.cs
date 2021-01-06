@@ -1051,7 +1051,8 @@ namespace torpedo_project
         {
             boat_image = (Image)sender;
 
-            if (player1.RemainingShips.Count < 5) {
+            if (player1.RemainingShips.Count < 5)
+            {
                 //if the boat is already being in "movement" mode
                 if (IsPlacementEventStarted)
                 {
@@ -1078,6 +1079,13 @@ namespace torpedo_project
                         rotated = false;
                     }
                 }
+            }
+            else {
+                PatrolBoat.Visibility = Visibility.Hidden;
+                Submarine.Visibility = Visibility.Hidden;
+                Destroyer.Visibility = Visibility.Hidden;
+                Battleship.Visibility = Visibility.Hidden;
+                Carrier.Visibility = Visibility.Hidden;
             }
         }
 
