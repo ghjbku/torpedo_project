@@ -2,7 +2,7 @@
 
 **Progress so far:**
 
-![](https://i.gyazo.com/55d813abc193c04c68bf1de6d3155606.gif)
+![](https://cdn.discordapp.com/attachments/787775391291932686/796380294570573834/torpedo_gif.gif)
 
 ## Requirements::
 
@@ -22,7 +22,7 @@
             - UNIT tesztet írni a logikához (randomhoz nem muszáj)
 - #### Játékmenet
     - Belépéskor kérjen nevet, majd ahhoz mentse az eredményeket :heavy_check_mark: 
-    - Eredményjelző :x:
+    - Eredményjelző :heavy_check_mark: 
         - Körök száma :heavy_check_mark: 
         - Saját találatok :heavy_check_mark: 
         - Ellenfél találatai :heavy_check_mark: 
