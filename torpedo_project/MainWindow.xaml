@@ -32,7 +32,8 @@
     <Canvas x:Name="game_window">
         <Label Content="Round:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0"/>
         <Label x:Name="number_of_rounds" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,0,0,0"/>
-        <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,0,0,0"/>
+        <Label Content="Player name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,0,0,0"/>
+        <Label x:Name="turn_indicator" Content="place your boats!" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="349" Canvas.Top="129"/>
         <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="392,0,0,0" VerticalAlignment="Top"/>
 
         <Grid x:Name="PlayerShipTable" Canvas.Left="10" Canvas.Top="54" Width="288" Height="280">

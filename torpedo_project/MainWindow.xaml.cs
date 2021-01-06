@@ -152,6 +152,15 @@ namespace torpedo_project
             return false;
         }
 
+        private void StartGameAfterPlacement() {
+            PatrolBoat.Visibility = Visibility.Hidden;
+            Submarine.Visibility = Visibility.Hidden;
+            Destroyer.Visibility = Visibility.Hidden;
+            Battleship.Visibility = Visibility.Hidden;
+            Carrier.Visibility = Visibility.Hidden;
+            turn_indicator.Content = "your turn!";
+        }
+
         private bool CoordsEqual(string coord, string shipCoords)
         {
             if (coord.Equals(shipCoords))
@@ -706,6 +715,10 @@ namespace torpedo_project
                 UpdateRemainingShips(player.PlayerName);
             }
 
+            if (player1.RemainingShips.Count == 5) {
+                StartGameAfterPlacement();
+            }
+
             old_image = null;
         }
 
@@ -1051,8 +1064,6 @@ namespace torpedo_project
         {
             boat_image = (Image)sender;
 
-            if (player1.RemainingShips.Count < 5)
-            {
                 //if the boat is already being in "movement" mode
                 if (IsPlacementEventStarted)
                 {
@@ -1079,14 +1090,6 @@ namespace torpedo_project
                         rotated = false;
                     }
                 }
-            }
-            else {
-                PatrolBoat.Visibility = Visibility.Hidden;
-                Submarine.Visibility = Visibility.Hidden;
-                Destroyer.Visibility = Visibility.Hidden;
-                Battleship.Visibility = Visibility.Hidden;
-                Carrier.Visibility = Visibility.Hidden;
-            }
         }
 
         private void boat_ChangeIconPosition(object sender, System.Windows.Input.MouseEventArgs e)
