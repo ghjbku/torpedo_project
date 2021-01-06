@@ -16,10 +16,12 @@ namespace torpedo_project
         private Image boat_image, old_image;
         private string partHit;
         private GameObjects.Ship lastShipHit;
+        private System.Collections.Generic.List<string> turn_possible_content;
 
         public MainWindow(string name, bool isai)
         {
             InitializeComponent();
+            turn_possible_content = new System.Collections.Generic.List<string>();
             player_name_test_label.Content = name;
             old_image = null;
             partHit = "";
@@ -29,10 +31,16 @@ namespace torpedo_project
 
         private void InitGame(string playername)
         {
-            player1 = new GameObjects.Player(playername);
-            player1.RoundsNo = 0;
-            aiplayer = new GameObjects.AiPlayer();
-            aiplayer.RoundsNo = 0;
+            turn_possible_content.Add("Your turn!");
+            turn_possible_content.Add("AI turn!");
+            player1 = new GameObjects.Player(playername)
+            {
+                RoundsNo = 0
+            };
+            aiplayer = new GameObjects.AiPlayer
+            {
+                RoundsNo = 0
+            };
             AiShipPlacement(aiplayer);
             UpdateRemainingShips("ai");
         }
@@ -42,7 +50,7 @@ namespace torpedo_project
         private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
         {
             const string range = "ABCDEFGHIJ";
-            System.Random rnd = new System.Random();
+            Random rnd = new System.Random();
 
             do
             {
@@ -158,7 +166,10 @@ namespace torpedo_project
             Destroyer.Visibility = Visibility.Hidden;
             Battleship.Visibility = Visibility.Hidden;
             Carrier.Visibility = Visibility.Hidden;
-            turn_indicator.Content = "your turn!";
+
+           string turn_indicator_content = turn_possible_content[new Random().Next(0, turn_possible_content.Count)];
+
+            turn_indicator.Content = turn_indicator_content;
         }
 
         private bool CoordsEqual(string coord, string shipCoords)
@@ -1078,7 +1089,6 @@ namespace torpedo_project
                         Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 35));
                         Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
                     }
-
                 }
                 else
                 {
