@@ -17,6 +17,7 @@ namespace torpedo_project
         private string partHit;
         private GameObjects.Ship lastShipHit;
         private System.Collections.Generic.List<string> turn_possible_content;
+        private short whoseturn;
 
         public MainWindow(string name, bool isai)
         {
@@ -167,9 +168,9 @@ namespace torpedo_project
             Battleship.Visibility = Visibility.Hidden;
             Carrier.Visibility = Visibility.Hidden;
 
-           string turn_indicator_content = turn_possible_content[new Random().Next(0, turn_possible_content.Count)];
+            whoseturn = (short)new Random().Next(0, turn_possible_content.Count);
+            turn_indicator.Content = turn_possible_content[whoseturn];
 
-            turn_indicator.Content = turn_indicator_content;
         }
 
         private void WhichPartIsHit(string clickedButtonCoord, GameObjects.Ship ship, int i, int HowLong)
@@ -830,6 +831,7 @@ namespace torpedo_project
         private void AiTurns()
         {
             //aiplayer.RoundsNo++;
+            turn_indicator.Content = turn_possible_content[0];
         }
 
         //This is for testing
