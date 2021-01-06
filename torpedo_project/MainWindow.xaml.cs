@@ -16,11 +16,6 @@ namespace torpedo_project
         private Image boat_image, old_image;
         private string partHit;
         private GameObjects.Ship lastShipHit;
-        public MainWindow()
-        {
-            InitializeComponent();
-            InitGame("player");
-        }
 
         public MainWindow(string name, bool isai)
         {
@@ -634,6 +629,7 @@ namespace torpedo_project
         }
 
         private void UpdateRemainingShips(string whichplayer) {
+            NumberofHits.Content = player1.PlayerHits.Count.ToString();
             if (player1.RemainingShips.Count <= 5){
                 if (whichplayer.Equals(player1.PlayerName)) {
                     player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
@@ -1101,6 +1097,7 @@ namespace torpedo_project
             {
                 string wintext = "You win";
                 enemy_remaining_ships.Content = wintext;
+                CreateHSWindowAndLoadIt(player1, wintext);
             }
         }
 
@@ -1111,7 +1108,14 @@ namespace torpedo_project
             {
                 string wintext = "Ai win!";
                 player_remaining_ships.Content = wintext;
+                CreateHSWindowAndLoadIt(player1, wintext);
             }
+        }
+
+        private void CreateHSWindowAndLoadIt(PlayerEntity player,string wintext) {
+            HighscoresWindow hs = new HighscoresWindow(wintext,player.PlayerName,  player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString());
+            this.Visibility = Visibility.Hidden;
+            hs.Show();
         }
 
         //TO DO check ai turns

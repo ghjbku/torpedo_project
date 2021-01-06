@@ -30,8 +30,8 @@
 
     </Window.Resources>
     <Canvas x:Name="game_window">
-		<Label Content="Round:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0"/>
-		<Label x:Name="number_of_rounds" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,0,0,0"/>
+        <Label Content="Round:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0"/>
+        <Label x:Name="number_of_rounds" Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,0,0,0"/>
         <Label Content="Player1 name:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,0,0,0"/>
         <Label x:Name="player_name_test_label" Content="namehere" HorizontalAlignment="Left" Margin="392,0,0,0" VerticalAlignment="Top"/>
 
@@ -376,8 +376,9 @@
         <Label x:Name="enemy_remaining_ships" Content="0" Height="26" Canvas.Left="675" Canvas.Top="341" Width="50"/>
         <Label Content="Your Remaining Ships:" Canvas.Left="497" Canvas.Top="372"/>
         <Label x:Name="player_remaining_ships" Content="0" Height="26" Canvas.Left="630" Canvas.Top="372" Width="50"/>
-		<Label Content="Your hits:" Canvas.Left="497" Canvas.Top="403"/>
-		<Label x:Name="NumberofHits" Content="0" Height="26" Canvas.Left="610" Canvas.Top="403" Width="23"/>
-
+        <Label Content="Your hits:" Canvas.Left="497" Canvas.Top="403"/>
+        <Label Content="Enemy hits:" Canvas.Left="605" Canvas.Top="403"/>
+        <Label x:Name="NumberofHits" Content="0" Height="26" Canvas.Left="561" Canvas.Top="403" Width="23"/>
+        <Label x:Name="NumberofHitsEnemy" Content="0" Height="26" Canvas.Left="680" Canvas.Top="403" Width="23"/>
     </Canvas>
 </Window>
