@@ -658,9 +658,9 @@ namespace torpedo_project
 
             if (!aiship)
             {
-                Canvas.SetLeft(boat_image, 0);
-                Canvas.SetTop(boat_image, 0);
-                boat_image.RenderTransform = GetBasicScaling(boat_image, false);
+                    Canvas.SetLeft(boat_image, 0);
+                    Canvas.SetTop(boat_image, 0);
+                    boat_image.RenderTransform = GetBasicScaling(boat_image, false);
             }
 
             createdShip = new GameObjects.Ship(startCoord[0], int.Parse(startCoord[1]), endCoord[0], int.Parse(endCoord[1]), ship_name);
@@ -1051,30 +1051,32 @@ namespace torpedo_project
         {
             boat_image = (Image)sender;
 
-            //if the boat is already being in "movement" mode
-            if (IsPlacementEventStarted)
-            {
-                IsPlacementEventStarted = false;
-                if (!rotated)
+            if (player1.RemainingShips.Count < 5) {
+                //if the boat is already being in "movement" mode
+                if (IsPlacementEventStarted)
                 {
-                    Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 20));
-                    Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 15));
+                    IsPlacementEventStarted = false;
+                    if (!rotated)
+                    {
+                        Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 20));
+                        Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 15));
+                    }
+                    else
+                    {
+                        Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 35));
+                        Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
+                    }
+
                 }
                 else
                 {
-                    Canvas.SetLeft(boat_image, e.GetPosition(this).X - (boat_image.Margin.Left + 35));
-                    Canvas.SetTop(boat_image, e.GetPosition(this).Y - (boat_image.Margin.Top + 5));
-                }
-
-            }
-            else
-            {
-                IsPlacementEventStarted = true;
-                //if you click on another ship to "pick it up"
-                if (!boat_image.Equals(old_image))
-                {
-                    old_image = boat_image;
-                    rotated = false;
+                    IsPlacementEventStarted = true;
+                    //if you click on another ship to "pick it up"
+                    if (!boat_image.Equals(old_image))
+                    {
+                        old_image = boat_image;
+                        rotated = false;
+                    }
                 }
             }
         }
@@ -1097,7 +1099,7 @@ namespace torpedo_project
             {
                 string wintext = "You win";
                 enemy_remaining_ships.Content = wintext;
-                CreateHSWindowAndLoadIt(player1, wintext);
+                CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
             }
         }
 
@@ -1108,12 +1110,12 @@ namespace torpedo_project
             {
                 string wintext = "Ai win!";
                 player_remaining_ships.Content = wintext;
-                CreateHSWindowAndLoadIt(player1, wintext);
+                CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
             }
         }
 
-        private void CreateHSWindowAndLoadIt(PlayerEntity player,string wintext) {
-            HighscoresWindow hs = new HighscoresWindow(wintext,player.PlayerName,  player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString());
+        private void CreateHSWindowAndLoadIt(PlayerEntity player,string player2,string wintext) {
+            HighscoresWindow hs = new HighscoresWindow(wintext,player.PlayerName,player2,player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString());
             this.Visibility = Visibility.Hidden;
             hs.Show();
         }
