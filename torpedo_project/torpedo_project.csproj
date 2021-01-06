@@ -74,6 +74,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameObjects\Functions.cs" />
     <Compile Include="HighscoresWindow.xaml.cs">
       <DependentUpon>HighscoresWindow.xaml</DependentUpon>
     </Compile>

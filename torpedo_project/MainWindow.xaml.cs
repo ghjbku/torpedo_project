@@ -42,7 +42,7 @@ namespace torpedo_project
                 RoundsNo = 0
             };
             AiShipPlacement(aiplayer);
-            UpdateRemainingShips("ai");
+            GameObjects.Functions.UpdateRemainingShips("ai",NumberofHits,player_remaining_ships,enemy_remaining_ships,aiplayer,player1);
         }
         private void TestingLabelOutput(string output) {
             player_name_test_label.Content = output;
@@ -50,7 +50,7 @@ namespace torpedo_project
         private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
         {
             const string range = "ABCDEFGHIJ";
-            Random rnd = new System.Random();
+            Random rnd = new Random();
 
             do
             {
@@ -105,8 +105,8 @@ namespace torpedo_project
                 switch (ship.getCoords().Length)
                 {
                     case 4:
-                        if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                                CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
+                        if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                                GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                         {
                             WhichPartIsHit(clickedArea, ship, i, 4);
                             lastShipHit = ship;
@@ -116,9 +116,9 @@ namespace torpedo_project
                         break;
 
                     case 6:
-                        if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
+                        if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
                             )
                         {
                             WhichPartIsHit(clickedArea, ship, i, 6);
@@ -129,10 +129,10 @@ namespace torpedo_project
                         break;
 
                     case 8:
-                        if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
+                        if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
                             )
                         {
                             WhichPartIsHit(clickedArea, ship, i, 8);
@@ -142,11 +142,11 @@ namespace torpedo_project
                         else i++;
                         break;
                     case 10:
-                        if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]) ||
-                            CoordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
+                        if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]) ||
+                            GameObjects.Functions.CoordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
                             )
                         {
                             WhichPartIsHit(clickedArea, ship, i, 10);
@@ -172,21 +172,12 @@ namespace torpedo_project
             turn_indicator.Content = turn_indicator_content;
         }
 
-        private bool CoordsEqual(string coord, string shipCoords)
-        {
-            if (coord.Equals(shipCoords))
-            {
-                return true;
-            }
-            else return false;
-        }
-
         private void WhichPartIsHit(string clickedButtonCoord, GameObjects.Ship ship, int i, int HowLong)
         {
             char[] arrayForTrim = { 't', '_' };
             var name = clickedButtonCoord.TrimEnd(arrayForTrim);
             ship.ShipPartsHit += 1;
-            if (CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]))
+            if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]))
             {
                 if (ship.rotated)
                 {
@@ -196,7 +187,7 @@ namespace torpedo_project
             }
             if (HowLong == 4)
             {
-                if (CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
+                if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                 {
                     if (ship.rotated)
                     {
@@ -207,7 +198,7 @@ namespace torpedo_project
             }
             else if (HowLong == 6)
             {
-                if (CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
+                if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                 {
                     if (ship.rotated)
                     {
@@ -215,7 +206,7 @@ namespace torpedo_project
                     }
                     else partHit = "ShipHitMid";
                 }
-                else if (CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]))
+                else if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]))
                 {
                     if (ship.rotated)
                     {
@@ -226,8 +217,8 @@ namespace torpedo_project
             }
             else if (HowLong == 8)
             {
-                if (CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                    CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
+                if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                    GameObjects.Functions.CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
                    )
                 {
                     if (ship.rotated)
@@ -236,7 +227,7 @@ namespace torpedo_project
                     }
                     else partHit = "ShipHitMid";
                 }
-                else if (CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]))
+                else if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1]))
                 {
                     if (ship.rotated)
                     {
@@ -247,9 +238,9 @@ namespace torpedo_project
             }
             else if (HowLong == 10)
             {
-                if (CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
-                   CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
-                   CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
+                if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]) ||
+                   GameObjects.Functions.CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1]) ||
+                   GameObjects.Functions.CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
                   )
                 {
                     if (ship.rotated)
@@ -258,7 +249,7 @@ namespace torpedo_project
                     }
                     else partHit = "ShipHitMid";
                 }
-                else if (CoordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1]))
+                else if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1]))
                 {
                     if (ship.rotated)
                     {
@@ -569,7 +560,10 @@ namespace torpedo_project
                             aiplayer.updateEnemyHits(clickedArea.Name);
                             
                         }
-                        CheckIfAllShipCoordsHit();
+                        GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit,aiplayer);
+                        GameObjects.Functions.UpdateRemainingShips("ai", NumberofHits, player_remaining_ships, enemy_remaining_ships, aiplayer, player1);
+                        CheckPlayerWins();
+                        CheckAiWins();
 
                         TestingLabelOutput("you have hit " + clickedArea.Name + "," + partHit);
 
@@ -614,51 +608,6 @@ namespace torpedo_project
             AiRandomCoord();
         }
 
-        private void CheckIfAllShipCoordsHit()
-        {
-            if (lastShipHit.shipType.Equals("PatrolBoat"))
-            {
-                if (lastShipHit.ShipPartsHit == 2) {
-                    aiplayer.fillUpDestroyedShips(lastShipHit); 
-                }
-            }
-            else if (lastShipHit.shipType.Equals("Submarine") || lastShipHit.shipType.Equals("Destroyer"))
-            {
-                if (lastShipHit.ShipPartsHit == 3)
-                {
-                    aiplayer.fillUpDestroyedShips(lastShipHit);
-                }
-            }
-            else if (lastShipHit.shipType.Equals("Battleship"))
-            {
-                if (lastShipHit.ShipPartsHit == 4)
-                {
-                    aiplayer.fillUpDestroyedShips(lastShipHit);
-                }
-            }
-            else if (lastShipHit.shipType.Equals("Carrier"))
-            {
-                if (lastShipHit.ShipPartsHit == 5)
-                {
-                    aiplayer.fillUpDestroyedShips(lastShipHit);
-                }
-            }
-            UpdateRemainingShips("ai");
-            CheckPlayerWins();
-            CheckAiWins();
-        }
-
-        private void UpdateRemainingShips(string whichplayer) {
-            NumberofHits.Content = player1.PlayerHits.Count.ToString();
-            if (player1.RemainingShips.Count <= 5){
-                if (whichplayer.Equals(player1.PlayerName)) {
-                    player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
-                }
-                else {
-                    enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
-                }
-            }
-        }
         private void CreateShipOnPosition(string ship_name, string m_position, PlayerEntity player, bool aiship)
         {
             string[] resultAlphabet = System.Text.RegularExpressions.Regex.Split(m_position, @"\d+");
@@ -666,8 +615,8 @@ namespace torpedo_project
             string[] startCoord, endCoord;
             GameObjects.Ship createdShip;
 
-            startCoord = getStartCoord(resultAlphabet[0], resultNumber[1], ship_name);
-            endCoord = getEndCoord(resultAlphabet[0], resultNumber[1], ship_name);
+            startCoord = GameObjects.Functions.getStartCoord(resultAlphabet[0], resultNumber[1], ship_name,rotated);
+            endCoord = GameObjects.Functions.getEndCoord(resultAlphabet[0], resultNumber[1], ship_name,rotated);
 
             if (startCoord[0].Equals("asd") || endCoord[0].Equals("asd"))
             {
@@ -723,7 +672,7 @@ namespace torpedo_project
             if (!aiship)
             {
                 DrawBoat(createdShip, false);
-                UpdateRemainingShips(player.PlayerName);
+                GameObjects.Functions.UpdateRemainingShips(player.PlayerName, NumberofHits, player_remaining_ships, enemy_remaining_ships, aiplayer, player1);
             }
 
             if (player1.RemainingShips.Count == 5) {
@@ -731,270 +680,6 @@ namespace torpedo_project
             }
 
             old_image = null;
-        }
-
-        private string[] getStartCoord(string middlecoord_x, string middlecoord_y, string shipname)
-        {
-            if (shipname.Equals("PatrolBoat"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "B":
-                            return ("B" + "," + middlecoord_y).Split(',');
-                        case "C":
-                            return ("C" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("D" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("G" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("H" + "," + middlecoord_y).Split(',');
-                        case "I":
-                            return ("I" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    return (middlecoord_x + "," + middlecoord_y).Split(',');
-                }
-            }
-            else if (shipname.Equals("Submarine") || shipname.Equals("Destroyer"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "B":
-                            return ("A" + "," + middlecoord_y).Split(',');
-                        case "C":
-                            return ("B" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("C" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("D" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("G" + "," + middlecoord_y).Split(',');
-                        case "I":
-                            return ("H" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    if (int.Parse(middlecoord_y) > 1)
-                    {
-                        int starty = int.Parse(middlecoord_y) - 1;
-                        return (middlecoord_x + "," + starty.ToString()).Split(',');
-                    }
-                    else return "asd,1".Split(',');
-                }
-            }
-            else if (shipname.Equals("Battleship"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "B":
-                            return ("A" + "," + middlecoord_y).Split(',');
-                        case "C":
-                            return ("B" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("C" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("D" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("G" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    if (int.Parse(middlecoord_y) > 1)
-                    {
-                        int starty = int.Parse(middlecoord_y) - 1;
-                        return (middlecoord_x + "," + starty.ToString()).Split(',');
-                    }
-                    else return "asd,1".Split(',');
-                }
-            }
-            else if (shipname.Equals("Carrier"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "C":
-                            return ("A" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("B" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("C" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("D" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    if (int.Parse(middlecoord_y) > 2)
-                    {
-                        int starty = int.Parse(middlecoord_y) - 2;
-                        return (middlecoord_x + "," + starty.ToString()).Split(',');
-                    }
-                    else return "asd,1".Split(',');
-                }
-            }
-            return "asd,1".Split(',');
-        }
-        private string[] getEndCoord(string middlecoord_x, string middlecoord_y, string shipname)
-        {
-            if (shipname.Equals("PatrolBoat"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "B":
-                            return ("C" + "," + middlecoord_y).Split(',');
-                        case "C":
-                            return ("D" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("G" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("H" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("I" + "," + middlecoord_y).Split(',');
-                        case "I":
-                            return ("J" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    if (int.Parse(middlecoord_y) < 10)
-                    {
-                        int starty = int.Parse(middlecoord_y) + 1;
-                        return (middlecoord_x + "," + starty.ToString()).Split(',');
-                    }
-                    else return "asd,1".Split(',');
-                }
-            }
-            else if (shipname.Equals("Submarine") || shipname.Equals("Destroyer"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "B":
-                            return ("C" + "," + middlecoord_y).Split(',');
-                        case "C":
-                            return ("D" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("G" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("H" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("I" + "," + middlecoord_y).Split(',');
-                        case "I":
-                            return ("J" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    if (int.Parse(middlecoord_y) < 10)
-                    {
-                        int starty = int.Parse(middlecoord_y) + 1;
-                        return (middlecoord_x + "," + starty.ToString()).Split(',');
-                    }
-                    else return "asd,1".Split(',');
-                }
-            }
-            else if (shipname.Equals("Battleship"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "B":
-                            return ("D" + "," + middlecoord_y).Split(',');
-                        case "C":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("G" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("H" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("I" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("J" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    if (int.Parse(middlecoord_y) < 9)
-                    {
-                        int starty = int.Parse(middlecoord_y) + 2;
-                        return (middlecoord_x + "," + starty.ToString()).Split(',');
-                    }
-                    else return "asd,1".Split(',');
-                }
-            }
-            else if (shipname.Equals("Carrier"))
-            {
-                if (!rotated)
-                {
-                    switch (middlecoord_x)
-                    {
-                        case "C":
-                            return ("E" + "," + middlecoord_y).Split(',');
-                        case "D":
-                            return ("F" + "," + middlecoord_y).Split(',');
-                        case "E":
-                            return ("G" + "," + middlecoord_y).Split(',');
-                        case "F":
-                            return ("H" + "," + middlecoord_y).Split(',');
-                        case "G":
-                            return ("I" + "," + middlecoord_y).Split(',');
-                        case "H":
-                            return ("J" + "," + middlecoord_y).Split(',');
-                    }
-                }
-                else
-                {
-                    if (int.Parse(middlecoord_y) < 9)
-                    {
-                        int starty = int.Parse(middlecoord_y) + 2;
-                        return (middlecoord_x + "," + starty.ToString()).Split(',');
-                    }
-                    else return "asd,1".Split(',');
-                }
-            }
-            return "asd,1".Split(',');
         }
 
         //returns the scaling of the ship 
