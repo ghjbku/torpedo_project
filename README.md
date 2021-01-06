@@ -15,7 +15,7 @@
 ## Követelmények
 - #### Egymás ellen lehessen játszani ugyanazon a gépen, ugyanabban az alkalmazásban :x:
 - #### AI ellen lehessen játszani
-    - Kezdő játékos véletlenszerűen választva :x:
+    - Kezdő játékos véletlenszerűen választva :heavy_check_mark: 
     - AI elemezési sorrend :x:
         1. Random találgat
         2. Ha van találat akkor már a mellette lévő mezőket lövi
