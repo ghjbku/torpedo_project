@@ -2,7 +2,7 @@
 
 **Progress so far:**
 
-![](https://cdn.discordapp.com/attachments/787775391291932686/796380294570573834/torpedo_gif.gif)
+![](https://cdn.discordapp.com/attachments/780127130003701790/798903063779737630/torpedo_gif.gif)
 
 ## Requirements::
 
