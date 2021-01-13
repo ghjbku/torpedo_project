@@ -28,7 +28,7 @@
         - Ellenfél találatai :heavy_check_mark: 
         - Milyen hajók vannak még és melyek lettek elsüllyesztve :heavy_check_mark: 
         - Billentyűkombinációra mutassa meg az AI hajóit (Csak AI ellen működjön) :heavy_check_mark: 
-- #### Játék vége :x:
+- #### Játék vége :heavy_check_mark: 
     - Tárolja le az eredményeket :heavy_check_mark: 
         - Adatok tárolása: JSON, XML vagy adatbázis :heavy_check_mark: 
     - Mindenkori eredménylista beolvasva tárolt adatokból (nyert - vesztett) :heavy_check_mark: 
