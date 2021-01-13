@@ -170,7 +170,6 @@ namespace torpedo_project
 
             whoseturn = (short)new Random().Next(0, turn_possible_content.Count);
             turn_indicator.Content = turn_possible_content[whoseturn];
-
         }
 
         private void WhichPartIsHit(string clickedButtonCoord, GameObjects.Ship ship, int i, int HowLong)
@@ -822,7 +821,7 @@ namespace torpedo_project
         }
 
         private void CreateHSWindowAndLoadIt(PlayerEntity player,string player2,string wintext) {
-            HighscoresWindow hs = new HighscoresWindow(wintext,player.PlayerName,player2,player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString());
+            HighscoresWindow hs = new HighscoresWindow(wintext,player,player.PlayerName,player2,player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString());
             this.Visibility = Visibility.Hidden;
             hs.Show();
         }

@@ -75,6 +75,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="GameObjects\Functions.cs" />
+    <Compile Include="GameObjects\XmlHelper.cs" />
     <Compile Include="HighscoresWindow.xaml.cs">
       <DependentUpon>HighscoresWindow.xaml</DependentUpon>
     </Compile>

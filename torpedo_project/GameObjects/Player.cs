@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace torpedo_project.GameObjects
 {
-    class Player : PlayerEntity
+    public class Player : PlayerEntity
     {
         public string PlayerName { get; set; }
         public int RoundsNo { get; set; }
@@ -14,6 +14,14 @@ namespace torpedo_project.GameObjects
         public List<string> EnemyHits { get; set; }
         public List<Ship> RemainingShips { set; get; }
         public List<Ship> DestroyedShips { set; get; }
+
+        public Player() {
+            PlayerName = "player";
+            RemainingShips = new List<Ship>();
+            DestroyedShips = new List<Ship>();
+            EnemyHits = new List<string>();
+            PlayerHits = new List<string>();
+        }
 
         public Player(string playerName) {
             PlayerName = playerName;

@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="HighscoresWindow" Height="450" Width="800">
     <Grid>
-        <Label x:Name="winText" Content="wintext" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="229" Height="27"/>
-        <Label x:Name="name" Content="playername" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="229" Height="27"/>
+        <Label x:Name="winText" Content="wintext" HorizontalAlignment="Center" Margin="161,10,10,0" VerticalAlignment="Top" Width="621" Height="27"/>
+        <Label x:Name="name" Content="playername" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="146" Height="27"/>
         <Label x:Name="destroyed" Content="destroyed ships:" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="229" Height="27"/>
         <Label x:Name="remaining" Content="remaining ships:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="229" Height="27"/>
         <Label x:Name="pHits" Content="player hits:" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Width="229" Height="27"/>
         <Label x:Name="eHits" Content="enemy hits:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Width="229" Height="27"/>
         <Label x:Name="rounds" Content="number of rounds:" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Width="229" Height="27"/>
+        <Button Content="Back to Title Menu" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click"/>
+
     </Grid>
 </Window>

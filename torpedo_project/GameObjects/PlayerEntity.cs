@@ -2,7 +2,7 @@
 
 namespace torpedo_project
 {
-    interface PlayerEntity
+    public interface PlayerEntity
     {
         string PlayerName { set; get; }
         int RoundsNo { set; get; }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace torpedo_project.GameObjects
+﻿namespace torpedo_project.GameObjects
 {
-    class Ship
+    public class Ship
     {
         private string x_start { get; set; }
         private int y_start { get; set; }
@@ -29,6 +23,8 @@ namespace torpedo_project.GameObjects
                 I = 'I',
                 J = 'J'
         }
+
+        public Ship() { }
 
         public Ship(string x_start, int y_start, string x_end, int y_end,string shipType) {
             this.x_start = x_start;
