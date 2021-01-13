@@ -18,8 +18,9 @@ namespace torpedo_project
         private GameObjects.Ship lastShipHit;
         private System.Collections.Generic.List<string> turn_possible_content;
         private short whoseturn;
+        private string PathForXml;
 
-        public MainWindow(string name, bool isai)
+        public MainWindow(string name, bool isai,string pathForXml)
         {
             InitializeComponent();
             turn_possible_content = new System.Collections.Generic.List<string>();
@@ -27,6 +28,7 @@ namespace torpedo_project
             old_image = null;
             partHit = "";
             isVsAi = isai;
+            PathForXml = pathForXml;
             InitGame(name);
         }
 
@@ -821,7 +823,7 @@ namespace torpedo_project
         }
 
         private void CreateHSWindowAndLoadIt(PlayerEntity player,string player2,string wintext) {
-            HighscoresWindow hs = new HighscoresWindow(wintext,player,player.PlayerName,player2,player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString());
+            HighscoresWindow hs = new HighscoresWindow(wintext,player,player.PlayerName,player2,player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString(),PathForXml);
             this.Visibility = Visibility.Hidden;
             hs.Show();
         }
