@@ -39,7 +39,6 @@ namespace torpedo_project
 
         private void SaveDataToXml(PlayerEntity player,string path) {
             GameObjects.XmlHelper.ToXmlFile(player, path);
-            winText.Content = path;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

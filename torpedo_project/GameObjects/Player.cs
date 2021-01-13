@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace torpedo_project.GameObjects
 {
     public class Player : PlayerEntity
     {
         public string PlayerName { get; set; }
+        public bool won { set; get; }
         public int RoundsNo { get; set; }
         public List<string> PlayerHits { get; set; }
         public List<string> EnemyHits { get; set; }

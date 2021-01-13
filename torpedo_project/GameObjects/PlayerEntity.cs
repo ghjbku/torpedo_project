@@ -6,6 +6,7 @@ namespace torpedo_project
     {
         string PlayerName { set; get; }
         int RoundsNo { set; get; }
+        bool won { set; get; }
         List<string> PlayerHits { set; get; }
         List<string> EnemyHits { set; get; }
         List<GameObjects.Ship> RemainingShips { set; get; }

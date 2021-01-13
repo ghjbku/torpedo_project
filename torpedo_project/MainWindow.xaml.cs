@@ -807,6 +807,7 @@ namespace torpedo_project
             {
                 string wintext = "You win";
                 enemy_remaining_ships.Content = wintext;
+                player1.won = true;
                 CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
             }
         }
@@ -818,6 +819,7 @@ namespace torpedo_project
             {
                 string wintext = "Ai win!";
                 player_remaining_ships.Content = wintext;
+                player1.won = false;
                 CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
             }
         }

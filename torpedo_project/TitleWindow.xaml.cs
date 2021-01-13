@@ -38,9 +38,16 @@ namespace torpedo_project
 
         private void ClickHighScore(object sender, RoutedEventArgs e)
         {
-            path = Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml";
+            if (player_name_box.Text.Equals(""))
+            {
+                player_name_box.Background = Brushes.Red;
+                return;
+            }
+            else
+            {
+                path = Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml";
 
-                if(!File.Exists(path))
+                if (!File.Exists(path))
                 {
                     error_message.Content = player_name_box.Text + ".xml not found!";
                 }
@@ -52,13 +59,21 @@ namespace torpedo_project
                     {
                         error_message.Content = path;
                     }
-                    else { CreateHSWindowAndLoadIt(player, "ai", "idk"); }
+                    else { CreateHSWindowAndLoadIt(player, "ai", player.won); }
                 }
+            }
 
         }
 
-        private void CreateHSWindowAndLoadIt(PlayerEntity player, string player2, string wintext)
+        private void CreateHSWindowAndLoadIt(PlayerEntity player, string player2, bool win)
         {
+            string wintext;
+            if (win)
+            {
+                wintext = "Player won";
+            }
+            else wintext = "AI won";
+
             HighscoresWindow hs = new HighscoresWindow(wintext, player.PlayerName, player2, player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString());
             this.Visibility = Visibility.Hidden;
             hs.Show();
