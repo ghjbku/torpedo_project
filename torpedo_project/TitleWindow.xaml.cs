@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,6 +11,7 @@ namespace torpedo_project
     /// </summary>
     public partial class TitleWindow : Window
     {
+        private string path;
         public TitleWindow()
         {
             InitializeComponent();
@@ -21,8 +23,9 @@ namespace torpedo_project
             {
                 player_name_box.Background = Brushes.Red;
             }
-            else { 
-                MainWindow main = new MainWindow(player_name_box.Text,!vs_ai_RadioB.IsChecked.Value, Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml");
+            else {
+                path = Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml";
+                MainWindow main = new MainWindow(player_name_box.Text,!vs_ai_RadioB.IsChecked.Value,path);
                 this.Visibility = Visibility.Hidden;
                 main.Show();
             }
@@ -35,22 +38,23 @@ namespace torpedo_project
 
         private void ClickHighScore(object sender, RoutedEventArgs e)
         {
-            try { new System.IO.StreamReader(Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml").Close(); }
-            catch (Exception ex)
-            {
-            if(ex.Message.Equals(null)){
-                    PlayerEntity player = GameObjects.XmlHelper.FromXmlFile<GameObjects.Player>(Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml");
+            path = Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml";
+
+                if(!File.Exists(path))
+                {
+                    error_message.Content = player_name_box.Text + ".xml not found!";
+                }
+                else
+                {
+                    PlayerEntity player = GameObjects.XmlHelper.FromXmlFile<GameObjects.Player>(path);
 
                     if (player.Equals(null))
                     {
-                        error_message.Content = Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml";
+                        error_message.Content = path;
                     }
                     else { CreateHSWindowAndLoadIt(player, "ai", "idk"); }
                 }
-            else {
-                    error_message.Content = player_name_box.Text+".xml not found!";
-                }
-            }
+
         }
 
         private void CreateHSWindowAndLoadIt(PlayerEntity player, string player2, string wintext)
