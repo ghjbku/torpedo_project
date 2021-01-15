@@ -17,7 +17,7 @@ namespace torpedo_project.GameObjects
             }
             else return false;
         }
-        public static string[] getStartCoord(string middlecoord_x, string middlecoord_y, string shipname,bool rotated)
+        public static string[] getStartCoord(string middlecoord_x, string middlecoord_y, string shipname, bool rotated)
         {
             if (shipname.Equals("PatrolBoat"))
             {
@@ -282,7 +282,7 @@ namespace torpedo_project.GameObjects
             return "asd,1".Split(',');
         }
 
-        public static void CheckIfAllShipCoordsHit(Ship lastShipHit, PlayerEntity player,bool ai)
+        public static void CheckIfAllShipCoordsHit(Ship lastShipHit, PlayerEntity player, bool ai)
         {
             if (!ai)
             {
@@ -318,20 +318,20 @@ namespace torpedo_project.GameObjects
 
         }
 
-        public static void UpdateRemainingShips( Label NumberofHits, Label player_remaining_ships, AiPlayer aiplayer, Player player1)
+        public static void UpdateRemainingShips(Label NumberofHits, Label player_remaining_ships, AiPlayer aiplayer, Player player1)
         {
             NumberofHits.Content = aiplayer.PlayerHits.Count.ToString();
             if (player1.RemainingShips.Count <= 5)
             {
-                    player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
+                player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
             }
         }
-        public static void UpdateRemainingShipsForAi( Label NumberofHits,Label enemy_remaining_ships, AiPlayer aiplayer, Player player1)
+        public static void UpdateRemainingShipsForAi(Label NumberofHits, Label enemy_remaining_ships, AiPlayer aiplayer, Player player1)
         {
             NumberofHits.Content = player1.PlayerHits.Count.ToString();
             if (aiplayer.RemainingShips.Count <= 5)
             {
-                    enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
+                enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
             }
         }
 
