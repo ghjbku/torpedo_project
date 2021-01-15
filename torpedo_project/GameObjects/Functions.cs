@@ -321,9 +321,12 @@ namespace torpedo_project.GameObjects
             }
         }
 
-        public static void UpdateRemainingShips(Label NumberofHits, Label player_remaining_ships, AiPlayer aiplayer, Player player1)
+        public static void UpdateRemainingShips(Label NumberofHits, Label player_remaining_ships, AiPlayer aiplayer, Player player1,bool init)
         {
-            NumberofHits.Content = aiplayer.PlayerHits.Count.ToString();
+            if (!init)
+            {
+                NumberofHits.Content = aiplayer.PlayerHits.Count.ToString();
+            }
             if (player1.RemainingShips.Count <= 5)
             {
                 player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
