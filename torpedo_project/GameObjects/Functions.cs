@@ -288,7 +288,52 @@ namespace torpedo_project.GameObjects
                         player.fillUpDestroyedShips(lastShipHit);
                     }
                 }
-                else if (lastShipHit.shipType.Equals("Submarine") || lastShipHit.shipType.Equals("Destroyer"))
+                else if (lastShipHit.shipType.Equals("Submarine"))
+                {
+                    if (lastShipHit.ShipPartsHit == 3)
+                    {
+                        player.fillUpDestroyedShips(lastShipHit);
+                    }
+                }
+                else if (lastShipHit.shipType.Equals("Destroyer"))
+                {
+                    if (lastShipHit.ShipPartsHit == 3)
+                    {
+                        player.fillUpDestroyedShips(lastShipHit);
+                    }
+                }
+                else if (lastShipHit.shipType.Equals("Battleship"))
+                {
+                    if (lastShipHit.ShipPartsHit == 4)
+                    {
+                        player.fillUpDestroyedShips(lastShipHit);
+                    }
+                }
+                else if (lastShipHit.shipType.Equals("Carrier"))
+                {
+                    if (lastShipHit.ShipPartsHit == 5)
+                    {
+                        player.fillUpDestroyedShips(lastShipHit);
+                    }
+                }
+            }
+            else
+            {
+                if (lastShipHit.shipType.Equals("PatrolBoat"))
+                {
+                    if (lastShipHit.ShipPartsHit == 2)
+                    {
+                        player.fillUpDestroyedShips(lastShipHit);
+                    }
+                }
+                else if (lastShipHit.shipType.Equals("Submarine"))
+                {
+                    if (lastShipHit.ShipPartsHit == 3)
+                    {
+                        player.fillUpDestroyedShips(lastShipHit);
+                    }
+                }
+                else if (lastShipHit.shipType.Equals("Destroyer"))
                 {
                     if (lastShipHit.ShipPartsHit == 3)
                     {

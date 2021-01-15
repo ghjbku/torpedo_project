@@ -610,13 +610,13 @@ namespace torpedo_project
                         TestingLabelOutput(clickedArea.Name);
                         clickedArea.Content = (Image)FindResource("NotHit");
                     }
+                    SetTurnData(1);
                 }
             }
             else
             {
                 CreateShipOnPosition(old_image.Name, clickedArea.Name, player1, false);
             }
-            AiRandomCoord();
         }
 
         private void CreateShipOnPosition(string ship_name, string m_position, PlayerEntity player, bool aiship)
@@ -831,7 +831,6 @@ namespace torpedo_project
         private void AiTurns()
         {
             AiRandomCoord();
-            SetTurnData(0);
         }
 
         //This is for testing
@@ -862,14 +861,29 @@ namespace torpedo_project
                     aiplayer.updatePlayerHits(clicked_button.Name);
                     player1.updateEnemyHits(clicked_button.Name);
                 }
+                else {
+                    AiTurns();
+                }
                 GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, player1, true);
                 GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1);
                 clicked_button.Content = (Image)FindResource(partHit);
+                SetTurnData(0);
             }
             else
             {
-                clicked_button.Content = (Image)FindResource("NotHit");
+                if (clicked_button.Content == null)
+                {
+                    clicked_button.Content = (Image)FindResource("NotHit");
+                    SetTurnData(0);
+
+                }
+                else
+                {
+                    AiTurns();
+                    SetTurnData(0);
+                }
             }
+
         }
 
 
