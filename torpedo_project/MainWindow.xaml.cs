@@ -15,7 +15,7 @@ namespace torpedo_project
         private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true;
         private Image boat_image, old_image;
         private string partHit;
-        private GameObjects.Ship lastShipHit;
+        private GameObjects.Ship lastShipHit,lastShipHitAi;
         private System.Collections.Generic.List<string> turn_possible_content;
         private short whoseturn;
         private short changeturn { get { return whoseturn; } set { whoseturn = value; OnturnChanged(); } }
@@ -113,8 +113,10 @@ namespace torpedo_project
                         if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]) ||
                                 GameObjects.Functions.CoordsEqual(name, ship.getCoords()[1, 0] + ship.getCoords()[1, 1]))
                         {
-                            WhichPartIsHit(clickedArea, ship, i, 4);
+                            if (playerThatWasHit.Equals(aiplayer)) {
                             lastShipHit = ship;
+                             }  else lastShipHitAi = ship;
+                            WhichPartIsHit(clickedArea, ship, i, 4);
                             return true;
                         }
                         else i++;
@@ -126,8 +128,12 @@ namespace torpedo_project
                             GameObjects.Functions.CoordsEqual(name, ship.getCoords()[2, 0] + ship.getCoords()[2, 1])
                             )
                         {
+                            if (playerThatWasHit.Equals(aiplayer))
+                            {
+                                lastShipHit = ship;
+                            }
+                            else lastShipHitAi = ship;
                             WhichPartIsHit(clickedArea, ship, i, 6);
-                            lastShipHit = ship;
                             return true;
                         }
                         else i++;
@@ -140,8 +146,12 @@ namespace torpedo_project
                             GameObjects.Functions.CoordsEqual(name, ship.getCoords()[3, 0] + ship.getCoords()[3, 1])
                             )
                         {
+                            if (playerThatWasHit.Equals(aiplayer))
+                            {
+                                lastShipHit = ship;
+                            }
+                            else lastShipHitAi = ship;
                             WhichPartIsHit(clickedArea, ship, i, 8);
-                            lastShipHit = ship;
                             return true;
                         }
                         else i++;
@@ -154,8 +164,12 @@ namespace torpedo_project
                             GameObjects.Functions.CoordsEqual(name, ship.getCoords()[4, 0] + ship.getCoords()[4, 1])
                             )
                         {
+                            if (playerThatWasHit.Equals(aiplayer))
+                            {
+                                lastShipHit = ship;
+                            }
+                            else lastShipHitAi = ship;
                             WhichPartIsHit(clickedArea, ship, i, 10);
-                            lastShipHit = ship;
                             return true;
                         }
                         else i++;
@@ -553,7 +567,6 @@ namespace torpedo_project
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-
             Button clickedArea = (Button)sender;
 
             //if its not placement mode
@@ -564,20 +577,16 @@ namespace torpedo_project
                 {
                     if (PlayerHitsaShip(clickedArea.Name, aiplayer))
                     {
-
                         if (!player1.PlayerHits.Contains(clickedArea.Name))
                         {
                             player1.updatePlayerHits(clickedArea.Name);
                             aiplayer.updateEnemyHits(clickedArea.Name);
-
                         }
-                        GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, aiplayer, false);
+                       
+                        GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, aiplayer);
                         GameObjects.Functions.UpdateRemainingShipsForAi(NumberofHits, enemy_remaining_ships, aiplayer, player1);
                         CheckPlayerWins();
                         CheckAiWins();
-
-                        TestingLabelOutput("you have hit " + clickedArea.Name + "," + partHit);
-
 
                         if (partHit.Equals("ShipHitFront"))
                         {
@@ -603,14 +612,17 @@ namespace torpedo_project
                         {
                             clickedArea.Content = (Image)FindResource("ShipHitLeftBack");
                         }
-
+                        SetTurnData(1);
                     }
                     else
                     {
-                        TestingLabelOutput(clickedArea.Name);
-                        clickedArea.Content = (Image)FindResource("NotHit");
+                        if (clickedArea.Content == null)
+                        {
+                            clickedArea.Content = (Image)FindResource("NotHit");
+                            SetTurnData(1);
+                        }
+                        else { return; }
                     }
-                    SetTurnData(1);
                 }
             }
             else
@@ -683,7 +695,7 @@ namespace torpedo_project
             if (!aiship)
             {
                 DrawBoat(createdShip, false);
-                GameObjects.Functions.UpdateRemainingShips(NumberofHits, enemy_remaining_ships, aiplayer, player1);
+                GameObjects.Functions.UpdateRemainingShips(NumberofHits, player_remaining_ships, aiplayer, player1);
             }
 
             if (player1.RemainingShips.Count == 5)
@@ -824,10 +836,9 @@ namespace torpedo_project
             {
                 AiTurns();
             }
-            TestingLabelOutput("round: " + player1.RoundsNo.ToString());
+           // TestingLabelOutput("round: " + player1.RoundsNo.ToString());
         }
 
-        //TO DO check ai turns
         private void AiTurns()
         {
             AiRandomCoord();
@@ -864,9 +875,11 @@ namespace torpedo_project
                 else {
                     AiTurns();
                 }
-                GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, player1, true);
+                GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1);
                 GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1);
                 clicked_button.Content = (Image)FindResource(partHit);
+                TestingLabelOutput(player1.DestroyedShips.Count.ToString());
+                CheckAiWins();
                 SetTurnData(0);
             }
             else
@@ -875,7 +888,6 @@ namespace torpedo_project
                 {
                     clicked_button.Content = (Image)FindResource("NotHit");
                     SetTurnData(0);
-
                 }
                 else
                 {
@@ -885,7 +897,6 @@ namespace torpedo_project
             }
 
         }
-
 
         private void CheckPlayerWins()
         {

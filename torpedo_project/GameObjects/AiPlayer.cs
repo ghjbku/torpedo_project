@@ -40,7 +40,6 @@ namespace torpedo_project.GameObjects
         public void updateEnemyHits(string coord)
         {
             EnemyHits.Add(coord);
-
         }
     }
     
