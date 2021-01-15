@@ -17,7 +17,7 @@ namespace torpedo_project.GameObjects
             }
             else return false;
         }
-        public static string[] getStartCoord(string middlecoord_x, string middlecoord_y, string shipname, bool rotated)
+        public static string[] getStartCoord(string middlecoord_x, string middlecoord_y, string shipname,bool rotated)
         {
             if (shipname.Equals("PatrolBoat"))
             {
@@ -282,58 +282,53 @@ namespace torpedo_project.GameObjects
             return "asd,1".Split(',');
         }
 
-        public static void CheckIfAllShipCoordsHit(Ship lastShipHit, PlayerEntity player, bool ai)
+        public static void CheckIfAllShipCoordsHit(Ship lastShipHit, AiPlayer aiplayer)
         {
-            if (!ai)
+            if (lastShipHit.shipType.Equals("PatrolBoat"))
             {
-                if (lastShipHit.shipType.Equals("PatrolBoat"))
+                if (lastShipHit.ShipPartsHit == 2)
                 {
-                    if (lastShipHit.ShipPartsHit == 2)
-                    {
-                        player.fillUpDestroyedShips(lastShipHit);
-                    }
+                    aiplayer.fillUpDestroyedShips(lastShipHit);
                 }
-                else if (lastShipHit.shipType.Equals("Submarine") || lastShipHit.shipType.Equals("Destroyer"))
+            }
+            else if (lastShipHit.shipType.Equals("Submarine") || lastShipHit.shipType.Equals("Destroyer"))
+            {
+                if (lastShipHit.ShipPartsHit == 3)
                 {
-                    if (lastShipHit.ShipPartsHit == 3)
-                    {
-                        player.fillUpDestroyedShips(lastShipHit);
-                    }
+                    aiplayer.fillUpDestroyedShips(lastShipHit);
                 }
-                else if (lastShipHit.shipType.Equals("Battleship"))
+            }
+            else if (lastShipHit.shipType.Equals("Battleship"))
+            {
+                if (lastShipHit.ShipPartsHit == 4)
                 {
-                    if (lastShipHit.ShipPartsHit == 4)
-                    {
-                        player.fillUpDestroyedShips(lastShipHit);
-                    }
+                    aiplayer.fillUpDestroyedShips(lastShipHit);
                 }
-                else if (lastShipHit.shipType.Equals("Carrier"))
+            }
+            else if (lastShipHit.shipType.Equals("Carrier"))
+            {
+                if (lastShipHit.ShipPartsHit == 5)
                 {
-                    if (lastShipHit.ShipPartsHit == 5)
-                    {
-                        player.fillUpDestroyedShips(lastShipHit);
-                    }
+                    aiplayer.fillUpDestroyedShips(lastShipHit);
                 }
             }
 
         }
 
-        public static void UpdateRemainingShips(Label NumberofHits, Label player_remaining_ships, AiPlayer aiplayer, Player player1)
-        {
-            NumberofHits.Content = aiplayer.PlayerHits.Count.ToString();
-            if (player1.RemainingShips.Count <= 5)
-            {
-                player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
-            }
-        }
-        public static void UpdateRemainingShipsForAi(Label NumberofHits, Label enemy_remaining_ships, AiPlayer aiplayer, Player player1)
+        public static void UpdateRemainingShips(string whichplayer, Label NumberofHits, Label player_remaining_ships, Label enemy_remaining_ships, AiPlayer aiplayer, Player player1)
         {
             NumberofHits.Content = player1.PlayerHits.Count.ToString();
-            if (aiplayer.RemainingShips.Count <= 5)
+            if (player1.RemainingShips.Count <= 5)
             {
-                enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
+                if (whichplayer.Equals(player1.PlayerName))
+                {
+                    player_remaining_ships.Content = player1.RemainingShips.Count.ToString();
+                }
+                else
+                {
+                    enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
+                }
             }
         }
-
     }
 }

@@ -18,7 +18,6 @@ namespace torpedo_project
         private GameObjects.Ship lastShipHit;
         private System.Collections.Generic.List<string> turn_possible_content;
         private short whoseturn;
-        private short changeturn { get { return whoseturn; } set { whoseturn = value; OnturnChanged(); } }
         private string PathForXml;
 
         public MainWindow(string name, bool isai,string pathForXml)
@@ -46,7 +45,7 @@ namespace torpedo_project
                 RoundsNo = 0
             };
             AiShipPlacement(aiplayer);
-            GameObjects.Functions.UpdateRemainingShipsForAi(NumberofHits,enemy_remaining_ships,aiplayer,player1);
+            GameObjects.Functions.UpdateRemainingShips("ai",NumberofHits,player_remaining_ships,enemy_remaining_ships,aiplayer,player1);
         }
         private void TestingLabelOutput(string output) {
             player_name_test_label.Content = output;
@@ -98,14 +97,14 @@ namespace torpedo_project
         }
 
         //checking if a player "hits" a ship
-        private bool PlayerHitsaShip(string clickedArea, PlayerEntity playerThatWasHit)
+        private bool PlayerHitsaShip(string clickedArea, PlayerEntity player)
         {
             int i = 0;
-            while (i < playerThatWasHit.RemainingShips.Count)
+            while (i < player.RemainingShips.Count)
             {
                 char[] arrayForTrim = { 't', '_' };
                 var name = clickedArea.TrimEnd(arrayForTrim);
-                var ship = playerThatWasHit.RemainingShips[i];
+                var ship = player.RemainingShips[i];
                 switch (ship.getCoords().Length)
                 {
                     case 4:
@@ -173,10 +172,6 @@ namespace torpedo_project
 
             whoseturn = (short)new Random().Next(0, turn_possible_content.Count);
             turn_indicator.Content = turn_possible_content[whoseturn];
-            if (whoseturn == 1) {
-                AiTurns();
-            }
-            player1.RoundsNo++;
         }
 
         private void WhichPartIsHit(string clickedButtonCoord, GameObjects.Ship ship, int i, int HowLong)
@@ -567,8 +562,8 @@ namespace torpedo_project
                             aiplayer.updateEnemyHits(clickedArea.Name);
                             
                         }
-                        GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit,aiplayer, false);
-                        GameObjects.Functions.UpdateRemainingShipsForAi(NumberofHits, enemy_remaining_ships, aiplayer, player1);
+                        GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit,aiplayer);
+                        GameObjects.Functions.UpdateRemainingShips("ai", NumberofHits, player_remaining_ships, enemy_remaining_ships, aiplayer, player1);
                         CheckPlayerWins();
                         CheckAiWins();
 
@@ -679,7 +674,7 @@ namespace torpedo_project
             if (!aiship)
             {
                 DrawBoat(createdShip, false);
-                GameObjects.Functions.UpdateRemainingShips(NumberofHits, enemy_remaining_ships, aiplayer, player1);
+                GameObjects.Functions.UpdateRemainingShips(player.PlayerName, NumberofHits, player_remaining_ships, enemy_remaining_ships, aiplayer, player1);
             }
 
             if (player1.RemainingShips.Count == 5) {
@@ -805,26 +800,41 @@ namespace torpedo_project
 
         }
 
-        private void SetTurnData(short which) {
-            turn_indicator.Content = turn_possible_content[which];
-            changeturn = which;
-            player1.RoundsNo++;
+        //TO DO quit from the game if someone wins (or go to highscores)
+        private void CheckPlayerWins()
+        {
+            if (aiplayer.DestroyedShips.Count == 5)
+            {
+                string wintext = "You win";
+                enemy_remaining_ships.Content = wintext;
+                player1.won = true;
+                CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
+            }
         }
 
-        //this will run every time the turn is changed
-        private void OnturnChanged() {
-            if (changeturn == 1)
+        //TO DO quit from the game if someone wins (or go to highscores)
+        private void CheckAiWins()
+        {
+            if (player1.DestroyedShips.Count == 5)
             {
-                AiTurns();
+                string wintext = "Ai win!";
+                player_remaining_ships.Content = wintext;
+                player1.won = false;
+                CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
             }
-            TestingLabelOutput("round: "+player1.RoundsNo.ToString());
+        }
+
+        private void CreateHSWindowAndLoadIt(PlayerEntity player,string player2,string wintext) {
+            HighscoresWindow hs = new HighscoresWindow(wintext,player,player.PlayerName,player2,player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString(),PathForXml);
+            this.Visibility = Visibility.Hidden;
+            hs.Show();
         }
 
         //TO DO check ai turns
         private void AiTurns()
         {
-            AiRandomCoord();
-            SetTurnData(0);
+            //aiplayer.RoundsNo++;
+            turn_indicator.Content = turn_possible_content[0];
         }
 
         //This is for testing
@@ -847,51 +857,13 @@ namespace torpedo_project
         private void AiClickButton(string coord_tip)
         {
             Button clicked_button = (Button)PlayerShipTable.FindName(coord_tip);
-            if (PlayerHitsaShip(clicked_button.Name, player1))
-            {
-                if (!aiplayer.PlayerHits.Contains(clicked_button.Name))
-                {
-                    aiplayer.updatePlayerHits(clicked_button.Name);
-                    player1.updateEnemyHits(clicked_button.Name);
-                }
-                GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, player1, true);
-                GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships,aiplayer, player1);
-                clicked_button.Content = (Image)FindResource(partHit);
-            }
-            else
-            {
-                clicked_button.Content = (Image)FindResource("NotHit");
-            }
+            //clicked_button.Click += new EventHandler(this.clicked_button);
         }
         
-
-        private void CheckPlayerWins()
+        //in progress
+        private void buttons_Click(object sender, EventArgs e)
         {
-            if (aiplayer.DestroyedShips.Count == 5)
-            {
-                string wintext = "You win";
-                enemy_remaining_ships.Content = wintext;
-                player1.won = true;
-                CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
-            }
+            //Button clicked_button = (Button)sender;
         }
-
-        private void CheckAiWins()
-        {
-            if (player1.DestroyedShips.Count == 5)
-            {
-                string wintext = "Ai win!";
-                player_remaining_ships.Content = wintext;
-                player1.won = false;
-                CreateHSWindowAndLoadIt(player1,aiplayer.PlayerName, wintext);
-            }
-        }
-
-        private void CreateHSWindowAndLoadIt(PlayerEntity player,string player2,string wintext) {
-            HighscoresWindow hs = new HighscoresWindow(wintext,player,player.PlayerName,player2,player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString(),PathForXml);
-            this.Visibility = Visibility.Hidden;
-            hs.Show();
-        }
-
     }
 }
