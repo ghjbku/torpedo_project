@@ -715,12 +715,12 @@ namespace torpedo_project
                     }
                     else
                     {
-                        if (clickedArea.Content == null)
-                        {
+                      /*  if (clickedArea.Content == null)
+                        {*/
                             clickedArea.Content = (Image)FindResource("NotHit");
                             SetTurnData(1);
-                        }
-                        else { return; }
+                      /*  }
+                        else { return; }*/
                     }
                 }
             }
@@ -955,11 +955,13 @@ namespace torpedo_project
 
             int dice = rnd.Next(1, 11);
             string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+
+            //TODO edit this label to show the round number
             TestingLabel(Coord1 + dice.ToString());
             AiClickButton(Coord1 + dice.ToString());
         }
 
-        //in progress
+        //in progress --- if the ai hits a ship part, start firing close to that place
         private void AiClickButton(string coord_tip)
         {
             Button clicked_button = (Button)PlayerShipTable.FindName(coord_tip);
@@ -976,8 +978,8 @@ namespace torpedo_project
                 }
                 GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1);
                 GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1, false);
-                clicked_button.Content = (Image)FindResource(partHit);
-                TestingLabelOutput(player1.DestroyedShips.Count.ToString());
+                clicked_button.Content = (Image)FindResource(partHitAi);
+                TestingLabelOutput("Destroyed: "+player1.DestroyedShips.Count.ToString());
                 CheckAiWins();
                 SetTurnData(0);
             }
@@ -1001,7 +1003,6 @@ namespace torpedo_project
             if (aiplayer.DestroyedShips.Count == 5)
             {
                 string wintext = "You win";
-                enemy_remaining_ships.Content = wintext;
                 player1.won = true;
                 CreateHSWindowAndLoadIt(player1, aiplayer.PlayerName, wintext);
             }
@@ -1012,7 +1013,6 @@ namespace torpedo_project
             if (player1.DestroyedShips.Count == 5)
             {
                 string wintext = "Ai win!";
-                player_remaining_ships.Content = wintext;
                 player1.won = false;
                 CreateHSWindowAndLoadIt(player1, aiplayer.PlayerName, wintext);
             }
