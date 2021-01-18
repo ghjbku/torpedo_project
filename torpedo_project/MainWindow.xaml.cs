@@ -14,7 +14,7 @@ namespace torpedo_project
         private GameObjects.AiPlayer aiplayer;
         private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true;
         private Image boat_image, old_image;
-        private string partHit, partHitAi;
+        private string partHit, partHitAi,LastCoordThatHit;
         private GameObjects.Ship lastShipHit, lastShipHitAi;
         private System.Collections.Generic.List<string> turn_possible_content;
         private short whoseturn;
@@ -218,7 +218,6 @@ namespace torpedo_project
         {
             char[] arrayForTrim = { 't', '_' };
             var name = clickedButtonCoord.TrimEnd(arrayForTrim);
-            ship.ShipPartsHit += 1;
             if (GameObjects.Functions.CoordsEqual(name, ship.getCoords()[0, 0] + ship.getCoords()[0, 1]))
             {
                 if (ship.rotated)
@@ -680,6 +679,7 @@ namespace torpedo_project
                         {
                             player1.updatePlayerHits(clickedArea.Name);
                             aiplayer.updateEnemyHits(clickedArea.Name);
+                            lastShipHit.ShipPartsHit += 1;
                         }
 
                         GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, aiplayer);
@@ -934,7 +934,7 @@ namespace torpedo_project
             {
                 AiTurns();
             }
-            // TestingLabelOutput("round: " + player1.RoundsNo.ToString());
+            RoundNumber(player1.RoundsNo.ToString());
         }
 
         private void AiTurns()
@@ -943,22 +943,44 @@ namespace torpedo_project
         }
 
         //This is for testing
-        private void TestingLabel(string output)
+        private void RoundNumber(string output)
         {
             number_of_rounds.Content = output;
         }
 
         private void AiRandomCoord()
         {
-            const string range = "ABCDEFGHIJ";
-            System.Random rnd = new System.Random();
+            Random rnd;
+            string range;
+            string Coord1 = "";
+            int dice = 0;
+            if (LastCoordThatHit == null)
+            {
+                range = "ABCDEFGHIJ";
+                rnd = new Random();
 
-            int dice = rnd.Next(1, 11);
-            string Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
-
-            //TODO edit this label to show the round number
-            TestingLabel(Coord1 + dice.ToString());
-            AiClickButton(Coord1 + dice.ToString());
+                dice = rnd.Next(1, 11);
+                Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+            }
+            else {
+                TestingLabelOutput("hit: " + LastCoordThatHit);
+                rnd = new Random();
+                if (lastShipHitAi.rotated == true)
+                {
+                    range = "ABCDEFGHIJ";
+                    string[] _rangeNumber = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\D+");
+                    dice = int.Parse(_rangeNumber[1]);
+                    Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                }
+                else {
+                    string[] _rangeAlphabet = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\d+");
+                    range = _rangeAlphabet[0];
+                    dice = rnd.Next(1, 11);
+                    Coord1 = range;
+                }
+            }
+                //TestingLabelOutput(Coord1 + dice.ToString());
+                AiClickButton(Coord1 + dice.ToString());
         }
 
         //in progress --- if the ai hits a ship part, start firing close to that place
@@ -967,19 +989,47 @@ namespace torpedo_project
             Button clicked_button = (Button)PlayerShipTable.FindName(coord_tip);
             if (PlayerHitsaShip(clicked_button.Name, player1))
             {
+                LastCoordThatHit = coord_tip;
                 if (!aiplayer.PlayerHits.Contains(clicked_button.Name))
                 {
                     aiplayer.updatePlayerHits(clicked_button.Name);
                     player1.updateEnemyHits(clicked_button.Name);
+                    lastShipHitAi.ShipPartsHit += 1;
                 }
                 else
                 {
                     AiTurns();
                 }
-                GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1);
+
+                if (partHitAi.Equals("ShipHitFront"))
+                {
+                    clicked_button.Content = (Image)FindResource("ShipHitFront");
+                }
+                else if (partHitAi == "ShipHitMid")
+                {
+                    clicked_button.Content = (Image)FindResource("ShipHitMid");
+                }
+                else if (partHitAi == "ShipHitBack")
+                {
+                    clicked_button.Content = (Image)FindResource("ShipHitBack");
+                }
+                else if (partHitAi == "ShipHitLeftFront")
+                {
+                    clicked_button.Content = (Image)FindResource("ShipHitLeftFront");
+                }
+                else if (partHitAi == "ShipHitLeftMid")
+                {
+                    clicked_button.Content = (Image)FindResource("ShipHitLeftMid");
+                }
+                else if (partHitAi == "ShipHitLeftBack")
+                {
+                    clicked_button.Content = (Image)FindResource("ShipHitLeftBack");
+                }
+
+                if (GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1) == null) {
+                    LastCoordThatHit = null;
+                }
                 GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1, false);
-                clicked_button.Content = (Image)FindResource(partHitAi);
-                TestingLabelOutput("Destroyed: "+player1.DestroyedShips.Count.ToString());
                 CheckAiWins();
                 SetTurnData(0);
             }
@@ -1000,7 +1050,7 @@ namespace torpedo_project
 
         private void CheckPlayerWins()
         {
-            if (aiplayer.DestroyedShips.Count == 5)
+            if (aiplayer.RemainingShips.Count == 0)
             {
                 string wintext = "You win";
                 player1.won = true;
@@ -1010,7 +1060,7 @@ namespace torpedo_project
 
         private void CheckAiWins()
         {
-            if (player1.DestroyedShips.Count == 5)
+            if (player1.RemainingShips.Count == 0)
             {
                 string wintext = "Ai win!";
                 player1.won = false;

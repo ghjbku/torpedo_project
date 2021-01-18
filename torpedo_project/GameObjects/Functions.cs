@@ -277,48 +277,54 @@ namespace torpedo_project.GameObjects
             return "asd,1".Split(',');
         }
 
-        public static void CheckIfAllShipCoordsHit(Ship lastShipHit, PlayerEntity player)
+        public static string CheckIfAllShipCoordsHit(Ship lastShipHit, PlayerEntity player)
         {
             if (lastShipHit.shipType.Equals("PatrolBoat"))
             {
                 if (lastShipHit.ShipPartsHit == 2)
                 {
                     player.fillUpDestroyedShips(lastShipHit);
+                    return null;
                 }
-                else return;
+                else return "not yet";
             }
             else if (lastShipHit.shipType.Equals("Submarine"))
             {
                 if (lastShipHit.ShipPartsHit == 3)
                 {
                     player.fillUpDestroyedShips(lastShipHit);
+                    return null;
                 }
-                else return;
+                else return "not yet";
             }
             else if (lastShipHit.shipType.Equals("Destroyer"))
             {
                 if (lastShipHit.ShipPartsHit == 3)
                 {
                     player.fillUpDestroyedShips(lastShipHit);
+                    return null;
                 }
-                else return;
+                else return "not yet";
             }
             else if (lastShipHit.shipType.Equals("Battleship"))
             {
                 if (lastShipHit.ShipPartsHit == 4)
                 {
                     player.fillUpDestroyedShips(lastShipHit);
+                    return null;
                 }
-                else return;
+                else return "not yet";
             }
             else if (lastShipHit.shipType.Equals("Carrier"))
             {
                 if (lastShipHit.ShipPartsHit == 5)
                 {
                     player.fillUpDestroyedShips(lastShipHit);
+                    return null;
                 }
-                else return;
+                else return "not yet";
             }
+            else return null;
         }
 
         public static void UpdateRemainingShips(Label NumberofHits, Label player_remaining_ships, AiPlayer aiplayer, Player player1, bool init)
