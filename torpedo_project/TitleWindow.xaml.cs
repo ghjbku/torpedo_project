@@ -41,7 +41,8 @@ namespace torpedo_project
 
         private void ClickHighScore(object sender, RoutedEventArgs e)
         {
-            if (player_name_box.Text.Equals(""))
+            bool symbolCheck = player_name_box.Text.Any(p => !char.IsLetterOrDigit(p));
+            if (player_name_box.Text.Equals("")|| symbolCheck)
             {
                 player_name_box.Background = Brushes.Red;
                 return;
