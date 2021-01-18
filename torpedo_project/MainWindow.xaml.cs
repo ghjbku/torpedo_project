@@ -12,7 +12,7 @@ namespace torpedo_project
     {
         private GameObjects.Player player1;
         private GameObjects.AiPlayer aiplayer;
-        private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true;
+        private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true,is_created = false;
         private Image boat_image, old_image;
         public string partHit, partHitAi,LastCoordThatHit;
         public GameObjects.Ship lastShipHit, lastShipHitAi;
@@ -209,7 +209,7 @@ namespace torpedo_project
             turn_indicator.Content = turn_possible_content[whoseturn];
             if (whoseturn == 1)
             {
-                GameObjects.Functions.AiTurns(LastCoordThatHit, lastShipHitAi);
+                AiTurns();
             }
             player1.RoundsNo++;
         }
@@ -932,7 +932,7 @@ namespace torpedo_project
         {
             if (changeturn == 1)
             {
-                GameObjects.Functions.AiTurns(LastCoordThatHit,lastShipHitAi);
+                AiTurns();
             }
             RoundNumber(player1.RoundsNo.ToString());
         }
@@ -944,7 +944,7 @@ namespace torpedo_project
             number_of_rounds.Content = output;
         }
 
-        private void AiRandomCoord()
+        private void AiTurns()
         {
                 AiClickButton(GameObjects.Functions.AiRandomCoord(LastCoordThatHit,lastShipHitAi));
         }
@@ -964,7 +964,7 @@ namespace torpedo_project
                 }
                 else
                 {
-                    GameObjects.Functions.AiTurns(LastCoordThatHit, lastShipHitAi);
+                    AiTurns();
                 }
 
                 if (partHitAi.Equals("ShipHitFront"))
@@ -1008,7 +1008,7 @@ namespace torpedo_project
                 }
                 else
                 {
-                    GameObjects.Functions.AiTurns(LastCoordThatHit, lastShipHitAi);
+                    AiTurns();
                     SetTurnData(0);
                 }
             }
@@ -1036,9 +1036,13 @@ namespace torpedo_project
 
         private void CreateHSWindowAndLoadIt(PlayerEntity player, string player2, string wintext)
         {
-            HighscoresWindow hs = new HighscoresWindow(wintext, player, player.PlayerName, player2, player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString(), PathForXml);
-            this.Visibility = Visibility.Hidden;
-            hs.Show();
+            if (!is_created)
+            {
+                is_created = true;
+                HighscoresWindow hs = new HighscoresWindow(wintext, player, player.PlayerName, player2, player.DestroyedShips.Count.ToString(), player.RemainingShips.Count.ToString(), player.PlayerHits.Count.ToString(), player.EnemyHits.Count.ToString(), player.RoundsNo.ToString(), PathForXml);
+                this.Visibility = Visibility.Hidden;
+                hs.Show();
+            }
         }
 
     }

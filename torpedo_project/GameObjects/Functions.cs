@@ -348,11 +348,6 @@ namespace torpedo_project.GameObjects
             }
         }
 
-        public static void AiTurns(string LastCoordThatHit, Ship lastShipHitAi)
-        {
-            AiRandomCoord(LastCoordThatHit, lastShipHitAi);
-        }
-
         public static string AiRandomCoord(string LastCoordThatHit,Ship lastShipHitAi)
         {
             System.Random rnd;
