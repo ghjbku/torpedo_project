@@ -715,14 +715,15 @@ namespace torpedo_project
                     }
                     else
                     {
-                      /*  if (clickedArea.Content == null)
-                        {*/
+                        if (clickedArea.Content == null)
+                        {
                             clickedArea.Content = (Image)FindResource("NotHit");
                             SetTurnData(1);
-                      /*  }
-                        else { return; }*/
+                        }
+                        else { return; }
                     }
                 }
+                player1.RoundsNo++;
             }
             else
             {
@@ -924,7 +925,6 @@ namespace torpedo_project
         {
             turn_indicator.Content = turn_possible_content[which];
             changeturn = which;
-            player1.RoundsNo++;
         }
 
         //this will run every time the turn is changed
@@ -933,6 +933,7 @@ namespace torpedo_project
             if (changeturn == 1)
             {
                 AiTurns();
+                player1.RoundsNo++;
             }
             RoundNumber(player1.RoundsNo.ToString());
         }
