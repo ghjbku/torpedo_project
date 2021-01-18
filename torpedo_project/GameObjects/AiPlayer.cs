@@ -7,10 +7,10 @@ namespace torpedo_project.GameObjects
         public string PlayerName { get; set; }
         public int RoundsNo { get; set; }
         public bool won { set; get; }
-        public List<string> PlayerHits { get; set; }
-        public List<string> EnemyHits { get; set; }
-        public List<Ship> RemainingShips { get; set; }
-        public List<Ship> DestroyedShips { get; set; }
+        public List<string> PlayerHits { get; }
+        public List<string> EnemyHits { get; }
+        public List<Ship> RemainingShips { get; }
+        public List<Ship> DestroyedShips { get;}
 
 
         public AiPlayer()

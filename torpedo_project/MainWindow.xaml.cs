@@ -965,6 +965,7 @@ namespace torpedo_project
                 if (aiplayer.PlayerHits.Contains(clicked_button.Name))
                 {
                     AiTurns();
+                    return;
                 }
                 else
                 {
@@ -975,14 +976,15 @@ namespace torpedo_project
 
                 clicked_button.Content = (Image)FindResource(partHitAi);
 
-                if (GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1) == null) {
-                    LastCoordThatHit = null;
-                    GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1, false);
-                    CheckAiWins();
+                if (lastShipHitAi.ShipPartsHit > 1)
+                {
+                    if (GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1) == null)
+                    {
+                        LastCoordThatHit = null;
+                        GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1, false);
+                        CheckAiWins();
+                    }
                 }
-                
-                SetTurnData(0);
-                return;
             }
             else
             {
@@ -994,10 +996,10 @@ namespace torpedo_project
                 else
                 {
                     clicked_button.Content = (Image)FindResource("NotHit");
-                    SetTurnData(0);
-                    return;
+                    
                 }
             }
+            SetTurnData(0);
         }
 
         private void CheckPlayerWins()
