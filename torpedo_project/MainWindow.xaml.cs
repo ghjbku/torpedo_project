@@ -12,7 +12,7 @@ namespace torpedo_project
     {
         private GameObjects.Player player1;
         private GameObjects.AiPlayer aiplayer;
-        private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true,is_created = false;
+        private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true,is_created = false,is_placement_finished = false;
         private Image boat_image, old_image;
         public string partHit, partHitAi,LastCoordThatHit;
         public GameObjects.Ship lastShipHit, lastShipHitAi;
@@ -118,7 +118,7 @@ namespace torpedo_project
                                 lastShipHit = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 4, false);
                             }
-                            else
+                            else if (playerThatWasHit.Equals(player1))
                             {
                                 lastShipHitAi = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 4, true);
@@ -139,7 +139,7 @@ namespace torpedo_project
                                 lastShipHit = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 6, false);
                             }
-                            else
+                            else if (playerThatWasHit.Equals(player1))
                             {
                                 lastShipHitAi = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 6, true);
@@ -161,7 +161,7 @@ namespace torpedo_project
                                 lastShipHit = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 8, false);
                             }
-                            else
+                            else if (playerThatWasHit.Equals(player1))
                             {
                                 lastShipHitAi = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 8, true);
@@ -183,7 +183,7 @@ namespace torpedo_project
                                 lastShipHit = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 10, false);
                             }
-                            else
+                            else if (playerThatWasHit.Equals(player1))
                             {
                                 lastShipHitAi = ship;
                                 WhichPartIsHit(clickedArea, ship, i, 10, true);
@@ -199,13 +199,14 @@ namespace torpedo_project
 
         private void StartGameAfterPlacement()
         {
+            is_placement_finished = true;
             PatrolBoat.Visibility = Visibility.Hidden;
             Submarine.Visibility = Visibility.Hidden;
             Destroyer.Visibility = Visibility.Hidden;
             Battleship.Visibility = Visibility.Hidden;
             Carrier.Visibility = Visibility.Hidden;
 
-            whoseturn = (short)new Random().Next(0, turn_possible_content.Count);
+            changeturn = (short)new Random().Next(0, turn_possible_content.Count);
             turn_indicator.Content = turn_possible_content[whoseturn];
             if (whoseturn == 1)
             {
@@ -670,60 +671,62 @@ namespace torpedo_project
             //if its not placement mode
             if (old_image == null)
             {
-                //only proceed if the button is from the PlayerTargetTable
-                if (clickedArea.Parent.Equals(PlayerTargetTable))
-                {
-                    if (PlayerHitsaShip(clickedArea.Name, aiplayer))
+                if (is_placement_finished) {
+                    //only proceed if the button is from the PlayerTargetTable
+                    if (clickedArea.Parent.Equals(PlayerTargetTable))
                     {
-                        if (!player1.PlayerHits.Contains(clickedArea.Name))
+                        if (PlayerHitsaShip(clickedArea.Name, aiplayer))
                         {
-                            player1.updatePlayerHits(clickedArea.Name);
-                            aiplayer.updateEnemyHits(clickedArea.Name);
-                            lastShipHit.ShipPartsHit += 1;
-                        }
+                            if (!player1.PlayerHits.Contains(clickedArea.Name))
+                            {
+                                player1.updatePlayerHits(clickedArea.Name);
+                                aiplayer.updateEnemyHits(clickedArea.Name);
+                                lastShipHit.ShipPartsHit += 1;
+                            }
 
-                        GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, aiplayer);
-                        GameObjects.Functions.UpdateRemainingShipsForAi(NumberofHits, enemy_remaining_ships, aiplayer, player1);
-                        CheckPlayerWins();
-                        CheckAiWins();
+                            GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, aiplayer);
+                            GameObjects.Functions.UpdateRemainingShipsForAi(NumberofHits, enemy_remaining_ships, aiplayer, player1);
+                            CheckPlayerWins();
+                            CheckAiWins();
 
-                        if (partHit.Equals("ShipHitFront"))
-                        {
-                            clickedArea.Content = (Image)FindResource("ShipHitFront");
-                        }
-                        else if (partHit == "ShipHitMid")
-                        {
-                            clickedArea.Content = (Image)FindResource("ShipHitMid");
-                        }
-                        else if (partHit == "ShipHitBack")
-                        {
-                            clickedArea.Content = (Image)FindResource("ShipHitBack");
-                        }
-                        else if (partHit == "ShipHitLeftFront")
-                        {
-                            clickedArea.Content = (Image)FindResource("ShipHitLeftFront");
-                        }
-                        else if (partHit == "ShipHitLeftMid")
-                        {
-                            clickedArea.Content = (Image)FindResource("ShipHitLeftMid");
-                        }
-                        else if (partHit == "ShipHitLeftBack")
-                        {
-                            clickedArea.Content = (Image)FindResource("ShipHitLeftBack");
-                        }
-                        SetTurnData(1);
-                    }
-                    else
-                    {
-                        if (clickedArea.Content == null)
-                        {
-                            clickedArea.Content = (Image)FindResource("NotHit");
+                            if (partHit.Equals("ShipHitFront"))
+                            {
+                                clickedArea.Content = (Image)FindResource("ShipHitFront");
+                            }
+                            else if (partHit == "ShipHitMid")
+                            {
+                                clickedArea.Content = (Image)FindResource("ShipHitMid");
+                            }
+                            else if (partHit == "ShipHitBack")
+                            {
+                                clickedArea.Content = (Image)FindResource("ShipHitBack");
+                            }
+                            else if (partHit == "ShipHitLeftFront")
+                            {
+                                clickedArea.Content = (Image)FindResource("ShipHitLeftFront");
+                            }
+                            else if (partHit == "ShipHitLeftMid")
+                            {
+                                clickedArea.Content = (Image)FindResource("ShipHitLeftMid");
+                            }
+                            else if (partHit == "ShipHitLeftBack")
+                            {
+                                clickedArea.Content = (Image)FindResource("ShipHitLeftBack");
+                            }
                             SetTurnData(1);
                         }
-                        else { return; }
+                        else
+                        {
+                            if (clickedArea.Content == null)
+                            {
+                                clickedArea.Content = (Image)FindResource("NotHit");
+                                SetTurnData(1);
+                            }
+                            else { return; }
+                        }
                     }
+                    player1.RoundsNo++;
                 }
-                player1.RoundsNo++;
             }
             else
             {
@@ -930,7 +933,7 @@ namespace torpedo_project
         //this will run every time the turn is changed
         private void OnturnChanged()
         {
-            if (changeturn == 1)
+            if (whoseturn == 1)
             {
                 AiTurns();
                 player1.RoundsNo++;
