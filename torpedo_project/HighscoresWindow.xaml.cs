@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace torpedo_project
 {
@@ -13,7 +12,8 @@ namespace torpedo_project
             InitializeComponent();
         }
         //constructor for loading the hs
-        public HighscoresWindow(string wintext, string Name, string Name2, string Destroyed, string Remaining, string PlayerHits, string EnemyHits, string RoundsNo) {
+        public HighscoresWindow(string wintext, string Name, string Name2, string Destroyed, string Remaining, string PlayerHits, string EnemyHits, string RoundsNo)
+        {
             InitializeComponent();
             name.Content = Name + " VS " + Name2;
             winText.Content = wintext;
@@ -25,19 +25,21 @@ namespace torpedo_project
         }
 
         //constructor for game ending and saving
-        public HighscoresWindow(string wintext,PlayerEntity player,string Name,string Name2,string Destroyed, string Remaining, string PlayerHits,string EnemyHits, string RoundsNo,string path) {
+        public HighscoresWindow(string wintext, PlayerEntity player, string Name, string Name2, string Destroyed, string Remaining, string PlayerHits, string EnemyHits, string RoundsNo, string path)
+        {
             InitializeComponent();
-            name.Content = Name+" VS "+Name2;
+            name.Content = Name + " VS " + Name2;
             winText.Content = wintext;
             destroyed.Content += Destroyed;
             remaining.Content += Remaining;
             pHits.Content += PlayerHits;
             eHits.Content += EnemyHits;
             rounds.Content += RoundsNo;
-            SaveDataToXml(player,path);
+            SaveDataToXml(player, path);
         }
 
-        private void SaveDataToXml(PlayerEntity player,string path) {
+        private void SaveDataToXml(PlayerEntity player, string path)
+        {
             GameObjects.XmlHelper.ToXmlFile(player, path);
         }
 

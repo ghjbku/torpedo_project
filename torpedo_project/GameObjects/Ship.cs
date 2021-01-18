@@ -11,43 +11,48 @@
 
         public bool rotated { get; set; }
 
-        enum ALPHABETS {
-                A = 'A',
-                B = 'B',
-                C = 'C',
-                D = 'D',
-                E = 'E',
-                F = 'F',
-                G = 'G',
-                H = 'H',
-                I = 'I',
-                J = 'J'
+        enum ALPHABETS
+        {
+            A = 'A',
+            B = 'B',
+            C = 'C',
+            D = 'D',
+            E = 'E',
+            F = 'F',
+            G = 'G',
+            H = 'H',
+            I = 'I',
+            J = 'J'
         }
 
         public Ship() { }
 
-        public Ship(string x_start, int y_start, string x_end, int y_end,string shipType) {
+        public Ship(string x_start, int y_start, string x_end, int y_end, string shipType)
+        {
             this.x_start = x_start;
             this.y_start = y_start;
             this.x_end = x_end;
             this.y_end = y_end;
             this.shipType = shipType;
 
-            if (!this.x_start.Equals(this.x_end)) {
+            if (!this.x_start.Equals(this.x_end))
+            {
                 this.rotated = true;
             }
         }
 
-        public string[,] getCoords() {
+        public string[,] getCoords()
+        {
             string[,] coords2x;
             string[,] coords3x;
             string[,] coords4x;
             string[,] coords5x;
-            switch (shipType) {
+            switch (shipType)
+            {
                 case "PatrolBoat":
-                coords2x = new string[,] { { x_start, y_start.ToString() },
+                    coords2x = new string[,] { { x_start, y_start.ToString() },
                                            { x_end, y_end.ToString() } };
-                return coords2x;
+                    return coords2x;
 
                 case "Submarine":
                     if (x_start.Equals(x_end))
@@ -55,7 +60,7 @@
                         if (y_end - y_start == 2)
                         {
                             coords3x = new string[,] { { x_start, y_start.ToString() },
-                                                       { x_end, (y_end - 1).ToString() }, 
+                                                       { x_end, (y_end - 1).ToString() },
                                                        { x_end, y_end.ToString() } };
                             return coords3x;
                         }
@@ -63,7 +68,7 @@
                     }
                     else if (y_start.Equals(y_end))
                     {
-                        if (check_for_alphabetic_order(x_start, x_end,shipType))
+                        if (check_for_alphabetic_order(x_start, x_end, shipType))
                         {
                             coords3x = new string[,] { { x_start, y_start.ToString() },
                                                        { GetMiddlecoord(x_start).ToString(), y_end.ToString() },
@@ -125,7 +130,7 @@
                         else return null;
                     }
                     else return null;
-                    
+
 
                 case "Carrier":
                     if (x_start.Equals(x_end))
@@ -162,7 +167,8 @@
         }
 
 
-        private string GetMiddlecoord(string x_start) {
+        private string GetMiddlecoord(string x_start)
+        {
             if (x_start.Equals(ALPHABETS.A.ToString())) return ALPHABETS.B.ToString();
             else if (x_start.Equals(ALPHABETS.B.ToString())) return ALPHABETS.C.ToString();
             else if (x_start.Equals(ALPHABETS.C.ToString())) return ALPHABETS.D.ToString();

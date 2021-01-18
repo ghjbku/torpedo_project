@@ -25,9 +25,10 @@ namespace torpedo_project
             {
                 player_name_box.Background = Brushes.Red;
             }
-            else {
+            else
+            {
                 path = Environment.CurrentDirectory + "\\" + player_name_box.Text + ".xml";
-                MainWindow main = new MainWindow(player_name_box.Text,!vs_ai_RadioB.IsChecked.Value,path);
+                MainWindow main = new MainWindow(player_name_box.Text, !vs_ai_RadioB.IsChecked.Value, path);
                 this.Visibility = Visibility.Hidden;
                 main.Show();
             }

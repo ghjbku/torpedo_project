@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace torpedo_project.GameObjects
 {
-   public static class Functions
+    public static class Functions
     {
         public static bool CoordsEqual(string coord, string shipCoords)
         {
@@ -348,7 +348,7 @@ namespace torpedo_project.GameObjects
             }
         }
 
-        public static string AiRandomCoord(string LastCoordThatHit,Ship lastShipHitAi)
+        public static string AiRandomCoord(string LastCoordThatHit, Ship lastShipHitAi)
         {
             System.Random rnd;
             string range;

@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using torpedo_project;
 
 namespace Torpedo_prj_Test
 {
@@ -15,7 +14,7 @@ namespace Torpedo_prj_Test
             string expected = "A";
             testShip.rotated = false;
             //Act
-            string got = torpedo_project.GameObjects.Functions.AiRandomCoord(LastCoordTheAiHit,testShip);
+            string got = torpedo_project.GameObjects.Functions.AiRandomCoord(LastCoordTheAiHit, testShip);
             /*
              *  if (LastCoordThatHit == null){}
               else {

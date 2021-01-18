@@ -2,7 +2,7 @@
 
 namespace torpedo_project.GameObjects
 {
-   public class AiPlayer : PlayerEntity
+    public class AiPlayer : PlayerEntity
     {
         public string PlayerName { get; set; }
         public int RoundsNo { get; set; }
@@ -10,7 +10,7 @@ namespace torpedo_project.GameObjects
         public List<string> PlayerHits { get; }
         public List<string> EnemyHits { get; }
         public List<Ship> RemainingShips { get; }
-        public List<Ship> DestroyedShips { get;}
+        public List<Ship> DestroyedShips { get; }
 
 
         public AiPlayer()
@@ -18,8 +18,8 @@ namespace torpedo_project.GameObjects
             PlayerName = "Ai";
             RemainingShips = new List<Ship>();
             DestroyedShips = new List<Ship>();
-            EnemyHits = new List<string> ();
-            PlayerHits = new List<string> ();
+            EnemyHits = new List<string>();
+            PlayerHits = new List<string>();
         }
 
         public void fillUpRemainingShips(Ship ship)
@@ -42,6 +42,6 @@ namespace torpedo_project.GameObjects
             EnemyHits.Add(coord);
         }
     }
-    
-    
+
+
 }

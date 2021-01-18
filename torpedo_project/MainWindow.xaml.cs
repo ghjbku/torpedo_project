@@ -12,9 +12,9 @@ namespace torpedo_project
     {
         private GameObjects.Player player1;
         private GameObjects.AiPlayer aiplayer;
-        private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true,is_created = false,is_placement_finished = false;
+        private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true, is_created = false, is_placement_finished = false;
         private Image boat_image, old_image;
-        public string partHit, partHitAi,LastCoordThatHit;
+        public string partHit, partHitAi, LastCoordThatHit;
         public GameObjects.Ship lastShipHit, lastShipHitAi;
         private System.Collections.Generic.List<string> turn_possible_content;
         private short whoseturn;
@@ -673,7 +673,8 @@ namespace torpedo_project
             //if its not placement mode
             if (old_image == null)
             {
-                if (is_placement_finished) {
+                if (is_placement_finished)
+                {
                     //only proceed if the button is from the PlayerTargetTable
                     if (clickedArea.Parent.Equals(PlayerTargetTable))
                     {
@@ -934,7 +935,7 @@ namespace torpedo_project
         private void OnturnChanged()
         {
             testNumber++;
-            TestingLabelOutput(testNumber.ToString()+"th call");
+            TestingLabelOutput(testNumber.ToString() + "th call");
             if (whoseturn == 1)
             {
                 AiTurns();
@@ -952,7 +953,7 @@ namespace torpedo_project
 
         private void AiTurns()
         {
-                AiClickButton(GameObjects.Functions.AiRandomCoord(LastCoordThatHit,lastShipHitAi));
+            AiClickButton(GameObjects.Functions.AiRandomCoord(LastCoordThatHit, lastShipHitAi));
         }
 
         //in progress --- if the ai hits a ship part, start firing close to that place
@@ -994,7 +995,7 @@ namespace torpedo_project
                 else
                 {
                     clicked_button.Content = (Image)FindResource("NotHit");
-                    
+
                 }
             }
             SetTurnData(0);
