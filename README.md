@@ -16,7 +16,7 @@
 - #### Egymás ellen lehessen játszani ugyanazon a gépen, ugyanabban az alkalmazásban :x:
 - #### AI ellen lehessen játszani
     - Kezdő játékos véletlenszerűen választva :heavy_check_mark: 
-    - AI elemezési sorrend :x:
+    - AI elemezési sorrend :heavy_check_mark: 
         1. Random találgat :heavy_check_mark: 
         2. Ha van találat akkor már a mellette lévő mezőket lövi :heavy_check_mark: 
             - UNIT tesztet írni a logikához (randomhoz nem muszáj) :heavy_check_mark: 
