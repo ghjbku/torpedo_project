@@ -18,8 +18,8 @@
     - Kezdő játékos véletlenszerűen választva :heavy_check_mark: 
     - AI elemezési sorrend :x:
         1. Random találgat :heavy_check_mark: 
-        2. Ha van találat akkor már a mellette lévő mezőket lövi
-            - UNIT tesztet írni a logikához (randomhoz nem muszáj)
+        2. Ha van találat akkor már a mellette lévő mezőket lövi :heavy_check_mark: 
+            - UNIT tesztet írni a logikához (randomhoz nem muszáj) :x:
 - #### Játékmenet
     - Belépéskor kérjen nevet, majd ahhoz mentse az eredményeket :heavy_check_mark: 
     - Eredményjelző :heavy_check_mark: 
