@@ -20,6 +20,7 @@ namespace torpedo_project
         private short whoseturn;
         private short changeturn { get { return whoseturn; } set { whoseturn = value; OnturnChanged(); } }
         private string PathForXml;
+        private int testNumber;
 
         public MainWindow(string name, bool isai, string pathForXml)
         {
@@ -30,6 +31,7 @@ namespace torpedo_project
             partHit = "";
             isVsAi = isai;
             PathForXml = pathForXml;
+            testNumber = 0;
             InitGame(name);
         }
 
@@ -687,7 +689,6 @@ namespace torpedo_project
                             GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHit, aiplayer);
                             GameObjects.Functions.UpdateRemainingShipsForAi(NumberofHits, enemy_remaining_ships, aiplayer, player1);
                             CheckPlayerWins();
-                            CheckAiWins();
 
                             if (partHit.Equals("ShipHitFront"))
                             {
@@ -748,8 +749,6 @@ namespace torpedo_project
             {
                 return;
             }
-
-            TestingLabelOutput(startCoord[0] + startCoord[1] + "," + endCoord[0] + endCoord[1]);
 
             if (!aiship)
             {
@@ -930,9 +929,12 @@ namespace torpedo_project
             changeturn = which;
         }
 
+
         //this will run every time the turn is changed
         private void OnturnChanged()
         {
+            testNumber++;
+            TestingLabelOutput(testNumber.ToString()+"th call");
             if (whoseturn == 1)
             {
                 AiTurns();
@@ -960,60 +962,40 @@ namespace torpedo_project
             if (PlayerHitsaShip(clicked_button.Name, player1))
             {
                 LastCoordThatHit = coord_tip;
-                if (!aiplayer.PlayerHits.Contains(clicked_button.Name))
+                if (aiplayer.PlayerHits.Contains(clicked_button.Name))
+                {
+                    AiTurns();
+                }
+                else
                 {
                     aiplayer.updatePlayerHits(clicked_button.Name);
                     player1.updateEnemyHits(clicked_button.Name);
                     lastShipHitAi.ShipPartsHit += 1;
                 }
-                else
-                {
-                    AiTurns();
-                }
 
-                if (partHitAi.Equals("ShipHitFront"))
-                {
-                    clicked_button.Content = (Image)FindResource("ShipHitFront");
-                }
-                else if (partHitAi == "ShipHitMid")
-                {
-                    clicked_button.Content = (Image)FindResource("ShipHitMid");
-                }
-                else if (partHitAi == "ShipHitBack")
-                {
-                    clicked_button.Content = (Image)FindResource("ShipHitBack");
-                }
-                else if (partHitAi == "ShipHitLeftFront")
-                {
-                    clicked_button.Content = (Image)FindResource("ShipHitLeftFront");
-                }
-                else if (partHitAi == "ShipHitLeftMid")
-                {
-                    clicked_button.Content = (Image)FindResource("ShipHitLeftMid");
-                }
-                else if (partHitAi == "ShipHitLeftBack")
-                {
-                    clicked_button.Content = (Image)FindResource("ShipHitLeftBack");
-                }
+                clicked_button.Content = (Image)FindResource(partHitAi);
 
                 if (GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1) == null) {
                     LastCoordThatHit = null;
+                    GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1, false);
+                    CheckAiWins();
                 }
-                GameObjects.Functions.UpdateRemainingShips(NumberofHitsEnemy, player_remaining_ships, aiplayer, player1, false);
-                CheckAiWins();
+                
                 SetTurnData(0);
+                return;
             }
             else
             {
-                if (clicked_button.Content == null)
+                if (clicked_button.Content != null)
                 {
-                    clicked_button.Content = (Image)FindResource("NotHit");
-                    SetTurnData(0);
+                    AiTurns();
+                    return;
                 }
                 else
                 {
-                    AiTurns();
+                    clicked_button.Content = (Image)FindResource("NotHit");
                     SetTurnData(0);
+                    return;
                 }
             }
         }
