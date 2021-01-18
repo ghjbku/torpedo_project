@@ -14,8 +14,8 @@ namespace torpedo_project
         private GameObjects.AiPlayer aiplayer;
         private bool IsPlacementEventStarted = false, rotated = false, isVsAi = true;
         private Image boat_image, old_image;
-        private string partHit, partHitAi,LastCoordThatHit;
-        private GameObjects.Ship lastShipHit, lastShipHitAi;
+        public string partHit, partHitAi,LastCoordThatHit;
+        public GameObjects.Ship lastShipHit, lastShipHitAi;
         private System.Collections.Generic.List<string> turn_possible_content;
         private short whoseturn;
         private short changeturn { get { return whoseturn; } set { whoseturn = value; OnturnChanged(); } }
@@ -209,7 +209,7 @@ namespace torpedo_project
             turn_indicator.Content = turn_possible_content[whoseturn];
             if (whoseturn == 1)
             {
-                AiTurns();
+                GameObjects.Functions.AiTurns(LastCoordThatHit, lastShipHitAi);
             }
             player1.RoundsNo++;
         }
@@ -932,15 +932,11 @@ namespace torpedo_project
         {
             if (changeturn == 1)
             {
-                AiTurns();
+                GameObjects.Functions.AiTurns(LastCoordThatHit,lastShipHitAi);
             }
             RoundNumber(player1.RoundsNo.ToString());
         }
 
-        private void AiTurns()
-        {
-            AiRandomCoord();
-        }
 
         //This is for testing
         private void RoundNumber(string output)
@@ -950,37 +946,7 @@ namespace torpedo_project
 
         private void AiRandomCoord()
         {
-            Random rnd;
-            string range;
-            string Coord1 = "";
-            int dice = 0;
-            if (LastCoordThatHit == null)
-            {
-                range = "ABCDEFGHIJ";
-                rnd = new Random();
-
-                dice = rnd.Next(1, 11);
-                Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
-            }
-            else {
-                TestingLabelOutput("hit: " + LastCoordThatHit);
-                rnd = new Random();
-                if (lastShipHitAi.rotated == true)
-                {
-                    range = "ABCDEFGHIJ";
-                    string[] _rangeNumber = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\D+");
-                    dice = int.Parse(_rangeNumber[1]);
-                    Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
-                }
-                else {
-                    string[] _rangeAlphabet = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\d+");
-                    range = _rangeAlphabet[0];
-                    dice = rnd.Next(1, 11);
-                    Coord1 = range;
-                }
-            }
-                //TestingLabelOutput(Coord1 + dice.ToString());
-                AiClickButton(Coord1 + dice.ToString());
+                AiClickButton(GameObjects.Functions.AiRandomCoord(LastCoordThatHit,lastShipHitAi));
         }
 
         //in progress --- if the ai hits a ship part, start firing close to that place
@@ -998,7 +964,7 @@ namespace torpedo_project
                 }
                 else
                 {
-                    AiTurns();
+                    GameObjects.Functions.AiTurns(LastCoordThatHit, lastShipHitAi);
                 }
 
                 if (partHitAi.Equals("ShipHitFront"))
@@ -1042,7 +1008,7 @@ namespace torpedo_project
                 }
                 else
                 {
-                    AiTurns();
+                    GameObjects.Functions.AiTurns(LastCoordThatHit, lastShipHitAi);
                     SetTurnData(0);
                 }
             }

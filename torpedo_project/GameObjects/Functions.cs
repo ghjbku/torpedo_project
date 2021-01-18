@@ -1,8 +1,9 @@
-﻿using System.Windows.Controls;
+﻿using System.Linq;
+using System.Windows.Controls;
 
 namespace torpedo_project.GameObjects
 {
-    static class Functions
+   public static class Functions
     {
         public static bool CoordsEqual(string coord, string shipCoords)
         {
@@ -345,6 +346,46 @@ namespace torpedo_project.GameObjects
             {
                 enemy_remaining_ships.Content = aiplayer.RemainingShips.Count.ToString();
             }
+        }
+
+        public static void AiTurns(string LastCoordThatHit, Ship lastShipHitAi)
+        {
+            AiRandomCoord(LastCoordThatHit, lastShipHitAi);
+        }
+
+        public static string AiRandomCoord(string LastCoordThatHit,Ship lastShipHitAi)
+        {
+            System.Random rnd;
+            string range;
+            string Coord1 = "";
+            int dice = 0;
+            if (LastCoordThatHit == null)
+            {
+                range = "ABCDEFGHIJ";
+                rnd = new System.Random();
+
+                dice = rnd.Next(1, 11);
+                Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+            }
+            else
+            {
+                rnd = new System.Random();
+                if (lastShipHitAi.rotated == true)
+                {
+                    range = "ABCDEFGHIJ";
+                    string[] _rangeNumber = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\D+");
+                    dice = int.Parse(_rangeNumber[1]);
+                    Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                }
+                else
+                {
+                    string[] _rangeAlphabet = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\d+");
+                    range = _rangeAlphabet[0];
+                    dice = rnd.Next(1, 11);
+                    Coord1 = range;
+                }
+            }
+            return Coord1 + dice.ToString();
         }
 
     }

@@ -2,7 +2,7 @@
 
 namespace torpedo_project.GameObjects
 {
-    class AiPlayer : PlayerEntity
+   public class AiPlayer : PlayerEntity
     {
         public string PlayerName { get; set; }
         public int RoundsNo { get; set; }

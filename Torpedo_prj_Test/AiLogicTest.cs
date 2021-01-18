@@ -7,20 +7,41 @@ namespace Torpedo_prj_Test
     public class AiLogicTest
     {
         [TestMethod]
-        public void Debit_WithValidAmount_UpdatesBalance()
+        public void AiHitsCloseAfterAShipPartIsHit()
         {
             // Arrange
-            double beginningBalance = 11.99;
-            double debitAmount = 4.55;
-            double expected = 7.44;
-            BankAccount account = new BankAccount("Mr. Bryan Walton", beginningBalance);
-
-            // Act
-            account.Debit(debitAmount);
-
+            torpedo_project.GameObjects.Ship testShip = new torpedo_project.GameObjects.Ship("A", 1, "B", 1, "PatrolBoat");
+            string LastCoordTheAiHit = "A1";
+            string expected = "A";
+            testShip.rotated = false;
+            //Act
+            string got = torpedo_project.GameObjects.Functions.AiRandomCoord(LastCoordTheAiHit,testShip);
+            /*
+             *  if (LastCoordThatHit == null){}
+              else {
+                TestingLabelOutput("hit: " + LastCoordThatHit);
+                rnd = new Random();
+                if (lastShipHitAi.rotated == true)
+                {
+                    range = "ABCDEFGHIJ";
+                    string[] _rangeNumber = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\D+");
+                    dice = int.Parse(_rangeNumber[1]);
+                    Coord1 = new string(Enumerable.Range(1, 1).Select(x => range[rnd.Next(0, range.Length)]).ToArray());
+                }
+                else {
+                    string[] _rangeAlphabet = System.Text.RegularExpressions.Regex.Split(LastCoordThatHit, @"\d+");
+                    range = _rangeAlphabet[0];
+                    dice = rnd.Next(1, 11);
+                    Coord1 = range;
+                }
+            }
+             
+             */
+            string[] _actual = System.Text.RegularExpressions.Regex.Split(got, @"\d+");
+            string actual = _actual[0];
             // Assert
-            double actual = account.Balance;
-            Assert.AreEqual(expected, actual, 0.001, "Account not debited correctly");
+            System.Console.WriteLine(got);
+            Assert.AreEqual(expected, actual);
         }
     }
 }
