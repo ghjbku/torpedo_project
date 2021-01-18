@@ -972,10 +972,8 @@ namespace torpedo_project
                     aiplayer.updatePlayerHits(clicked_button.Name);
                     player1.updateEnemyHits(clicked_button.Name);
                     lastShipHitAi.ShipPartsHit += 1;
+                    clicked_button.Content = (Image)FindResource(partHitAi);
                 }
-
-                clicked_button.Content = (Image)FindResource(partHitAi);
-
                 if (lastShipHitAi.ShipPartsHit > 1)
                 {
                     if (GameObjects.Functions.CheckIfAllShipCoordsHit(lastShipHitAi, player1) == null)

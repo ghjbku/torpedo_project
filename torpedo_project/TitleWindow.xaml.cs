@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -19,7 +20,8 @@ namespace torpedo_project
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (player_name_box.Text.Equals(""))
+            bool symbolCheck = player_name_box.Text.Any(p => !char.IsLetterOrDigit(p));
+            if (player_name_box.Text.Equals("") || symbolCheck)
             {
                 player_name_box.Background = Brushes.Red;
             }
