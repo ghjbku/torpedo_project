@@ -20,7 +20,6 @@ namespace torpedo_project
         private short whoseturn;
         private short changeturn { get { return whoseturn; } set { whoseturn = value; OnturnChanged(); } }
         private string PathForXml;
-        private int testNumber;
 
         public MainWindow(string name, bool isai, string pathForXml)
         {
@@ -31,7 +30,6 @@ namespace torpedo_project
             partHit = "";
             isVsAi = isai;
             PathForXml = pathForXml;
-            testNumber = 0;
             InitGame(name);
         }
 
@@ -49,10 +47,6 @@ namespace torpedo_project
             };
             AiShipPlacement(aiplayer);
             GameObjects.Functions.UpdateRemainingShipsForAi(NumberofHits, enemy_remaining_ships, aiplayer, player1);
-        }
-        private void TestingLabelOutput(string output)
-        {
-            player_name_test_label.Content = output;
         }
         private void AiShipPlacement(GameObjects.AiPlayer aiplayer)
         {
@@ -934,8 +928,6 @@ namespace torpedo_project
         //this will run every time the turn is changed
         private void OnturnChanged()
         {
-            testNumber++;
-            TestingLabelOutput(testNumber.ToString() + "th call");
             if (whoseturn == 1)
             {
                 AiTurns();
