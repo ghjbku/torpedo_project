@@ -936,8 +936,6 @@ namespace torpedo_project
             RoundNumber(player1.RoundsNo.ToString());
         }
 
-
-        //This is for testing
         private void RoundNumber(string output)
         {
             number_of_rounds.Content = output;
@@ -948,7 +946,6 @@ namespace torpedo_project
             AiClickButton(GameObjects.Functions.AiRandomCoord(LastCoordThatHit, lastShipHitAi));
         }
 
-        //in progress --- if the ai hits a ship part, start firing close to that place
         private void AiClickButton(string coord_tip)
         {
             Button clicked_button = (Button)PlayerShipTable.FindName(coord_tip);
