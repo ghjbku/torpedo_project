@@ -970,10 +970,10 @@ namespace torpedo_project
                 }
                 else
                 {
+                    clicked_button.Content = (Image)FindResource(partHitAi);
                     aiplayer.updatePlayerHits(clicked_button.Name);
                     player1.updateEnemyHits(clicked_button.Name);
                     lastShipHitAi.ShipPartsHit += 1;
-                    clicked_button.Content = (Image)FindResource(partHitAi);
                 }
                 if (lastShipHitAi.ShipPartsHit > 1)
                 {
